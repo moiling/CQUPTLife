@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--layout_search_toolbar 因为4.4以上状态栏可以透明，给toolbar头部加了高度，分开存放使得4.4以下平稳退化-->
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:paddingTop="26dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/actionBarSize"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:background="?attr/colorPrimary" >
+
+
+    <android.support.v7.widget.CardView
+
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rl_search"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="2dp"
+        card_view:cardBackgroundColor="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/ed_search"
+            android:background="@color/white"
+            android:textColor="@color/secondary_text"
+            android:padding="4dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:imeOptions="actionSearch"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_search_close"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="6dp"
+            android:src="@mipmap/ic_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.v7.widget.Toolbar>
