@@ -19,4 +19,5 @@
     <color name="red_primary_color">#ff9182</color>
     <color name="blue_primary_color">#61a6d6</color>
 
+    <color name="Gray">#888888</color>
 </resources>

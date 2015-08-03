@@ -5,12 +5,12 @@ import android.util.Log;
 public class LogUtils {
     private static LogUtils sLogUtils;
     public static final int VERBOSE = 1;
-    public static final int DEBUG   = 2;
-    public static final int INFO    = 3;
-    public static final int WARN    = 4;
-    public static final int ERROR   = 5;
+    public static final int DEBUG = 2;
+    public static final int INFO = 3;
+    public static final int WARN = 4;
+    public static final int ERROR = 5;
     public static final int NOTHING = 6;
-    public static final int LEVEL   = NOTHING;
+    public static final int LEVEL = NOTHING;
 
     private LogUtils() {
     }

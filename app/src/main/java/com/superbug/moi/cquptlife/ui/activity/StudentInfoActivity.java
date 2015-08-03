@@ -31,15 +31,16 @@ public class StudentInfoActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    @InjectView(R.id.iv_pic)  ImageView mImageView;
-    @InjectView(R.id.toolbar) Toolbar   mToolbar;
+    @InjectView(R.id.iv_pic) ImageView mImageView;
+    @InjectView(R.id.toolbar) Toolbar mToolbar;
 
-    private Student                   student;
-    private String                    id;
+    private Student student;
+    private String id;
     private ImageLoader.ImageListener listener;
-    private ImageLoader               imageLoader;
+    private ImageLoader imageLoader;
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_info);
         ButterKnife.inject(this);
@@ -56,11 +57,13 @@ public class StudentInfoActivity extends BaseActivity {
         RequestQueue mQueue = Volley.newRequestQueue(this);
 
         imageLoader = new ImageLoader(mQueue, new ImageLoader.ImageCache() {
-            @Override public Bitmap getBitmap(String s) {
+            @Override
+            public Bitmap getBitmap(String s) {
                 return null;
             }
 
-            @Override public void putBitmap(String s, Bitmap bitmap) {
+            @Override
+            public void putBitmap(String s, Bitmap bitmap) {
 
             }
         });
@@ -80,13 +83,15 @@ public class StudentInfoActivity extends BaseActivity {
         });
     }
 
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_student_info, menu);
         return true;
     }
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.

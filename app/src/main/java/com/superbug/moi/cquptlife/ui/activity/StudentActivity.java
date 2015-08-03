@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -36,23 +35,24 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class StudentActivity extends BaseActivity implements View.OnClickListener,
-        AdapterView.OnItemClickListener, IStudentView {
+        IStudentView {
 
-    private final int SEARCH_OPEN  = 0;
+    private final int SEARCH_OPEN = 0;
     private final int SEARCH_CLOSE = 1;
 
-    @InjectView(R.id.ed_search)       EditText     search;
-    @InjectView(R.id.iv_search_close) ImageView    searchClose;
-    @InjectView(R.id.rl_search)       CardView     searchLayout;
-    @InjectView(R.id.toolbar)         Toolbar      mToolbar;
-    @InjectView(R.id.lv_content)      ListView     mListView;
+    @InjectView(R.id.ed_search) EditText search;
+    @InjectView(R.id.iv_search_close) ImageView searchClose;
+    @InjectView(R.id.rl_search) CardView searchLayout;
+    @InjectView(R.id.toolbar) Toolbar mToolbar;
+    @InjectView(R.id.lv_content) ListView mListView;
 
     private ArrayList<Student> studentList = new ArrayList<>();
-    private MyHandler          myHandler   = new MyHandler(this);
+    private MyHandler myHandler = new MyHandler(this);
     private static StudentInformationAdapter adapter;
-    private static StudentPresenter          presenter;
+    private static StudentPresenter presenter;
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         ButterKnife.inject(this);
@@ -63,7 +63,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    @Override protected void onDestroy() {
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
         presenter.onRelieveView();
         if (isFinishing())
@@ -73,7 +74,6 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     private void initContent() {
         adapter = new StudentInformationAdapter(this, R.layout.item_student, studentList);
         mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(this);
     }
 
     private void initToolbar() {
@@ -94,7 +94,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     private void closeSearchLayout() {
         search.setText("");
         SearchLayoutAnimation(SEARCH_CLOSE, new AnimationEndCallbackListener() {
-            @Override public void onEnd() {
+            @Override
+            public void onEnd() {
                 searchLayout.setVisibility(View.GONE);
             }
         });
@@ -119,7 +120,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
                 removeSearchEdit.setDuration(500);
                 removeSearchEdit.setInterpolator(new AccelerateInterpolator());
                 removeSearchEdit.addListener(new AnimatorListenerAdapter() {
-                    @Override public void onAnimationEnd(Animator animation) {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         if (listener != null) {
                             listener.onEnd();
@@ -138,7 +140,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         closeSearchLayout();
     }
 
-    @Override public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_search_close:
                 closeSearchLayout();
@@ -146,15 +149,13 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        StudentInfoActivity.actionStart(this, studentList.get(position));
-    }
-
-    @Override public String getStudentInfo() {
+    @Override
+    public String getStudentInfo() {
         return search.getText().toString();
     }
 
-    @Override public void setStudents(ArrayList<Student> students) {
+    @Override
+    public void setStudents(ArrayList<Student> students) {
         studentList.clear();
         studentList.addAll(students);
         Message message = new Message();
@@ -166,7 +167,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     /**
      * toolbar按钮
      */
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_student, menu);
         return true;
     }
@@ -174,7 +176,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     //toolbar右边按钮的点击事件
     private class OnMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
 
-        @Override public boolean onMenuItemClick(MenuItem menuItem) {
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_search:
                     if (searchLayout.getVisibility() == View.GONE) {
@@ -191,7 +194,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     //重写了搜索的回车键
     private class OnSearchKey implements View.OnKeyListener {
 
-        @Override public boolean onKey(View v, int keyCode, KeyEvent event) {
+        @Override
+        public boolean onKey(View v, int keyCode, KeyEvent event) {
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
                 searchEvent();
             }
@@ -206,7 +210,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
             mActivityReference = new WeakReference<>(activity);
         }
 
-        @Override public void handleMessage(Message msg) {
+        @Override
+        public void handleMessage(Message msg) {
             final Activity activity = mActivityReference.get();
             if (activity != null) {
                 switch (msg.what) {

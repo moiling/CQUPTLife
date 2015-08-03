@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class StudentPresenter {
 
-    private IStudentView  mStudentView;
+    private IStudentView mStudentView;
     private IStudentModel mStudentModel;
 
     public StudentPresenter(IStudentView view) {
@@ -26,11 +26,13 @@ public class StudentPresenter {
 
     public void searchStudent(String studentInfo) {
         mStudentModel.loadStudents(studentInfo, new OnStudentListener() {
-            @Override public void onSuccess(ArrayList<Student> students) {
+            @Override
+            public void onSuccess(ArrayList<Student> students) {
                 mStudentView.setStudents(students);
             }
 
-            @Override public void onError() {
+            @Override
+            public void onError() {
 
             }
         });

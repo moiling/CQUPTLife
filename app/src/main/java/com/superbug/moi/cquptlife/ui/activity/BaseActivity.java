@@ -11,7 +11,8 @@ import com.superbug.moi.cquptlife.app.ExitApplication;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ExitApplication.getInstance().addActivity(this);
 
@@ -28,7 +29,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    @Override protected void onDestroy() {
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
         ExitApplication.getInstance().removeActivity(this);
     }

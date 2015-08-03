@@ -26,4 +26,6 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.16'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile files('libs/jsoup-1.8.2.jar')
+
+    compile 'com.balysv:material-ripple:1.0.2'
 }
