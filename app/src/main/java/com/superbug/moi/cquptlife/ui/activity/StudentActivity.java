@@ -1,8 +1,12 @@
 package com.superbug.moi.cquptlife.ui.activity;
 
-import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -10,13 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.model.bean.Student;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
-import com.superbug.moi.cquptlife.ui.adpter.StudentInformationAdapter;
+import com.superbug.moi.cquptlife.ui.adpter.StudentsAdapter;
 import com.superbug.moi.cquptlife.ui.view.IStudentView;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
 import com.superbug.moi.cquptlife.util.Utils;
@@ -27,17 +30,18 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class StudentActivity extends BaseActivity implements View.OnClickListener,
-        IStudentView {
+public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentView {
 
     @InjectView(R.id.ed_search) EditText search;
     @InjectView(R.id.iv_search_close) ImageView searchClose;
     @InjectView(R.id.rl_search) CardView searchLayout;
     @InjectView(R.id.toolbar) Toolbar mToolbar;
-    @InjectView(R.id.lv_content) ListView mListView;
+    @InjectView(R.id.fabBtn) FloatingActionButton fabBtn;
+    @InjectView(R.id.rootLayout) CoordinatorLayout rootLayout;
+    @InjectView(R.id.lv_content) RecyclerView mRecyclerView;
 
     private ArrayList<Student> studentList = new ArrayList<>();
-    private static StudentInformationAdapter adapter;
+    private StudentsAdapter adapter;
     private static StudentPresenter presenter;
 
     @Override
@@ -56,18 +60,29 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     protected void onDestroy() {
         super.onDestroy();
         presenter.onRelieveView();
-        if (isFinishing())
-            presenter = null;
+        if (isFinishing()) presenter = null;
     }
 
     private void initContent() {
-        adapter = new StudentInformationAdapter(this, R.layout.item_student, studentList);
-        mListView.setAdapter(adapter);
+        adapter = new StudentsAdapter(this, studentList);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(adapter);
+        fabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(rootLayout, "我给你们讲，必须要连内网才可以用", Snackbar.LENGTH_SHORT).setAction("知道了", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                }).show();
+            }
+        });
     }
 
     private void initToolbar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-            mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        //    mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
         mToolbar.setTitle(getResources().getString(R.string.app_name));
         mToolbar.setLogo(getResources().getDrawable(R.mipmap.ic_title_logo));
         setSupportActionBar(mToolbar);
@@ -84,12 +99,13 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     private void closeSearchLayout() {
         search.setText("");
-        SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_CLOSE, new OnAnimationEndListener() {
-            @Override
-            public void onEnd() {
-                searchLayout.setVisibility(View.GONE);
-            }
-        });
+        SearchAnimation
+                .start(searchLayout, SearchAnimation.SEARCH_CLOSE, new OnAnimationEndListener() {
+                    @Override
+                    public void onEnd() {
+                        searchLayout.setVisibility(View.GONE);
+                    }
+                });
         Utils.editHideSoftInput(search);
     }
 

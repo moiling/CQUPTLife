@@ -3,7 +3,6 @@ package com.superbug.moi.cquptlife.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.bean.Student;
-import com.superbug.moi.cquptlife.util.Utils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -73,8 +71,8 @@ public class StudentInfoActivity extends BaseActivity {
     }
 
     private void initToolbar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-            mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        //    mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
         mToolbar.setTitle(getResources().getString(R.string.student_info));
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_back));

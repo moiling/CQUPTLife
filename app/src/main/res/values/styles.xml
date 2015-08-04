@@ -19,17 +19,4 @@
         <item name="colorControlNormal">@color/white</item>
     </style>
 
-    <style name="AppThemeLogin" parent="Theme.AppCompat.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <!-- Actionbar color -->
-        <item name="colorPrimary">@color/primary_color</item>
-        <!--Status bar color-->
-        <item name="colorPrimaryDark">@color/primary_color</item>
-        <!--Window color-->
-        <item name="android:windowBackground">@color/background_material_light</item>
-        <item name="colorAccent">@color/primary_color</item>
-        <item name="colorControlNormal">@color/secondary_text</item>
-    </style>
-
 </resources>

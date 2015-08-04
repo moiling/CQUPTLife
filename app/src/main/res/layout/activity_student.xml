@@ -1,24 +1,48 @@
-<LinearLayout
+<!--因为状态栏透明之后添加头部高度和那个appbar的方法有些冲突
+    先就不透明吧，之后看看该怎么改
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
+    -->
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
     tools:context=".MainActivity">
 
-    <include layout="@layout/layout_search_toolbar"/>
-
-    <RelativeLayout
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/rootLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/layout_search_toolbar"/>
+
+        </android.support.design.widget.AppBarLayout>
+
         <include layout="@layout/layout_content"/>
 
-        <!--toolbar下方阴影-->
-        <View
-            android:layout_width="match_parent"
-            android:background="@drawable/shadow"
-            android:layout_height="2dp"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            app:pressedTranslationZ="12dp"
+            android:layout_marginBottom="@dimen/codelab_fab_margin_bottom"
+            android:layout_marginRight="@dimen/codelab_fab_margin_right"
+            android:layout_gravity="bottom|right"
+            android:src="@mipmap/ic_done"
+            app:fabSize="normal" />
 
-    </RelativeLayout>
-</LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>

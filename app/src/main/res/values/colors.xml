@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="reveal_color">#1b000000</color>
+    <color name="reveal_color">#ff8eb964</color>
     <color name="white">#ffffff</color>
     <color name="light_white">#daebf7</color>
     <color name="primary_text">#777</color>
@@ -13,11 +13,11 @@
     <color name="logo_dark_color">#fb941e</color>
     <color name="logo_color">#fca729</color>
     <color name="primary_color">#9ece6f</color>
-    <color name="primary_dark_color">#4290c6</color>
-    <color name="accent_color">#ff9182</color>
+    <color name="primary_dark_color">#8eb964</color>
+    <color name="accent_color">#fca729</color>
 
     <color name="red_primary_color">#ff9182</color>
     <color name="blue_primary_color">#61a6d6</color>
 
-    <color name="Gray">#888888</color>
+    <color name="Gray">#bbbbbb</color>
 </resources>
