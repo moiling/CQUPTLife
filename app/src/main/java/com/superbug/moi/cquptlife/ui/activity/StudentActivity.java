@@ -1,34 +1,27 @@
 package com.superbug.moi.cquptlife.ui.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.superbug.moi.cquptlife.R;
+import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.model.bean.Student;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.adpter.StudentInformationAdapter;
 import com.superbug.moi.cquptlife.ui.view.IStudentView;
-import com.superbug.moi.cquptlife.util.AnimationEndCallbackListener;
-import com.superbug.moi.cquptlife.util.EditKeyboardUtils;
+import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
+import com.superbug.moi.cquptlife.util.Utils;
+import com.superbug.moi.cquptlife.util.listener.OnAnimationEndListener;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -37,9 +30,6 @@ import butterknife.InjectView;
 public class StudentActivity extends BaseActivity implements View.OnClickListener,
         IStudentView {
 
-    private final int SEARCH_OPEN = 0;
-    private final int SEARCH_CLOSE = 1;
-
     @InjectView(R.id.ed_search) EditText search;
     @InjectView(R.id.iv_search_close) ImageView searchClose;
     @InjectView(R.id.rl_search) CardView searchLayout;
@@ -47,7 +37,6 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     @InjectView(R.id.lv_content) ListView mListView;
 
     private ArrayList<Student> studentList = new ArrayList<>();
-    private MyHandler myHandler = new MyHandler(this);
     private static StudentInformationAdapter adapter;
     private static StudentPresenter presenter;
 
@@ -56,11 +45,11 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         ButterKnife.inject(this);
-        initToolbar();
-        initContent();
         if (presenter == null) {
             presenter = new StudentPresenter(this);
         }
+        initToolbar();
+        initContent();
     }
 
     @Override
@@ -77,6 +66,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void initToolbar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
         mToolbar.setTitle(getResources().getString(R.string.app_name));
         mToolbar.setLogo(getResources().getDrawable(R.mipmap.ic_title_logo));
         setSupportActionBar(mToolbar);
@@ -87,52 +78,19 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     private void openSearchLayout() {
         searchLayout.setVisibility(View.VISIBLE);
-        SearchLayoutAnimation(SEARCH_OPEN, null);
-        EditKeyboardUtils.showSoftInput(search);
+        SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_OPEN, null);
+        Utils.editShowSoftInput(search);
     }
 
     private void closeSearchLayout() {
         search.setText("");
-        SearchLayoutAnimation(SEARCH_CLOSE, new AnimationEndCallbackListener() {
+        SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_CLOSE, new OnAnimationEndListener() {
             @Override
             public void onEnd() {
                 searchLayout.setVisibility(View.GONE);
             }
         });
-        EditKeyboardUtils.hideSoftInput(search);
-    }
-
-    /**
-     * 搜索的动画效果
-     *
-     * @param type     类型，分为打开（SEARCH_OPEN）和关闭（SEARCH_CLOSE）
-     * @param listener 动画结束后的回调，只有关闭的时候才需要，打开的时候传null就可以了
-     */
-    private void SearchLayoutAnimation(int type, final AnimationEndCallbackListener listener) {
-        switch (type) {
-            case SEARCH_OPEN:
-                ValueAnimator showSearchEdit = ObjectAnimator.ofFloat(searchLayout, "ScaleX", 0f, 1f);
-                showSearchEdit.setDuration(500).setInterpolator(new AccelerateDecelerateInterpolator());
-                showSearchEdit.start();
-                break;
-            case SEARCH_CLOSE:
-                ValueAnimator removeSearchEdit = ObjectAnimator.ofFloat(searchLayout, "ScaleX", 1f, 0f);
-                removeSearchEdit.setDuration(500);
-                removeSearchEdit.setInterpolator(new AccelerateInterpolator());
-                removeSearchEdit.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        if (listener != null) {
-                            listener.onEnd();
-                        }
-                    }
-                });
-                removeSearchEdit.start();
-                break;
-            default:
-                break;
-        }
+        Utils.editHideSoftInput(search);
     }
 
     private void searchEvent() {
@@ -155,13 +113,10 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
-    public void setStudents(ArrayList<Student> students) {
+    public void setStudents(ArrayList<Student> arr) {
         studentList.clear();
-        studentList.addAll(students);
-        Message message = new Message();
-        message.obj = studentList;
-        message.what = 0;
-        myHandler.sendMessage(message);
+        studentList.addAll(arr);
+        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -200,28 +155,6 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
                 searchEvent();
             }
             return false;
-        }
-    }
-
-    private static class MyHandler extends Handler {
-        private final WeakReference<Activity> mActivityReference;
-
-        public MyHandler(Activity activity) {
-            mActivityReference = new WeakReference<>(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            final Activity activity = mActivityReference.get();
-            if (activity != null) {
-                switch (msg.what) {
-                    case 0:
-                        adapter.notifyDataSetChanged();
-                        break;
-                    default:
-                        break;
-                }
-            }
         }
     }
 }
