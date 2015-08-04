@@ -11,6 +11,6 @@ public interface IStudentView {
 
     String getStudentInfo();
 
-    void setStudents(ArrayList<Student> students);
+    void setStudents(ArrayList<Student> arr);
 
 }

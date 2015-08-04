@@ -1,12 +1,14 @@
 package com.superbug.moi.cquptlife.model.impl;
 
+import android.os.Handler;
+import android.os.Message;
+
+import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.IStudentModel;
 import com.superbug.moi.cquptlife.model.bean.Student;
-import com.superbug.moi.cquptlife.presenter.OnStudentListener;
-import com.superbug.moi.cquptlife.util.API;
-import com.superbug.moi.cquptlife.util.HttpCallbackListener;
-import com.superbug.moi.cquptlife.util.HttpUtil;
-import com.superbug.moi.cquptlife.util.LogUtils;
+import com.superbug.moi.cquptlife.util.Utils;
+import com.superbug.moi.cquptlife.util.listener.OnHttpEndListener;
+import com.superbug.moi.cquptlife.util.listener.OnStudentListener;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,13 +22,32 @@ import java.util.ArrayList;
  */
 public class StudentModel implements IStudentModel {
 
-    private ArrayList<Student> studentList = new ArrayList<>();
+    private OnStudentListener listener = null;
+    private MyHandler myHandler = new MyHandler();
 
-    @Override public void loadStudents(String studentInfo, OnStudentListener listener) {
-        searchStudent(studentInfo, listener);
+    private class MyHandler extends Handler {
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    jsoupEvent(msg.obj.toString());
+                    break;
+                case 1:
+                    listener.onError();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
-    public void searchStudent(String studentInfo, final OnStudentListener listener) {
+    @Override public void loadStudents(String studentInfo, OnStudentListener listener) {
+        this.listener = listener;
+        searchStudent(studentInfo);
+    }
+
+    public void searchStudent(String studentInfo) {
         try {
             studentInfo = new String(studentInfo.getBytes("GBK"), "iso8859-1");
         } catch (UnsupportedEncodingException e) {
@@ -41,16 +62,21 @@ public class StudentModel implements IStudentModel {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HttpUtil.sendHttpRequest(API.idAPI + finalSearched, new HttpCallbackListener() {
-                    @Override public void onFinish(String response) {
-                        jsoupEvent(response);
-                        listener.onSuccess(studentList);
+                Utils.sendHttpRequest(API.URL.studentId + finalSearched, new OnHttpEndListener() {
+                    @Override
+                    public void onFinish(String response) {
+                        Message message = new Message();
+                        message.obj = response;
+                        message.what = 0;
+                        myHandler.sendMessage(message);
                     }
 
-                    @Override public void onError(Exception e) {
-                        //TODO 错误提示
-                        listener.onError();
-                        LogUtils.d("!!!!!!!", e.toString());
+                    @Override
+                    public void onError(Exception e) {
+                        Message message = new Message();
+                        message.obj = "";
+                        message.what = 1;
+                        myHandler.sendMessage(message);
                     }
                 });
             }
@@ -61,6 +87,7 @@ public class StudentModel implements IStudentModel {
      * 0：学号 1：姓名 2：性别 3：班级 4：专业 5：院系 6：年级
      */
     private void jsoupEvent(String response) {
+        ArrayList<Student> studentList = new ArrayList<>();
         Document document = Jsoup.parse(response);
         Elements trs = document.select("tr");
         int totalTrs = trs.size();
@@ -76,6 +103,7 @@ public class StudentModel implements IStudentModel {
                 Student mStudent = new Student(studentInfo.get(0), studentInfo.get(1), studentInfo.get(3),
                                                studentInfo.get(6), studentInfo.get(4), studentInfo.get(2), studentInfo.get(5));
                 studentList.add(mStudent);
+                listener.onSuccess(studentList);
             }
         } else {
             //TODO 错误提示

@@ -3,10 +3,9 @@ package com.superbug.moi.cquptlife.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -14,8 +13,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.superbug.moi.cquptlife.R;
+import com.superbug.moi.cquptlife.app.BaseActivity;
+import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.bean.Student;
-import com.superbug.moi.cquptlife.util.API;
+import com.superbug.moi.cquptlife.util.Utils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -68,10 +69,12 @@ public class StudentInfoActivity extends BaseActivity {
             }
         });
         listener = ImageLoader.getImageListener(mImageView, R.mipmap.loading, R.mipmap.error);
-        imageLoader.get(API.picAPI + id, listener);
+        imageLoader.get(API.URL.studentPic + id, listener);
     }
 
     private void initToolbar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
         mToolbar.setTitle(getResources().getString(R.string.student_info));
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_back));
@@ -81,20 +84,5 @@ public class StudentInfoActivity extends BaseActivity {
                 finish();
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_student_info, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return super.onOptionsItemSelected(item);
     }
 }

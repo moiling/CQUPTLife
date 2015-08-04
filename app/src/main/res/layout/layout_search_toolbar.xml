@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--layout_search_toolbar 因为4.4以上状态栏可以透明，给toolbar头部加了高度，分开存放使得4.4以下平稳退化-->
 <android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

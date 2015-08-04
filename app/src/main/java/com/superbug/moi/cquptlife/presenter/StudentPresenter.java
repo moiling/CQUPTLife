@@ -2,6 +2,7 @@ package com.superbug.moi.cquptlife.presenter;
 
 import com.superbug.moi.cquptlife.model.IStudentModel;
 import com.superbug.moi.cquptlife.model.bean.Student;
+import com.superbug.moi.cquptlife.util.listener.OnStudentListener;
 import com.superbug.moi.cquptlife.model.impl.StudentModel;
 import com.superbug.moi.cquptlife.ui.view.IStudentView;
 
