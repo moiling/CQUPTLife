@@ -17,13 +17,11 @@ public class Student implements Serializable {
 
     public Student() {}
 
-    public Student(String studentId, String studentName, String studentClass, String studentGrade,
-                   String studentMajor, String studentSex, String studentFaculty) {
+    public Student(String studentId, String studentName, String studentClass, String studentGrade, String studentMajor, String studentSex, String studentFaculty) {
         this(studentId, studentName, studentClass, studentGrade, studentMajor, studentSex, studentFaculty, null);
     }
 
-    public Student(String studentId, String studentName, String studentClass, String studentGrade,
-                   String studentMajor, String studentSex, String studentFaculty, Bitmap pic) {
+    public Student(String studentId, String studentName, String studentClass, String studentGrade, String studentMajor, String studentSex, String studentFaculty, Bitmap pic) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.studentSex = studentSex;

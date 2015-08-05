@@ -1,10 +1,16 @@
 <resources>
-    <string name="app_name">重邮生命</string>
+    <string name="app_name">CQUPT Life</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="search">search</string>
-    <string name="title_activity_student_info">StudentInfoActivity</string>
+    <string name="title_activity_student">学生</string>
+    <string name="title_activity_student_info">学生详情</string>
     <string name="student_info">学生信息</string>
+    <string name="search_student">查找同学</string>
+    <string name="search_class_room">查找班级</string>
+    <string name="search_teacher">查找教师</string>
+    <string name="search_lesson">查找课程</string>
+    <string name="title_activity_home">主页</string>
 </resources>

@@ -3,8 +3,8 @@
     <color name="reveal_color">#ff8eb964</color>
     <color name="white">#ffffff</color>
     <color name="light_white">#daebf7</color>
-    <color name="primary_text">#777</color>
-    <color name="secondary_text">#bbbbbb</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
     <color name="divider_color">#B6B6B6</color>
     <color name="toolbar_item_color">#ccd4d8</color>
 
@@ -14,7 +14,7 @@
     <color name="logo_color">#fca729</color>
     <color name="primary_color">#9ece6f</color>
     <color name="primary_dark_color">#8eb964</color>
-    <color name="accent_color">#fca729</color>
+    <color name="accent_color">#ffc107</color>
 
     <color name="red_primary_color">#ff9182</color>
     <color name="blue_primary_color">#61a6d6</color>

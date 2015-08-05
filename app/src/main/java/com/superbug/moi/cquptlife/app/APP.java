@@ -2,6 +2,7 @@ package com.superbug.moi.cquptlife.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 
 import com.superbug.moi.cquptlife.BuildConfig;
 import com.superbug.moi.cquptlife.util.Utils;
@@ -13,7 +14,9 @@ public class APP extends Application {
 
     private static List<Activity> activityList = new ArrayList<>();
     private static APP instance;
-    public static APP getInstance(){
+    private static Context context;
+
+    public static APP getInstance() {
         return instance;
     }
 
@@ -23,13 +26,18 @@ public class APP extends Application {
 
         Utils.initialize(this);
         Utils.setDebug(BuildConfig.DEBUG, "CQUPTLife");
+        context = getApplicationContext();
+    }
+
+    public static Context getContext() {
+        return context;
     }
 
     public APP() {
         instance = this;
     }
 
-    public static Application getContext() {
+    public static Application getApplication() {
         return instance;
     }
 

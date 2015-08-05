@@ -42,7 +42,8 @@ public class StudentModel implements IStudentModel {
         }
     }
 
-    @Override public void loadStudents(String studentInfo, OnStudentListener listener) {
+    @Override
+    public void loadStudents(String studentInfo, OnStudentListener listener) {
         this.listener = listener;
         searchStudent(studentInfo);
     }
@@ -100,8 +101,7 @@ public class StudentModel implements IStudentModel {
                 for (int j = 0; j < totalTds; j++) {
                     studentInfo.add(cutNbsp(tds.get(j).html()));
                 }
-                Student mStudent = new Student(studentInfo.get(0), studentInfo.get(1), studentInfo.get(3),
-                                               studentInfo.get(6), studentInfo.get(4), studentInfo.get(2), studentInfo.get(5));
+                Student mStudent = new Student(studentInfo.get(0), studentInfo.get(1), studentInfo.get(3), studentInfo.get(6), studentInfo.get(4), studentInfo.get(2), studentInfo.get(5));
                 studentList.add(mStudent);
                 listener.onSuccess(studentList);
             }

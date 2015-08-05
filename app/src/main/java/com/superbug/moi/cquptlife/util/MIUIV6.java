@@ -60,9 +60,9 @@ public class MIUIV6 {
             } else {
                 return false;
             }
-//            return prop.getProperty(KEY_MIUI_VERSION_CODE, null) != null
-//                    || prop.getProperty(KEY_MIUI_VERSION_NAME, null) != null
-//                    || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, null) != null;
+            //            return prop.getProperty(KEY_MIUI_VERSION_CODE, null) != null
+            //                    || prop.getProperty(KEY_MIUI_VERSION_NAME, null) != null
+            //                    || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, null) != null;
         } catch (final IOException e) {
             return false;
         }

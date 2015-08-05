@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
+    android:id="@+id/content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_content"
-        android:fadeScrollbars="false"
-        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fadeScrollbars="false"
+        android:scrollbars="none"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </merge>

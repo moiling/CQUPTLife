@@ -16,6 +16,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         APP.getInstance().addActivity(this);
 
+
         //状态栏透明
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             //透明状态栏
@@ -31,7 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         // enable navigation bar tint
         tintManager.setNavigationBarTintEnabled(true);
         // set a custom tint color for all system bars
-        tintManager.setTintColor(getResources().getColor(R.color.reveal_color));
+        tintManager.setTintColor(getResources().getColor(R.color.primary_dark_color));
         // set a custom navigation bar resource
         //tintManager.setNavigationBarTintResource(R.drawable.my_tint);
         // set a custom status bar drawable

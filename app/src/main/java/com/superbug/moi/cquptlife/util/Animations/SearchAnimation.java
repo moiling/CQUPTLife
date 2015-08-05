@@ -20,6 +20,7 @@ public class SearchAnimation {
 
     /**
      * 搜索的动画效果
+     *
      * @param view     执行动画的view
      * @param type     类型，分为打开（SEARCH_OPEN）和关闭（SEARCH_CLOSE）
      * @param listener 动画结束后的回调，只有关闭的时候才需要，打开的时候传null就可以了

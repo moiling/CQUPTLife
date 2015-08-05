@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.model.bean.Student;
+import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.activity.StudentInfoActivity;
 
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ import java.util.ArrayList;
 public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.StudentsViewHolder> {
 
     private Context mContext;
-    private ArrayList<Student> students;
+    private StudentPresenter presenter;
 
-    public StudentsAdapter(Context context, ArrayList<Student> students) {
+    public StudentsAdapter(Context context, StudentPresenter presenter) {
         mContext = context;
-        this.students = students;
+        this.presenter = presenter;
     }
 
     @Override
@@ -35,6 +36,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
 
     @Override
     public void onBindViewHolder(StudentsViewHolder holder, int i) {
+        ArrayList<Student> students = presenter.getStudent();
         final Student student = students.get(i);
         final String studentName = student.getStudentName();
         String studentSex = student.getStudentSex();
@@ -62,7 +64,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
 
     @Override
     public int getItemCount() {
-        return students.size();
+        return presenter.getStudent().size();
     }
 
     class StudentsViewHolder extends RecyclerView.ViewHolder {
@@ -80,7 +82,6 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
             sex = (TextView) itemView.findViewById(R.id.tv_sex);
             name = (TextView) itemView.findViewById(R.id.tv_name);
             ripple = (MaterialRippleLayout) itemView.findViewById(R.id.ripple);
-
         }
     }
 }

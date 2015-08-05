@@ -1,9 +1,9 @@
 package com.superbug.moi.cquptlife.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,30 +17,31 @@ import android.widget.ImageView;
 
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
-import com.superbug.moi.cquptlife.model.bean.Student;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.adpter.StudentsAdapter;
-import com.superbug.moi.cquptlife.ui.view.IStudentView;
+import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
 import com.superbug.moi.cquptlife.util.Utils;
 import com.superbug.moi.cquptlife.util.listener.OnAnimationEndListener;
 
-import java.util.ArrayList;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentView {
+public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentVu {
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, StudentActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        context.startActivity(intent);
+    }
 
     @InjectView(R.id.ed_search) EditText search;
     @InjectView(R.id.iv_search_close) ImageView searchClose;
     @InjectView(R.id.rl_search) CardView searchLayout;
     @InjectView(R.id.toolbar) Toolbar mToolbar;
-    @InjectView(R.id.fabBtn) FloatingActionButton fabBtn;
     @InjectView(R.id.rootLayout) CoordinatorLayout rootLayout;
     @InjectView(R.id.lv_content) RecyclerView mRecyclerView;
 
-    private ArrayList<Student> studentList = new ArrayList<>();
     private StudentsAdapter adapter;
     private static StudentPresenter presenter;
 
@@ -56,6 +57,9 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         initContent();
     }
 
+    /**
+     * 解除关联，very very very important! ((‵□′))
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -64,28 +68,23 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void initContent() {
-        adapter = new StudentsAdapter(this, studentList);
+        adapter = new StudentsAdapter(this, presenter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
-        fabBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(rootLayout, "我给你们讲，必须要连内网才可以用", Snackbar.LENGTH_SHORT).setAction("知道了", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                }).show();
-            }
-        });
     }
 
     private void initToolbar() {
         //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
         //    mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
-        mToolbar.setTitle(getResources().getString(R.string.app_name));
-        mToolbar.setLogo(getResources().getDrawable(R.mipmap.ic_title_logo));
+        mToolbar.setTitle(" " + getResources().getString(R.string.search_student));
         setSupportActionBar(mToolbar);
+        mToolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_back));
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
         search.setOnKeyListener(new OnSearchKey());
         searchClose.setOnClickListener(this);
@@ -99,13 +98,12 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     private void closeSearchLayout() {
         search.setText("");
-        SearchAnimation
-                .start(searchLayout, SearchAnimation.SEARCH_CLOSE, new OnAnimationEndListener() {
-                    @Override
-                    public void onEnd() {
-                        searchLayout.setVisibility(View.GONE);
-                    }
-                });
+        SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_CLOSE, new OnAnimationEndListener() {
+            @Override
+            public void onEnd() {
+                searchLayout.setVisibility(View.GONE);
+            }
+        });
         Utils.editHideSoftInput(search);
     }
 
@@ -129,9 +127,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
-    public void setStudents(ArrayList<Student> arr) {
-        studentList.clear();
-        studentList.addAll(arr);
+    public void setStudents() {
+
         adapter.notifyDataSetChanged();
     }
 

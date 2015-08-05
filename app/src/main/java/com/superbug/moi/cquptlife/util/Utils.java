@@ -28,26 +28,25 @@ public class Utils {
     public static boolean DEBUG = false;
     private static Context mApplicationContent;
 
-    public static void initialize(Application app){
+    public static void initialize(Application app) {
         mApplicationContent = app.getApplicationContext();
     }
 
 
-    public static void setDebug(boolean isDebug,String TAG){
+    public static void setDebug(boolean isDebug, String TAG) {
         Utils.TAG = TAG;
         Utils.DEBUG = isDebug;
     }
 
 
-
-    public static void Log(String TAG,String text){
-        if(DEBUG){
+    public static void Log(String TAG, String text) {
+        if (DEBUG) {
             Log.i(TAG, text);
         }
     }
 
-    public static void Log(String text){
-        if(DEBUG){
+    public static void Log(String text) {
+        if (DEBUG) {
             Log.i(TAG, text);
         }
     }
@@ -55,7 +54,6 @@ public class Utils {
 
     /**
      * dpתpx
-     *
      */
     public static int dip2px(float dpValue) {
         final float scale = mApplicationContent.getResources().getDisplayMetrics().density;
@@ -64,7 +62,7 @@ public class Utils {
 
 
     /**
-     *	pxתdp
+     * pxתdp
      */
     public static int px2dip(float pxValue) {
         final float scale = mApplicationContent.getResources().getDisplayMetrics().density;
@@ -73,6 +71,7 @@ public class Utils {
 
     /**
      * 获取状态栏高度
+     *
      * @return
      */
     public static int getStatusBarHeight() {
@@ -86,8 +85,7 @@ public class Utils {
 
     public static int getNavigationBarHeight(Activity activity) {
         Resources resources = activity.getResources();
-        int resourceId = resources.getIdentifier("navigation_bar_height",
-                                                 "dimen", "android");
+        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
         //获取NavigationBar的高度
         int height = resources.getDimensionPixelSize(resourceId);
         return height;
@@ -96,10 +94,8 @@ public class Utils {
     public static boolean hasNavigationBar(Context activity) {
 
         //通过判断设备是否有返回键、菜单键(不是虚拟键,是手机屏幕外的按键)来确定是否有navigation bar
-        boolean hasMenuKey = ViewConfiguration.get(activity)
-                                              .hasPermanentMenuKey();
-        boolean hasBackKey = KeyCharacterMap
-                .deviceHasKey(KeyEvent.KEYCODE_BACK);
+        boolean hasMenuKey = ViewConfiguration.get(activity).hasPermanentMenuKey();
+        boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
 
         if (!hasMenuKey && !hasBackKey) {
             // 做任何你需要做的,这个设备有一个导航栏
@@ -109,8 +105,7 @@ public class Utils {
     }
 
     public static void editHideSoftInput(final View view) {
-        InputMethodManager imm = (InputMethodManager) view.getContext()
-                                                          .getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
@@ -118,8 +113,7 @@ public class Utils {
 
     public static void editShowSoftInput(final View view) {
         view.requestFocus();
-        InputMethodManager imm = (InputMethodManager) view.getContext()
-                                                          .getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
             imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
         }

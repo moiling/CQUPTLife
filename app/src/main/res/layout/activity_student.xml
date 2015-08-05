@@ -5,19 +5,18 @@
     -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:clipToPadding="false"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/rootLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
@@ -29,19 +28,6 @@
         </android.support.design.widget.AppBarLayout>
 
         <include layout="@layout/layout_content"/>
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fabBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:borderWidth="0dp"
-            app:elevation="6dp"
-            app:pressedTranslationZ="12dp"
-            android:layout_marginBottom="@dimen/codelab_fab_margin_bottom"
-            android:layout_marginRight="@dimen/codelab_fab_margin_right"
-            android:layout_gravity="bottom|right"
-            android:src="@mipmap/ic_done"
-            app:fabSize="normal" />
 
     </android.support.design.widget.CoordinatorLayout>
 
