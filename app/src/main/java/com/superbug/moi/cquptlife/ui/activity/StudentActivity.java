@@ -76,15 +76,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     private void initToolbar() {
         //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
         //    mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
-        mToolbar.setTitle(" " + getResources().getString(R.string.search_student));
+        mToolbar.setTitle(" " + getResources().getString(R.string.app_name));
         setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_back));
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
         search.setOnKeyListener(new OnSearchKey());
         searchClose.setOnClickListener(this);
