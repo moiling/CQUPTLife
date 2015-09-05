@@ -70,6 +70,7 @@ public class StudentModel implements IStudentModel {
                         message.obj = response;
                         message.what = 0;
                         myHandler.sendMessage(message);
+                        Utils.Log(response);
                     }
 
                     @Override
@@ -78,6 +79,7 @@ public class StudentModel implements IStudentModel {
                         message.obj = "";
                         message.what = 1;
                         myHandler.sendMessage(message);
+                        Utils.Log(e.toString());
                     }
                 });
             }
@@ -103,6 +105,7 @@ public class StudentModel implements IStudentModel {
                 }
                 Student mStudent = new Student(studentInfo.get(0), studentInfo.get(1), studentInfo.get(3), studentInfo.get(6), studentInfo.get(4), studentInfo.get(2), studentInfo.get(5));
                 studentList.add(mStudent);
+                Utils.Log(mStudent.getStudentName());
                 listener.onSuccess(studentList);
             }
         } else {

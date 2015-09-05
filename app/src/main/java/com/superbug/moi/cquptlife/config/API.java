@@ -5,8 +5,8 @@ public class API {
 
 
     public static class URL {
-        public static final String studentId = "http://jwzx.cqupt.edu.cn/pubBjStu.php?searchKey=";
-        public static final String studentPic = "http://jwzx.cqupt.edu.cn/showstuPic.php?xh=";
+        public static final String studentId = "https://jwzx.cqupt.congm.in/pubBjStu.php?searchKey=";
+        public static final String studentPic = "https://jwzx.cqupt.congm.in/showstuPic.php?xh=";
     }
 
     public static class KEY {
