@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
@@ -30,6 +31,12 @@ public class StudentInfoActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
+    @InjectView(R.id.tv_name) TextView tvName;
+    @InjectView(R.id.tv_id) TextView tvId;
+    @InjectView(R.id.tv_grade) TextView tvGrade;
+    @InjectView(R.id.tv_faculty) TextView tvFaculty;
+    @InjectView(R.id.tv_major) TextView tvMajor;
+    @InjectView(R.id.tv_class) TextView tvClass;
     @InjectView(R.id.iv_pic) ImageView mImageView;
     @InjectView(R.id.toolbar) Toolbar mToolbar;
 
@@ -46,7 +53,17 @@ public class StudentInfoActivity extends BaseActivity {
 
         initToolbar();
         initPic();
+        initStudentInfo();
 
+    }
+
+    void initStudentInfo() {
+        tvName.setText("姓名：" + student.getStudentName());
+        tvId.setText("学号：" +  student.getStudentId());
+        tvClass.setText("班级：" + student.getStudentClass());
+        tvGrade.setText("年级：" + student.getStudentGrade());
+        tvFaculty.setText("学院：" + student.getStudentFaculty());
+        tvMajor.setText("专业：" + student.getStudentMajor());
     }
 
     private void initPic() {
