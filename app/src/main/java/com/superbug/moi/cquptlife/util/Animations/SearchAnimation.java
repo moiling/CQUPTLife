@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 
-import com.superbug.moi.cquptlife.util.listener.OnAnimationEndListener;
+import com.superbug.moi.cquptlife.model.callback.OnAnimationEndListener;
 
 /**
  * Created by moi on 2015/8/4.

@@ -11,8 +11,17 @@
         android:id="@+id/lv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fadeScrollbars="false"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:visibility="gone"
+        android:fadeScrollbars="false"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="点击查询学生信息"
+        android:textColor="@color/secondary_text"
+        android:textSize="18sp"
+        android:gravity="center"
+        />
 
 </merge>

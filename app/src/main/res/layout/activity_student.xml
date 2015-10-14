@@ -3,32 +3,19 @@
     android:fitsSystemWindows="true"
     android:clipToPadding="false"
     -->
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/rootLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <include layout="@layout/layout_search_toolbar"/>
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <include layout="@layout/layout_content"/>
 
-            <include layout="@layout/layout_search_toolbar"/>
-
-            </android.support.design.widget.AppBarLayout>
-
-        <include layout="@layout/layout_content"/>
-
-    </android.support.design.widget.CoordinatorLayout>
-
-</RelativeLayout>
+</LinearLayout>

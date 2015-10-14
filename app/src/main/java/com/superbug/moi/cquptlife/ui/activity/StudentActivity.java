@@ -3,7 +3,6 @@ package com.superbug.moi.cquptlife.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
@@ -22,7 +22,7 @@ import com.superbug.moi.cquptlife.ui.adpter.StudentsAdapter;
 import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
 import com.superbug.moi.cquptlife.util.Utils;
-import com.superbug.moi.cquptlife.util.listener.OnAnimationEndListener;
+import com.superbug.moi.cquptlife.model.callback.OnAnimationEndListener;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -35,11 +35,11 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         context.startActivity(intent);
     }
 
+    @InjectView(R.id.tv_content) TextView mEmptyView;
     @InjectView(R.id.ed_search) EditText search;
     @InjectView(R.id.iv_search_close) ImageView searchClose;
     @InjectView(R.id.rl_search) CardView searchLayout;
     @InjectView(R.id.toolbar) Toolbar mToolbar;
-    @InjectView(R.id.rootLayout) CoordinatorLayout rootLayout;
     @InjectView(R.id.lv_content) RecyclerView mRecyclerView;
 
     private StudentsAdapter adapter;
@@ -101,8 +101,12 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void searchEvent() {
-        presenter.searchStudent(getStudentInfo());
-        closeSearchLayout();
+        String student = getStudentInfo();
+        student = student.replaceAll(" ", "");
+        if (!student.isEmpty()) {
+            presenter.searchStudent(student);
+            closeSearchLayout();
+        }
     }
 
     @Override
@@ -123,6 +127,37 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     public void setStudents() {
 
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showList() {
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideList() {
+        mRecyclerView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showEmptyView(String str) {
+        mEmptyView.setText(str);
+        mEmptyView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideEmptyView() {
+        mEmptyView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoading() {
+        showProgress("正在加载");
+    }
+
+    @Override
+    public void hideLoading() {
+        dismissProgress();
     }
 
     /**

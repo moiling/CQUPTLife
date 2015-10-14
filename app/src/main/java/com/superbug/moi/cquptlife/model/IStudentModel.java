@@ -1,6 +1,6 @@
 package com.superbug.moi.cquptlife.model;
 
-import com.superbug.moi.cquptlife.util.listener.OnStudentListener;
+import com.superbug.moi.cquptlife.model.callback.OnStudentListener;
 
 /**
  * Created by moi on 2015/7/11.

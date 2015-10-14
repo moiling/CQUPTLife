@@ -9,4 +9,16 @@ public interface IStudentVu {
 
     void setStudents();
 
+    void showList();
+
+    void hideList();
+
+    void showEmptyView(String str);
+
+    void hideEmptyView();
+
+    void showLoading();
+
+    void hideLoading();
+
 }

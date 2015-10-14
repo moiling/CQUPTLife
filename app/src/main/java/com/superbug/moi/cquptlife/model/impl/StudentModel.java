@@ -7,8 +7,8 @@ import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.IStudentModel;
 import com.superbug.moi.cquptlife.model.bean.Student;
 import com.superbug.moi.cquptlife.util.Utils;
-import com.superbug.moi.cquptlife.util.listener.OnHttpEndListener;
-import com.superbug.moi.cquptlife.util.listener.OnStudentListener;
+import com.superbug.moi.cquptlife.model.callback.OnHttpEndListener;
+import com.superbug.moi.cquptlife.model.callback.OnStudentListener;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,7 +34,7 @@ public class StudentModel implements IStudentModel {
                     jsoupEvent(msg.obj.toString());
                     break;
                 case 1:
-                    listener.onError();
+                    listener.onError("网络貌似有点问题");
                     break;
                 default:
                     break;
@@ -109,7 +109,7 @@ public class StudentModel implements IStudentModel {
                 listener.onSuccess(studentList);
             }
         } else {
-            //TODO 错误提示
+            listener.onError("没有找到这个人");
         }
     }
 

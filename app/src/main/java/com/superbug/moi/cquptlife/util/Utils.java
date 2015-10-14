@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
 
-import com.superbug.moi.cquptlife.util.listener.OnHttpEndListener;
+import com.superbug.moi.cquptlife.model.callback.OnHttpEndListener;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
