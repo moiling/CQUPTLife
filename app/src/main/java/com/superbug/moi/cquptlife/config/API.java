@@ -7,6 +7,8 @@ public class API {
     public static class URL {
         public static final String studentId = "https://jwzx.cqupt.congm.in/pubBjStu.php?searchKey=";
         public static final String studentPic = "https://jwzx.cqupt.congm.in/showstuPic.php?xh=";
+        public static final String studentCETPic = "http://172.22.80.212.cqupt.congm.in/PHOTO0906CET/";
+        public static final String studentCETPicEnd = ".JPG";
     }
 
     public static class KEY {

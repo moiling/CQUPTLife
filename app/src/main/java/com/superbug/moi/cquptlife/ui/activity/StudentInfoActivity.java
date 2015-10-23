@@ -84,7 +84,7 @@ public class StudentInfoActivity extends BaseActivity {
             }
         });
         listener = ImageLoader.getImageListener(mImageView, R.mipmap.loading, R.mipmap.error);
-        imageLoader.get(API.URL.studentPic + id, listener);
+        imageLoader.get(API.URL.studentCETPic + id + API.URL.studentCETPicEnd, listener);
     }
 
     private void initToolbar() {
