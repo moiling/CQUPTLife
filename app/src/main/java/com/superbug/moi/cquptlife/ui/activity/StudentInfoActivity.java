@@ -2,16 +2,14 @@ package com.superbug.moi.cquptlife.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.config.API;
@@ -70,21 +68,11 @@ public class StudentInfoActivity extends BaseActivity {
         student = (Student) getIntent().getSerializableExtra("student");
         id = student.getStudentId();
 
-        RequestQueue mQueue = Volley.newRequestQueue(this);
-
-        imageLoader = new ImageLoader(mQueue, new ImageLoader.ImageCache() {
-            @Override
-            public Bitmap getBitmap(String s) {
-                return null;
-            }
-
-            @Override
-            public void putBitmap(String s, Bitmap bitmap) {
-
-            }
-        });
-        listener = ImageLoader.getImageListener(mImageView, R.mipmap.loading, R.mipmap.error);
-        imageLoader.get(API.URL.studentCETPic + id + API.URL.studentCETPicEnd, listener);
+        Picasso.with(this)
+                .load(API.URL.studentCETPic + id + API.URL.studentCETPicEnd)
+                .placeholder(R.mipmap.loading)
+                .error(R.mipmap.error)
+                .into(mImageView);
     }
 
     private void initToolbar() {
