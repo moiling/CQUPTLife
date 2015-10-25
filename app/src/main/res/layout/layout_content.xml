@@ -18,7 +18,7 @@
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="点击查询学生信息"
+        android:text="@string/please_search_student"
         android:textColor="@color/secondary_text"
         android:textSize="18sp"
         android:gravity="center"

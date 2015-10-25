@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.squareup.picasso.Picasso;
 import com.superbug.moi.cquptlife.R;
+import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.bean.Student;
@@ -56,12 +57,12 @@ public class StudentInfoActivity extends BaseActivity {
     }
 
     void initStudentInfo() {
-        tvName.setText("姓名：" + student.getStudentName());
-        tvId.setText("学号：" +  student.getStudentId());
-        tvClass.setText("班级：" + student.getStudentClass());
-        tvGrade.setText("年级：" + student.getStudentGrade());
-        tvFaculty.setText("学院：" + student.getStudentFaculty());
-        tvMajor.setText("专业：" + student.getStudentMajor());
+        tvName.setText(APP.getContext().getResources().getString(R.string.name) + "：" + student.getStudentName());
+        tvId.setText(APP.getContext().getResources().getString(R.string.std_id) + "：" +  student.getStudentId());
+        tvClass.setText(APP.getContext().getResources().getString(R.string.class_) + "：" + student.getStudentClass());
+        tvGrade.setText(APP.getContext().getResources().getString(R.string.grade) + "：" + student.getStudentGrade());
+        tvFaculty.setText(APP.getContext().getResources().getString(R.string.faculty) + "：" + student.getStudentFaculty());
+        tvMajor.setText(APP.getContext().getResources().getString(R.string.major) + "：" + student.getStudentMajor());
     }
 
     private void initPic() {

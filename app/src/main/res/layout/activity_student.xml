@@ -3,7 +3,7 @@
     android:fitsSystemWindows="true"
     android:clipToPadding="false"
     -->
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,6 +16,18 @@
 
     <include layout="@layout/layout_search_toolbar"/>
 
-    <include layout="@layout/layout_content"/>
+    <FrameLayout
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <include layout="@layout/layout_content"/>
+
+        <!--toolbar下方阴影-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/shadow"/>
+    </FrameLayout>
+
+</RelativeLayout>

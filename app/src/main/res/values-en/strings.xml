@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CQUPTLife</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="search">search</string>
+    <string name="title_activity_student">Student</string>
+    <string name="title_activity_student_info">Student Info</string>
+    <string name="student_info">Student Info</string>
+    <string name="title_activity_home">Home</string>
+    <string name="please_wait">Please wait</string>
+    <string name="network_error">Network Error</string>
+    <string name="not_fount_student">Can\'t found this student</string>
+    <string name="loading">Loading</string>
+    <string name="name">Name   </string>
+    <string name="std_id">ID     </string>
+    <string name="class_">Class  </string>
+    <string name="grade">Grade  </string>
+    <string name="faculty">Faculty</string>
+    <string name="major">Major  </string>
+    <string name="please_search_student">Use name or ID to search students</string>
+</resources>

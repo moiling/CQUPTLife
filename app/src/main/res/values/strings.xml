@@ -13,4 +13,15 @@
     <string name="search_teacher">查找教师</string>
     <string name="search_lesson">查找课程</string>
     <string name="title_activity_home">主页</string>
+    <string name="please_wait">请稍等</string>
+    <string name="network_error">网络貌似有点问题</string>
+    <string name="not_fount_student">没有找到这个人</string>
+    <string name="loading">正在加载</string>
+    <string name="name">姓名</string>
+    <string name="std_id">学号</string>
+    <string name="class_">班级</string>
+    <string name="grade">年级</string>
+    <string name="faculty">学院</string>
+    <string name="major">专业</string>
+    <string name="please_search_student">点击查询学生信息</string>
 </resources>

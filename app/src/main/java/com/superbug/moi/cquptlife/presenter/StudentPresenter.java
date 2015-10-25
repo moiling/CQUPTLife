@@ -1,5 +1,7 @@
 package com.superbug.moi.cquptlife.presenter;
 
+import com.superbug.moi.cquptlife.R;
+import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.model.IStudentModel;
 import com.superbug.moi.cquptlife.model.bean.Student;
 import com.superbug.moi.cquptlife.model.callback.OnStudentListener;
@@ -42,7 +44,7 @@ public class StudentPresenter {
                     studentList.addAll(students);
                     mStudentView.setStudents();
                 } else {
-                    mStudentView.showEmptyView("没找到这个人");
+                    mStudentView.showEmptyView(APP.getContext().getResources().getString(R.string.not_fount_student));
                     mStudentView.hideList();
                 }
                 mStudentView.hideLoading();

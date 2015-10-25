@@ -3,12 +3,14 @@ package com.superbug.moi.cquptlife.model.impl;
 import android.os.Handler;
 import android.os.Message;
 
+import com.superbug.moi.cquptlife.R;
+import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.IStudentModel;
 import com.superbug.moi.cquptlife.model.bean.Student;
-import com.superbug.moi.cquptlife.util.Utils;
 import com.superbug.moi.cquptlife.model.callback.OnHttpEndListener;
 import com.superbug.moi.cquptlife.model.callback.OnStudentListener;
+import com.superbug.moi.cquptlife.util.Utils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,7 +36,7 @@ public class StudentModel implements IStudentModel {
                     jsoupEvent(msg.obj.toString());
                     break;
                 case 1:
-                    listener.onError("网络貌似有点问题");
+                    listener.onError(APP.getContext().getResources().getString(R.string.network_error));
                     break;
                 default:
                     break;
@@ -109,7 +111,7 @@ public class StudentModel implements IStudentModel {
                 listener.onSuccess(studentList);
             }
         } else {
-            listener.onError("没有找到这个人");
+            listener.onError(APP.getContext().getString(R.string.not_fount_student));
         }
     }
 

@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.superbug.moi.cquptlife.R;
+import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.adpter.StudentsAdapter;
@@ -152,7 +153,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void showLoading() {
-        showProgress("正在加载");
+        showProgress(APP.getContext().getResources().getString(R.string.loading));
     }
 
     @Override

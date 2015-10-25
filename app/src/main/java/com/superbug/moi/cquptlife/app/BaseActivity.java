@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
         //状态栏透明
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
             //透明状态栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //            //透明导航栏
@@ -60,7 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .titleColor(this.getResources().getColor(R.color.primary_color))
                 .backgroundColor(this.getResources().getColor(R.color.white))
                 .positiveColor(this.getResources().getColor(R.color.primary_color))
-                .content("请稍候")
+                .content(APP.getContext().getResources().getString(R.string.please_wait))
                 .theme(Theme.LIGHT)
                 .progress(true, 100)
                 .cancelable(false)
