@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.superbug.moi.cquptlife"
@@ -19,13 +19,18 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:cardview-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
-    compile 'com.afollestad:material-dialogs:0.7.5.5'
+    compile 'com.afollestad:material-dialogs:0.7.8.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile files('libs/jsoup-1.8.2.jar')
     compile 'com.mcxiaoke.volley:library:1.0.16'
