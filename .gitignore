@@ -9,6 +9,7 @@
 *.class
 
 # generated files
+/app/src/main/java/com/superbug/moi/cquptlife/config/API.java
 bin/
 gen/
 
