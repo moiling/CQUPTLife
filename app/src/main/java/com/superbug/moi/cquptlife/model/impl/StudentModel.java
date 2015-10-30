@@ -5,6 +5,7 @@ import android.os.Message;
 
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.APP;
+import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.IStudentModel;
 import com.superbug.moi.cquptlife.model.bean.Student;
 import com.superbug.moi.cquptlife.model.callback.OnHttpEndListener;

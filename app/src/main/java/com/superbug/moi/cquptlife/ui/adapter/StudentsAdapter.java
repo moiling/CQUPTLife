@@ -1,4 +1,4 @@
-package com.superbug.moi.cquptlife.ui.adpter;
+package com.superbug.moi.cquptlife.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

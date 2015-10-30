@@ -19,7 +19,7 @@ import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
-import com.superbug.moi.cquptlife.ui.adpter.StudentsAdapter;
+import com.superbug.moi.cquptlife.ui.adapter.StudentsAdapter;
 import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
 import com.superbug.moi.cquptlife.util.Utils;
