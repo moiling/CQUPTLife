@@ -9,7 +9,7 @@ import android.content.Intent;
  * Created by moi on 11/1/2015.
  */
 public class SearchWidgetProvider extends AppWidgetProvider {
-    // 没接收一次广播消息就调用一次，使用频繁
+    // 每接收一次广播消息就调用一次，使用频繁
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
     }
@@ -19,7 +19,7 @@ public class SearchWidgetProvider extends AppWidgetProvider {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 
-    // 没删除一个就调用一次
+    // 每删除一个就调用一次
     public void onDeleted(Context context, int[] appWidgetIds) {
         super.onDeleted(context, appWidgetIds);
     }
