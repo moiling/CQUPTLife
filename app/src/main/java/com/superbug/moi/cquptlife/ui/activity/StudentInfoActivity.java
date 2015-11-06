@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +41,9 @@ public class StudentInfoActivity extends BaseActivity {
     @InjectView(R.id.iv_pic) ImageView mImageView;
     @InjectView(R.id.toolbar) Toolbar mToolbar;
 
+    private final int CET = 0;
+    private final int TEC = 1;
+    private int type = CET;
     private Student student;
     private String id;
     private ImageLoader.ImageListener listener;
@@ -58,7 +63,7 @@ public class StudentInfoActivity extends BaseActivity {
 
     void initStudentInfo() {
         tvName.setText(APP.getContext().getResources().getString(R.string.name) + "：" + student.getStudentName());
-        tvId.setText(APP.getContext().getResources().getString(R.string.std_id) + "：" +  student.getStudentId());
+        tvId.setText(APP.getContext().getResources().getString(R.string.std_id) + "：" + student.getStudentId());
         tvClass.setText(APP.getContext().getResources().getString(R.string.class_) + "：" + student.getStudentClass());
         tvGrade.setText(APP.getContext().getResources().getString(R.string.grade) + "：" + student.getStudentGrade());
         tvFaculty.setText(APP.getContext().getResources().getString(R.string.faculty) + "：" + student.getStudentFaculty());
@@ -68,12 +73,23 @@ public class StudentInfoActivity extends BaseActivity {
     private void initPic() {
         student = (Student) getIntent().getSerializableExtra("student");
         id = student.getStudentId();
+        showPic();
+    }
 
-        Picasso.with(this)
-                .load(API.URL.studentCETPic + id + API.URL.studentCETPicEnd)
-                .placeholder(R.mipmap.loading)
-                .error(R.mipmap.error)
-                .into(mImageView);
+    private void showPic() {
+        if (type == CET) {
+            Picasso.with(this)
+                    .load(API.URL.studentCETPic + id + API.URL.studentCETPicEnd)
+                    .placeholder(R.mipmap.loading)
+                    .error(R.mipmap.error)
+                    .into(mImageView);
+        } else {
+            Picasso.with(this)
+                    .load(API.URL.studentPic + id)
+                    .placeholder(R.mipmap.loading)
+                    .error(R.mipmap.error)
+                    .into(mImageView);
+        }
     }
 
     private void initToolbar() {
@@ -88,5 +104,25 @@ public class StudentInfoActivity extends BaseActivity {
                 finish();
             }
         });
+        mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_student_info, menu);
+        return true;
+    }
+
+    private class OnMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            switch (menuItem.getItemId()) {
+                case R.id.action_switch:
+                    type = type == CET ? TEC : CET;
+                    showPic();
+            }
+            return true;
+        }
     }
 }
