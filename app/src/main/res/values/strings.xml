@@ -25,4 +25,5 @@
     <string name="faculty">学院</string>
     <string name="major">专业</string>
     <string name="please_search_student">点击查询学生信息</string>
+    <string name="color">COLOR</string>
 </resources>

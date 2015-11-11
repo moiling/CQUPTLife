@@ -3,6 +3,7 @@ package com.superbug.moi.cquptlife.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,12 +19,12 @@ import android.widget.TextView;
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.app.BaseActivity;
+import com.superbug.moi.cquptlife.model.callback.OnAnimationEndListener;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.adapter.StudentsAdapter;
 import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
 import com.superbug.moi.cquptlife.util.Utils;
-import com.superbug.moi.cquptlife.model.callback.OnAnimationEndListener;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -36,6 +37,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         context.startActivity(intent);
     }
 
+    @InjectView(R.id.fab) FloatingActionButton mFab;
     @InjectView(R.id.tv_content) TextView mEmptyView;
     @InjectView(R.id.ed_search) EditText search;
     @InjectView(R.id.iv_search_close) ImageView searchClose;
@@ -72,6 +74,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         adapter = new StudentsAdapter(this, presenter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
+        mFab.setOnClickListener(this);
     }
 
     private void initToolbar() {
@@ -87,6 +90,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     private void openSearchLayout() {
         searchLayout.setVisibility(View.VISIBLE);
         SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_OPEN, null);
+        mToolbar.getMenu().getItem(0).setVisible(false);
         Utils.editShowSoftInput(search);
     }
 
@@ -98,6 +102,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
                 searchLayout.setVisibility(View.GONE);
             }
         });
+        mToolbar.getMenu().getItem(0).setVisible(true);
         Utils.editHideSoftInput(search);
     }
 
@@ -116,6 +121,13 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
             case R.id.iv_search_close:
                 closeSearchLayout();
                 break;
+            case R.id.fab:
+                if (searchLayout.getVisibility() == View.GONE) {
+                    openSearchLayout();
+                } else {
+                    searchEvent();
+                }
+                break;
         }
     }
 
@@ -126,7 +138,6 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void setStudents() {
-
         adapter.notifyDataSetChanged();
     }
 

@@ -8,12 +8,14 @@
     <color name="divider_color">#B6B6B6</color>
     <color name="toolbar_item_color">#ccd4d8</color>
 
-    <color name="my_red">#ff9182</color>
-    <color name="my_dark_red">#ef7b6b</color>
+    <color name="tans_color">#0000</color>
+
+    <color name="my_red">#fb6582</color>
+    <color name="my_dark_red">#c44f65</color>
     <color name="logo_dark_color">#fb941e</color>
     <color name="logo_color">#fca729</color>
-    <color name="primary_color">#fb6582</color>
-    <color name="primary_dark_color">#c44f65</color>
+    <color name="primary_color">#ffaa07</color>
+    <color name="primary_dark_color">#ffaa07</color>
     <color name="accent_color">#ffc107</color>
 
     <color name="title_green">#7BCECA</color>
