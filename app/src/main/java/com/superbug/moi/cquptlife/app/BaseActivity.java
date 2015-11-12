@@ -3,7 +3,6 @@ package com.superbug.moi.cquptlife.app;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.WindowManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -68,6 +67,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void dismissProgress() {
-        dialog.dismiss();
+        if (dialog.isShowing()) dialog.dismiss();
     }
 }

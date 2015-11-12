@@ -83,6 +83,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         mFab.setOnClickListener(this);
         mSwipeRefreshWidget.setColorSchemeResources(R.color.blue_primary_color, R.color.primary_color);
         mSwipeRefreshWidget.setOnRefreshListener(this);
+        mSwipeRefreshWidget.setVisibility(View.GONE);
     }
 
     private void initToolbar() {
@@ -170,6 +171,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void hideEmptyView() {
         mEmptyView.setVisibility(View.GONE);
+        mSwipeRefreshWidget.setVisibility(View.VISIBLE);
     }
 
     @Override

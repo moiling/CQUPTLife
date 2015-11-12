@@ -24,7 +24,7 @@ import com.superbug.moi.cquptlife.util.SPUtils;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class StudentInfoActivity extends BaseActivity implements View.OnClickListener {
+public class StudentInfoActivity extends BaseActivity implements View.OnClickListener, View.OnLongClickListener {
 
     public static void actionStart(Context context, Student student) {
         Intent intent = new Intent(context, StudentInfoActivity.class);
@@ -62,6 +62,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         initStudentInfo();
         checkColor();
         mImageView.setOnClickListener(this);
+        mImageView.setOnLongClickListener(this);
     }
 
     private void checkColor() {
@@ -190,6 +191,12 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                 }
                 break;
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        Toast.makeText(this, "孩子，你是想下载么→_→", Toast.LENGTH_SHORT).show();
+        return true;
     }
 
     private class OnMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
