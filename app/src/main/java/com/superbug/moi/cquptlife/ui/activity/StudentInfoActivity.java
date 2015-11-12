@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
-import com.android.volley.toolbox.ImageLoader;
 import com.squareup.picasso.Picasso;
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
@@ -50,11 +49,8 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     private int type = CET;
     private Student student;
     private String id;
-    private ImageLoader.ImageListener listener;
-    private ImageLoader imageLoader;
     private boolean hasCET;
     private boolean hasTEC;
-    private String input = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,7 +165,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                                         SPUtils.put(StudentInfoActivity.this, "hasCET", true);
                                         showPic();
                                     } else {
-                                        Toast.makeText(StudentInfoActivity.this, "没有密钥的不要乱试！" + input, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(StudentInfoActivity.this, "没有密钥的不要乱试！", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             })

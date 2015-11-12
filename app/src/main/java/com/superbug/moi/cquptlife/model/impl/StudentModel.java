@@ -17,6 +17,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 /**
@@ -52,7 +53,8 @@ public class StudentModel implements IStudentModel {
 
     public void searchStudent(String studentInfo) {
         try {
-            studentInfo = new String(studentInfo.getBytes("GBK"), "iso8859-1");
+            //studentInfo = new String(studentInfo.getBytes("GBK"), "iso8859-1");
+            studentInfo = URLEncoder.encode(studentInfo, "GBK");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
