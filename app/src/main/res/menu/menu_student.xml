@@ -4,7 +4,7 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/color"
+        android:id="@+id/action_color"
         android:icon="@mipmap/ic_color"
         android:title="@string/color"
         app:showAsAction="ifRoom" />

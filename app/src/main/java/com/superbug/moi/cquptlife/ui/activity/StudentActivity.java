@@ -2,6 +2,8 @@ package com.superbug.moi.cquptlife.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
@@ -24,6 +26,7 @@ import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.adapter.StudentsAdapter;
 import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
+import com.superbug.moi.cquptlife.util.SPUtils;
 import com.superbug.moi.cquptlife.util.Utils;
 
 import butterknife.ButterKnife;
@@ -44,7 +47,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     @InjectView(R.id.rl_search) CardView searchLayout;
     @InjectView(R.id.toolbar) Toolbar mToolbar;
     @InjectView(R.id.lv_content) RecyclerView mRecyclerView;
-
+    private boolean blFlag = false;
     private StudentsAdapter adapter;
     private static StudentPresenter presenter;
 
@@ -58,6 +61,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         }
         initToolbar();
         initContent();
+        checkColor();
     }
 
     /**
@@ -194,9 +198,42 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
                         searchEvent();
                     }
                     break;
+                case R.id.action_color:
+                    changeColor();
+                    break;
             }
             return true;
         }
+    }
+
+    private void changeColor() {
+        if (SPUtils.get(StudentActivity.this, "color", "ORANGE").equals("ORANGE")) {
+            SPUtils.put(StudentActivity.this, "color", "BLUE");
+        } else {
+            SPUtils.put(StudentActivity.this, "color", "ORANGE");
+        }
+        checkColor();
+    }
+
+    private void checkColor() {
+        int color = R.color.primary_color;
+        String colorName = (String) SPUtils.get(StudentActivity.this, "color", "ORANGE");
+        if (colorName != null) {
+            switch (colorName) {
+                case "ORANGE":
+                    color = R.color.primary_color;
+                    break;
+                case "BLUE":
+                    color = R.color.blue_primary_color;
+                    break;
+            }
+        }
+        mToolbar.setBackgroundColor(getResources().getColor(color));
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) setBarTintColor(getResources().getColor(color));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(color));
+        }
+        mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(color)));
     }
 
     //重写了搜索的回车键

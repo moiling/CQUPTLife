@@ -19,4 +19,14 @@
         <item name="colorControlNormal">@color/white</item>
     </style>
 
+    <style name="AppThemeNight" parent="AppTheme.Base">
+        <!-- Actionbar color -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <!--Status bar color-->
+        <item name="colorPrimaryDark">@color/primary_dark_color</item>
+        <!--Window color-->
+        <item name="android:windowBackground">@color/background_material_dark</item>
+        <item name="colorAccent">@color/primary_color</item>
+    </style>
+
 </resources>
