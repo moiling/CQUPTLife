@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,7 +33,7 @@ import com.superbug.moi.cquptlife.util.Utils;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentVu {
+public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentVu, SwipeRefreshLayout.OnRefreshListener {
 
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, StudentActivity.class);
@@ -40,6 +41,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         context.startActivity(intent);
     }
 
+    @InjectView(R.id.swipe_refresh_widget) SwipeRefreshLayout mSwipeRefreshWidget;
     @InjectView(R.id.fab) FloatingActionButton mFab;
     @InjectView(R.id.tv_content) TextView mEmptyView;
     @InjectView(R.id.ed_search) EditText search;
@@ -47,9 +49,9 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     @InjectView(R.id.rl_search) CardView searchLayout;
     @InjectView(R.id.toolbar) Toolbar mToolbar;
     @InjectView(R.id.lv_content) RecyclerView mRecyclerView;
-    private boolean blFlag = false;
     private StudentsAdapter adapter;
     private static StudentPresenter presenter;
+    private String searchInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
         mFab.setOnClickListener(this);
+        mSwipeRefreshWidget.setColorSchemeResources(R.color.blue_primary_color, R.color.primary_color);
+        mSwipeRefreshWidget.setOnRefreshListener(this);
     }
 
     private void initToolbar() {
@@ -137,7 +141,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public String getStudentInfo() {
-        return search.getText().toString();
+        searchInfo = search.getText().toString();
+        return searchInfo;
     }
 
     @Override
@@ -159,6 +164,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     public void showEmptyView(String str) {
         mEmptyView.setText(str);
         mEmptyView.setVisibility(View.VISIBLE);
+        mSwipeRefreshWidget.setVisibility(View.GONE); // 这里要把下拉刷新给关了，否则会卡顿！
     }
 
     @Override
@@ -168,11 +174,13 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void showLoading() {
-        showProgress(APP.getContext().getResources().getString(R.string.loading));
+        if (!mSwipeRefreshWidget.isRefreshing())
+            showProgress(APP.getContext().getResources().getString(R.string.loading));
     }
 
     @Override
     public void hideLoading() {
+        mSwipeRefreshWidget.setRefreshing(false);
         dismissProgress();
     }
 
@@ -183,6 +191,18 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_student, menu);
         return true;
+    }
+
+    @Override
+    public void onRefresh() {
+        if (searchInfo != null) {
+            searchInfo = searchInfo.replaceAll(" ", "");
+            if (!searchInfo.isEmpty()) {
+                presenter.searchStudent(searchInfo);
+            }
+        } else {
+            mSwipeRefreshWidget.setRefreshing(false);
+        }
     }
 
     //toolbar右边按钮的点击事件
@@ -229,7 +249,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
             }
         }
         mToolbar.setBackgroundColor(getResources().getColor(color));
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) setBarTintColor(getResources().getColor(color));
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT)
+            setBarTintColor(getResources().getColor(color));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(color));
         }
