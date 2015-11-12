@@ -17,7 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
-            android:fadeScrollbars="false"/>
+            android:fadeScrollbars="true"
+            android:scrollbars="vertical"
+            android:overScrollMode="always"
+            android:scrollbarStyle="outsideOverlay"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
@@ -43,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/codelab_fab_margin_right"
             android:layout_gravity="end|bottom"
+            android:isScrollContainer="true"
             android:src="@mipmap/ic_search"/>
 
     </android.support.design.widget.CoordinatorLayout>

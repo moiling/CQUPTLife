@@ -19,7 +19,9 @@
         android:clickable="false"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="2dp"
-        card_view:cardElevation="2dp">
+        card_view:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true">
 
         <com.balysv.materialripple.MaterialRippleLayout
             android:id="@+id/ripple"
