@@ -5,7 +5,9 @@ import android.app.Application;
 import android.content.Context;
 
 import com.superbug.moi.cquptlife.BuildConfig;
+import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.util.Utils;
+import com.umeng.analytics.AnalyticsConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +25,13 @@ public class APP extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         Utils.initialize(this);
         Utils.setDebug(BuildConfig.DEBUG, "CQUPTLife");
         context = getApplicationContext();
+        // 友盟统计key
+        AnalyticsConfig.setAppkey(context, API.KEY.UMENG_KEY);
+        // 友盟频道
+        AnalyticsConfig.setChannel("非法途径");
     }
 
     public static Context getContext() {

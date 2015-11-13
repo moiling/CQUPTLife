@@ -8,8 +8,8 @@ android {
         applicationId "com.superbug.moi.cquptlife"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
     }
     buildTypes {
         release {
@@ -26,10 +26,10 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:cardview-v7:23.0.1'
-    compile 'com.android.support:recyclerview-v7:23.0.1'
-    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:cardview-v7:23.1.0'
+    compile 'com.android.support:recyclerview-v7:23.1.0'
+    compile 'com.android.support:design:23.1.0'
     compile 'com.afollestad:material-dialogs:0.7.8.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile files('libs/jsoup-1.8.2.jar')
@@ -37,5 +37,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    compile 'com.race604.flyrefresh:library:1.0.2'
+    // 友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

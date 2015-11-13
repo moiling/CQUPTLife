@@ -9,12 +9,27 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.superbug.moi.cquptlife.R;
+import com.umeng.analytics.MobclickAgent;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     private SystemBarTintManager tintManager;
     private MaterialDialog dialog;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 友盟的统计呀
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // 友盟的统计呀
+        MobclickAgent.onPause(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

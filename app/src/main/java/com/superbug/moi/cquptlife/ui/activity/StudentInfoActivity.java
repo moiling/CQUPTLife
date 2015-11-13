@@ -156,7 +156,9 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.iv_pic:
                 if (type == CET && !hasCET) {
-                    new MaterialDialog.Builder(this).title("请输入密钥").content("没有密钥的请贿赂管理员~")
+                    new MaterialDialog.Builder(this)
+                            .title("请输入密钥")
+                            .content("没有密钥的请贿赂管理员~")
                             .input("密钥", null, new MaterialDialog.InputCallback() {
                                 @Override
                                 public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
@@ -170,10 +172,13 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                                     }
                                 }
                             })
-                            .theme(Theme.LIGHT).show();
+                            .theme(Theme.LIGHT)
+                            .show();
                 }
                 if (type == TEC && !hasTEC) {
-                    new MaterialDialog.Builder(this).title("请输入密钥").content("没有密钥的请贿赂管理员~")
+                    new MaterialDialog.Builder(this)
+                            .title("请输入密钥")
+                            .content("没有密钥的请贿赂管理员~")
                             .input("密钥", null, new MaterialDialog.InputCallback() {
                                 @Override
                                 public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
@@ -187,7 +192,8 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                                     }
                                 }
                             })
-                            .theme(Theme.LIGHT).show();
+                            .theme(Theme.LIGHT)
+                            .show();
                 }
                 break;
         }
