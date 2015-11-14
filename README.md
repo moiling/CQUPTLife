@@ -1,8 +1,8 @@
 # 重邮生命
 
-重庆邮电大学学生信息查询APP
+重庆邮电大学学生信息查询APP<br>
 真的不要乱玩 TAT
-
+<br>
 
 ![image](https://raw.githubusercontent.com/moiling/CQUPTLife/master/app/src/main/res/mipmap-xhdpi/ic_logo.png?raw=true)
 
