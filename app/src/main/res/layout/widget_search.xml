@@ -9,6 +9,7 @@
         android:layout_width="180dp"
         android:layout_height="252dp"
         android:scaleType="centerCrop"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:contentDescription="@string/what_where_is_the_pic"/>
 
 </LinearLayout>

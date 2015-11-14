@@ -20,6 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
+ * 乱七八糟的工具全放在这了
  * Created by moi on 2015/8/4.
  */
 public class Utils {

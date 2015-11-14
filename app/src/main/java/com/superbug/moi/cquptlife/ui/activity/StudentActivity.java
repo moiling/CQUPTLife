@@ -229,7 +229,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void changeColor() {
-        if (SPUtils.get(StudentActivity.this, "color", "ORANGE").equals("ORANGE")) {
+        String color = (String) SPUtils.get(StudentActivity.this, "color", "ORANGE");
+        if (color != null && color.equals("ORANGE")) {
             SPUtils.put(StudentActivity.this, "color", "BLUE");
         } else {
             SPUtils.put(StudentActivity.this, "color", "ORANGE");

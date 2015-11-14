@@ -19,7 +19,6 @@ public class MIUIV6 {
     /**
      * 只支持MIUI V6
      *
-     * @param context
      * @param type    0--只需要状态栏透明 1-状态栏透明且黑色字体 2-清除黑色字体
      */
     public static void setStatusBarTextColor(Activity context, int type) {
@@ -44,7 +43,7 @@ public class MIUIV6 {
             } else {
                 extraFlagField.invoke(window, 0, darkModeFlag);//清除黑色字体
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
     }
@@ -55,11 +54,7 @@ public class MIUIV6 {
         try {
             final BuildProperties prop = BuildProperties.newInstance();
             String name = prop.getProperty(KEY_MIUI_VERSION_NAME, "");
-            if ("V6".equals(name)) {
-                return true;
-            } else {
-                return false;
-            }
+            return "V6".equals(name);
             //            return prop.getProperty(KEY_MIUI_VERSION_CODE, null) != null
             //                    || prop.getProperty(KEY_MIUI_VERSION_NAME, null) != null
             //                    || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, null) != null;

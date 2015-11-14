@@ -21,14 +21,15 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 /**
+ * 在这里进行网络和解析操作
  * Created by moi on 2015/7/11.
  */
 public class StudentModel implements IStudentModel {
 
-    private OnStudentListener listener = null;
+    private static OnStudentListener listener = null;
     private MyHandler myHandler = new MyHandler();
 
-    private class MyHandler extends Handler {
+    private static class MyHandler extends Handler {
 
         @Override
         public void handleMessage(Message msg) {
@@ -47,7 +48,7 @@ public class StudentModel implements IStudentModel {
 
     @Override
     public void loadStudents(String studentInfo, OnStudentListener listener) {
-        this.listener = listener;
+        StudentModel.listener = listener;
         searchStudent(studentInfo);
     }
 
@@ -93,7 +94,7 @@ public class StudentModel implements IStudentModel {
     /**
      * 0：学号 1：姓名 2：性别 3：班级 4：专业 5：院系 6：年级
      */
-    private void jsoupEvent(String response) {
+    private static void jsoupEvent(String response) {
         ArrayList<Student> studentList = new ArrayList<>();
         Document document = Jsoup.parse(response);
         Elements trs = document.select("tr");
@@ -120,7 +121,7 @@ public class StudentModel implements IStudentModel {
     /**
      * 为了去除html返回的烦人的 &nbsp;
      */
-    private String cutNbsp(String html) {
+    private static String cutNbsp(String html) {
         char[] cut;
         String temp = "";
         cut = html.toCharArray();

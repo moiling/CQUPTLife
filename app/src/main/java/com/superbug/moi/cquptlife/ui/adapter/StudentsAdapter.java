@@ -16,6 +16,7 @@ import com.superbug.moi.cquptlife.ui.activity.StudentInfoActivity;
 import java.util.ArrayList;
 
 /**
+ * Adapter
  * Created by moi on 2015/8/5.
  */
 public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.StudentsViewHolder> {
@@ -30,8 +31,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
 
     @Override
     public StudentsViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        StudentsViewHolder holder = new StudentsViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_student, viewGroup, false));
-        return holder;
+        return new StudentsViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_student, viewGroup, false));
     }
 
     @Override

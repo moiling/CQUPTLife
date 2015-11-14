@@ -12,6 +12,7 @@ import android.view.View;
 import com.superbug.moi.cquptlife.util.Utils;
 
 /**
+ * 分割线……
  * Created by moi on 2015/8/5.
  */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {

@@ -1,6 +1,7 @@
 package com.superbug.moi.cquptlife.ui.vu;
 
 /**
+ * StudentVu接口……
  * Created by moi on 2015/7/11.
  */
 public interface IStudentVu {

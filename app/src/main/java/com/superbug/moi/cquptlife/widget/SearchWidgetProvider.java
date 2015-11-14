@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
+ * 啥子没用的桌面插件
  * Created by moi on 11/1/2015.
  */
 public class SearchWidgetProvider extends AppWidgetProvider {
