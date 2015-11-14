@@ -72,7 +72,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.onRelieveView();
+        if (presenter != null) presenter.onRelieveView();
         if (isFinishing()) presenter = null;
     }
 
