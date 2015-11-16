@@ -1,6 +1,6 @@
 # ABOUT
 
-- **lib** 顾名思义 library
+- **libs** 顾名思义 libraris
 
 > 是用来放一些依赖库的jar包的，这里只有一个jsoup（用于Java解析Html）
 
