@@ -89,7 +89,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     private void initToolbar() {
         //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
         //    mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
-        mToolbar.setTitle(" " + getResources().getString(R.string.app_name));
+        mToolbar.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(mToolbar);
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
         search.setOnKeyListener(new OnSearchKey());

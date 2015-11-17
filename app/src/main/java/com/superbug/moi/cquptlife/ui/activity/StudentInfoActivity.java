@@ -183,7 +183,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                                 @Override
                                 public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
                                     String input = charSequence.toString();
-                                    if (input.equals(API.KEY.MOMEAL_PIC_KEY)) {
+                                    if (input.equals(API.KEY.NORMAL_PIC_KEY)) {
                                         Toast.makeText(StudentInfoActivity.this, "~", Toast.LENGTH_SHORT).show();
                                         SPUtils.put(StudentInfoActivity.this, "hasTEC", true);
                                         showPic();
