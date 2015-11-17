@@ -52,12 +52,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
             holder.sex.setTextColor(mContext.getResources().getColor(R.color.red_primary_color));
         }
 
-        holder.ripple.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StudentInfoActivity.actionStart(mContext, student);
-            }
-        });
+        holder.ripple.setOnClickListener(v -> StudentInfoActivity.actionStart(mContext, student));
         holder.major.setText(studentMajor);
         holder.grade.setText(studentGrade);
     }

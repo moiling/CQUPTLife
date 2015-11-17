@@ -65,29 +65,26 @@ public class StudentModel implements IStudentModel {
         }
         final String finalSearched = studentInfo;
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Utils.sendHttpRequest(API.URL.studentId + finalSearched, new OnHttpEndListener() {
-                    @Override
-                    public void onFinish(String response) {
-                        Message message = new Message();
-                        message.obj = response;
-                        message.what = 0;
-                        myHandler.sendMessage(message);
-                        Utils.Log(response);
-                    }
+        new Thread(() -> {
+            Utils.sendHttpRequest(API.URL.studentId + finalSearched, new OnHttpEndListener() {
+                @Override
+                public void onFinish(String response) {
+                    Message message = new Message();
+                    message.obj = response;
+                    message.what = 0;
+                    myHandler.sendMessage(message);
+                    Utils.Log(response);
+                }
 
-                    @Override
-                    public void onError(Exception e) {
-                        Message message = new Message();
-                        message.obj = "";
-                        message.what = 1;
-                        myHandler.sendMessage(message);
-                        Utils.Log(e.toString());
-                    }
-                });
-            }
+                @Override
+                public void onError(Exception e) {
+                    Message message = new Message();
+                    message.obj = "";
+                    message.what = 1;
+                    myHandler.sendMessage(message);
+                    Utils.Log(e.toString());
+                }
+            });
         }).start();
     }
 

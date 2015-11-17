@@ -121,36 +121,33 @@ public class Utils {
     }
 
     public static void sendHttpRequest(final String address, final OnHttpEndListener listener) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                HttpURLConnection connection = null;
-                try {
-                    URL url = new URL(address);
-                    connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("GET");
-                    connection.setConnectTimeout(8000);
-                    connection.setReadTimeout(8000);
-                    connection.setDoInput(true);
-                    connection.setDoOutput(true);
-                    InputStream in = connection.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in, "GBK"));
-                    StringBuilder response = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        response.append(line);
-                    }
-                    if (listener != null) {
-                        listener.onFinish(response.toString());
-                    }
-                } catch (Exception e) {
-                    if (listener != null) {
-                        listener.onError(e);
-                    }
-                } finally {
-                    if (connection != null) {
-                        connection.disconnect();
-                    }
+        new Thread(() -> {
+            HttpURLConnection connection = null;
+            try {
+                URL url = new URL(address);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setConnectTimeout(8000);
+                connection.setReadTimeout(8000);
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
+                InputStream in = connection.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in, "GBK"));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                if (listener != null) {
+                    listener.onFinish(response.toString());
+                }
+            } catch (Exception e) {
+                if (listener != null) {
+                    listener.onError(e);
+                }
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
                 }
             }
         }).start();

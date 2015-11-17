@@ -22,7 +22,6 @@ import android.widget.TextView;
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.app.BaseActivity;
-import com.superbug.moi.cquptlife.model.callback.OnAnimationEndListener;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.adapter.StudentsAdapter;
 import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
@@ -105,12 +104,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     private void closeSearchLayout() {
         search.setText("");
-        SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_CLOSE, new OnAnimationEndListener() {
-            @Override
-            public void onEnd() {
-                searchLayout.setVisibility(View.GONE);
-            }
-        });
+        SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_CLOSE, () -> searchLayout.setVisibility(View.GONE));
         mToolbar.getMenu().getItem(0).setVisible(true);
         Utils.editHideSoftInput(search);
     }

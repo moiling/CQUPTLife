@@ -135,12 +135,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         mToolbar.setTitle(" " + getResources().getString(R.string.student_info));
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_back));
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        mToolbar.setNavigationOnClickListener(v -> finish());
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
     }
 
@@ -159,17 +154,14 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                     new MaterialDialog.Builder(this)
                             .title("请输入密钥")
                             .content("没有密钥的请贿赂管理员~")
-                            .input("密钥", null, new MaterialDialog.InputCallback() {
-                                @Override
-                                public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
-                                    String input = charSequence.toString();
-                                    if (input.equals(API.KEY.CET_PIC_KEY)) {
-                                        Toast.makeText(StudentInfoActivity.this, "~", Toast.LENGTH_SHORT).show();
-                                        SPUtils.put(StudentInfoActivity.this, "hasCET", true);
-                                        showPic();
-                                    } else {
-                                        Toast.makeText(StudentInfoActivity.this, "没有密钥的不要乱试！", Toast.LENGTH_SHORT).show();
-                                    }
+                            .input("密钥", null, (materialDialog, charSequence) -> {
+                                String input = charSequence.toString();
+                                if (input.equals(API.KEY.CET_PIC_KEY)) {
+                                    Toast.makeText(StudentInfoActivity.this, "~", Toast.LENGTH_SHORT).show();
+                                    SPUtils.put(StudentInfoActivity.this, "hasCET", true);
+                                    showPic();
+                                } else {
+                                    Toast.makeText(StudentInfoActivity.this, "没有密钥的不要乱试！", Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .theme(Theme.LIGHT)
@@ -179,17 +171,14 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                     new MaterialDialog.Builder(this)
                             .title("请输入密钥")
                             .content("没有密钥的请贿赂管理员~")
-                            .input("密钥", null, new MaterialDialog.InputCallback() {
-                                @Override
-                                public void onInput(MaterialDialog materialDialog, CharSequence charSequence) {
-                                    String input = charSequence.toString();
-                                    if (input.equals(API.KEY.NORMAL_PIC_KEY)) {
-                                        Toast.makeText(StudentInfoActivity.this, "~", Toast.LENGTH_SHORT).show();
-                                        SPUtils.put(StudentInfoActivity.this, "hasTEC", true);
-                                        showPic();
-                                    } else {
-                                        Toast.makeText(StudentInfoActivity.this, "没有密钥的不要乱试！" + input, Toast.LENGTH_SHORT).show();
-                                    }
+                            .input("密钥", null, (materialDialog, charSequence) -> {
+                                String input = charSequence.toString();
+                                if (input.equals(API.KEY.NORMAL_PIC_KEY)) {
+                                    Toast.makeText(StudentInfoActivity.this, "~", Toast.LENGTH_SHORT).show();
+                                    SPUtils.put(StudentInfoActivity.this, "hasTEC", true);
+                                    showPic();
+                                } else {
+                                    Toast.makeText(StudentInfoActivity.this, "没有密钥的不要乱试！" + input, Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .theme(Theme.LIGHT)
