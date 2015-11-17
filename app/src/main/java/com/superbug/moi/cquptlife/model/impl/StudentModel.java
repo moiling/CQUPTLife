@@ -1,8 +1,5 @@
 package com.superbug.moi.cquptlife.model.impl;
 
-import android.os.Handler;
-import android.os.Message;
-
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.config.API;
@@ -20,41 +17,54 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+
 /**
- * 在这里进行网络和解析操作
- * Created by moi on 2015/7/11.
+ * 重新写一遍拉取学生信息的model
+ * Created by moi on 15/11/18.
  */
 public class StudentModel implements IStudentModel {
 
-    private static OnStudentListener listener = null;
-    private MyHandler myHandler = new MyHandler();
-
-    private static class MyHandler extends Handler {
-
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 0:
-                    jsoupEvent(msg.obj.toString());
-                    break;
-                case 1:
-                    listener.onError(APP.getContext().getResources().getString(R.string.network_error));
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+    private OnStudentListener listener;
+    private String studentInfo;
 
     @Override
     public void loadStudents(String studentInfo, OnStudentListener listener) {
-        StudentModel.listener = listener;
-        searchStudent(studentInfo);
+        this.listener = listener;
+        this.studentInfo = studentInfo;
+
+        Observable.create(new Observable.OnSubscribe<String>() {
+                    @Override
+                    public void call(Subscriber<? super String> sub) {
+                        downloadStudents(sub);
+                        Utils.Log("被观察者召唤学生");
+                    }
+                }
+        ).observeOn(AndroidSchedulers.mainThread()) // 天哪！之前居然忘了切回主线程！
+        .subscribe(new Subscriber<String>() {
+            @Override
+            public void onNext(String s) {
+                Utils.Log("观察者收到，准备开始解析");
+                analysisStudents(s);
+            }
+
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                listener.onError(APP.getContext().getResources().getString(R.string.network_error));
+                e.printStackTrace();
+            }
+        });
     }
 
-    public void searchStudent(String studentInfo) {
+    // 用于网络拉取学生数据
+    private void downloadStudents(Subscriber<? super String> sub) {
         try {
-            //studentInfo = new String(studentInfo.getBytes("GBK"), "iso8859-1");
             studentInfo = URLEncoder.encode(studentInfo, "GBK");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -69,20 +79,14 @@ public class StudentModel implements IStudentModel {
             Utils.sendHttpRequest(API.URL.studentId + finalSearched, new OnHttpEndListener() {
                 @Override
                 public void onFinish(String response) {
-                    Message message = new Message();
-                    message.obj = response;
-                    message.what = 0;
-                    myHandler.sendMessage(message);
-                    Utils.Log(response);
+                    Utils.Log("召唤成功，准备返回给观察者");
+                    sub.onNext(response);
+                    sub.onCompleted();
                 }
 
                 @Override
                 public void onError(Exception e) {
-                    Message message = new Message();
-                    message.obj = "";
-                    message.what = 1;
-                    myHandler.sendMessage(message);
-                    Utils.Log(e.toString());
+                    sub.onError(e);
                 }
             });
         }).start();
@@ -91,7 +95,9 @@ public class StudentModel implements IStudentModel {
     /**
      * 0：学号 1：姓名 2：性别 3：班级 4：专业 5：院系 6：年级
      */
-    private static void jsoupEvent(String response) {
+    // 解析拉取下来的html
+    private void analysisStudents(String response) {
+        Utils.Log("解析者准备就绪");
         ArrayList<Student> studentList = new ArrayList<>();
         Document document = Jsoup.parse(response);
         Elements trs = document.select("tr");
@@ -107,7 +113,8 @@ public class StudentModel implements IStudentModel {
                 }
                 Student mStudent = new Student(studentInfo.get(0), studentInfo.get(1), studentInfo.get(3), studentInfo.get(6), studentInfo.get(4), studentInfo.get(2), studentInfo.get(5));
                 studentList.add(mStudent);
-                Utils.Log(mStudent.getStudentName());
+                Utils.Log("解析者成功解析，MODEL任务完成，交给PRESENTER处理");
+                Utils.Log("看看得到了什么数据：" + mStudent.getStudentName());
                 listener.onSuccess(studentList);
             }
         } else {

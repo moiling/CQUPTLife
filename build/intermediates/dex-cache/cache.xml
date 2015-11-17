@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.umeng.analytics/analytics/5.6.1/b2705cbb19f52bb4d242458163a98d9e889c1292/analytics-5.6.1.jar"
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.0.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="b2705cbb19f52bb4d242458163a98d9e889c1292">
-        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/analytics-5.6.1-465e7fc1312fcaccb1c525cefb3930323d7bdd1a.jar" />
+        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-1ffd476e3219f93281256861df9997d338e1f2bd.jar" />
     </item>
 
 </items>

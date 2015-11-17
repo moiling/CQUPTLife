@@ -176,6 +176,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void hideLoading() {
+        Utils.Log("请收起你的小陀螺");
         mSwipeRefreshWidget.setRefreshing(false);
         dismissProgress();
     }

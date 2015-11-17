@@ -44,5 +44,7 @@ dependencies {
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     // 友盟统计
     compile 'com.umeng.analytics:analytics:latest.integration'
-    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:+'
+    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.6'
+    compile 'io.reactivex:rxjava:1.0.16'
+    compile 'io.reactivex:rxandroid:1.0.1'
 }
