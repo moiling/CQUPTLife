@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1-6a6ae983807ec83d41466e977f5192e3b75cbf8a.jar" />
+    </item>
+    <item
         jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.0.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"

@@ -30,7 +30,7 @@ import com.superbug.moi.cquptlife.util.SPUtils;
 import com.superbug.moi.cquptlife.util.Utils;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 
 public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentVu, SwipeRefreshLayout.OnRefreshListener {
 
@@ -40,14 +40,14 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         context.startActivity(intent);
     }
 
-    @InjectView(R.id.swipe_refresh_widget) SwipeRefreshLayout mSwipeRefreshWidget;
-    @InjectView(R.id.fab) FloatingActionButton mFab;
-    @InjectView(R.id.tv_content) TextView mEmptyView;
-    @InjectView(R.id.ed_search) EditText search;
-    @InjectView(R.id.iv_search_close) ImageView searchClose;
-    @InjectView(R.id.rl_search) CardView searchLayout;
-    @InjectView(R.id.toolbar) Toolbar mToolbar;
-    @InjectView(R.id.lv_content) RecyclerView mRecyclerView;
+    @Bind(R.id.swipe_refresh_widget) SwipeRefreshLayout mSwipeRefreshWidget;
+    @Bind(R.id.fab) FloatingActionButton mFab;
+    @Bind(R.id.tv_content) TextView mEmptyView;
+    @Bind(R.id.ed_search) EditText search;
+    @Bind(R.id.iv_search_close) ImageView searchClose;
+    @Bind(R.id.rl_search) CardView searchLayout;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.lv_content) RecyclerView mRecyclerView;
     private StudentsAdapter adapter;
     private static StudentPresenter presenter;
     private String searchInfo;
@@ -56,7 +56,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         if (presenter == null) {
             presenter = new StudentPresenter(this);
         }

@@ -21,8 +21,8 @@ import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.bean.Student;
 import com.superbug.moi.cquptlife.util.SPUtils;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class StudentInfoActivity extends BaseActivity implements View.OnClickListener, View.OnLongClickListener {
 
@@ -35,14 +35,14 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         context.startActivity(intent);
     }
 
-    @InjectView(R.id.tv_name) TextView tvName;
-    @InjectView(R.id.tv_id) TextView tvId;
-    @InjectView(R.id.tv_grade) TextView tvGrade;
-    @InjectView(R.id.tv_faculty) TextView tvFaculty;
-    @InjectView(R.id.tv_major) TextView tvMajor;
-    @InjectView(R.id.tv_class) TextView tvClass;
-    @InjectView(R.id.iv_pic) ImageView mImageView;
-    @InjectView(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.tv_name) TextView tvName;
+    @Bind(R.id.tv_id) TextView tvId;
+    @Bind(R.id.tv_grade) TextView tvGrade;
+    @Bind(R.id.tv_faculty) TextView tvFaculty;
+    @Bind(R.id.tv_major) TextView tvMajor;
+    @Bind(R.id.tv_class) TextView tvClass;
+    @Bind(R.id.iv_pic) ImageView mImageView;
+    @Bind(R.id.toolbar) Toolbar mToolbar;
 
     private final int CET = 0;
     private final int TEC = 1;
@@ -56,7 +56,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_info);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         initToolbar();
         initPic();
         initStudentInfo();
