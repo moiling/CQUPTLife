@@ -86,8 +86,8 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     }
 
     void initStudentInfo() {
-/*        Typeface face = Typeface.createFromAsset(this.getAssets(), "fonts/square_fonts.TTF");
-        tvName.setTypeface(face);*/
+        //Typeface face = Typeface.createFromAsset(this.getAssets(), "fonts/square_fonts.TTF");
+        //tvName.setTypeface(face);
 
         tvName.setText(student.getStudentName());
         tvId.setText(student.getStudentId());

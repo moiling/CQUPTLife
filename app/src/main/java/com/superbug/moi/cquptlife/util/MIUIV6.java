@@ -35,7 +35,7 @@ public class MIUIV6 {
             tranceFlag = field.getInt(layoutParams);
             field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE");
             darkModeFlag = field.getInt(layoutParams);
-            Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
+            @SuppressWarnings("unchecked") Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
             if (type == 0) {
                 extraFlagField.invoke(window, tranceFlag, tranceFlag);//只需要状态栏透明
             } else if (type == 1) {

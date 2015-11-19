@@ -88,8 +88,7 @@ public class Utils {
         Resources resources = activity.getResources();
         int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
         //获取NavigationBar的高度
-        int height = resources.getDimensionPixelSize(resourceId);
-        return height;
+        return resources.getDimensionPixelSize(resourceId);
     }
 
     public static boolean hasNavigationBar(Context activity) {
@@ -98,11 +97,7 @@ public class Utils {
         boolean hasMenuKey = ViewConfiguration.get(activity).hasPermanentMenuKey();
         boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
 
-        if (!hasMenuKey && !hasBackKey) {
-            // 做任何你需要做的,这个设备有一个导航栏
-            return true;
-        }
-        return false;
+        return !hasMenuKey && !hasBackKey;
     }
 
     public static void editHideSoftInput(final View view) {
