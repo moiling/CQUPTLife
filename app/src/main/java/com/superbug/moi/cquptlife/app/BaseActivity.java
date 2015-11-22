@@ -44,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
 
+
         // create our manager instance after the content view is set
         tintManager = new SystemBarTintManager(this);
         // enable status bar tint
