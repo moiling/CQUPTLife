@@ -13,14 +13,13 @@
     <android.support.v7.widget.CardView
 
         android:id="@+id/rl_search"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone"
-        card_view:cardBackgroundColor="@color/white"
-        card_view:cardCornerRadius="2dp"
-        card_view:cardElevation="2dp">
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp">
 
         <RelativeLayout
             android:layout_width="match_parent"

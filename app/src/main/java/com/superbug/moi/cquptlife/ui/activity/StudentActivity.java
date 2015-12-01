@@ -1,7 +1,5 @@
 package com.superbug.moi.cquptlife.ui.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,16 +27,10 @@ import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
 import com.superbug.moi.cquptlife.util.SPUtils;
 import com.superbug.moi.cquptlife.util.Utils;
 
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentVu, SwipeRefreshLayout.OnRefreshListener {
-
-    public static void actionStart(Context context) {
-        Intent intent = new Intent(context, StudentActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-        context.startActivity(intent);
-    }
 
     @Bind(R.id.swipe_refresh_widget) SwipeRefreshLayout mSwipeRefreshWidget;
     @Bind(R.id.fab) FloatingActionButton mFab;

@@ -2,6 +2,20 @@
 <items version="2" >
 
     <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.balysv/material-ripple/1.0.2/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c733e9d1b065d940a08f2fca0ff920dfc08d94cc">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-4e61611779c84d8ec74ed4256328b09f66d40eb5.jar" />
+    </item>
+    <item
+        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1-6a6ae983807ec83d41466e977f5192e3b75cbf8a.jar" />
+    </item>
+    <item
         jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -14,6 +28,111 @@
         revision="23.0.1"
         sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
         <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-1ffd476e3219f93281256861df9997d338e1f2bd.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-1ffd476e3219f93281256861df9997d338e1f2bd.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.afollestad/material-dialogs/0.7.8.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0b3bbe3dc415a3fe112e7c28de53fd194fe4416e">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-ab3c7cbe159561b085efe09e7d8d9b9322339ad2.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-0229f75c70ea2c2bda278bc5a40a656e8961274a.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-c3142a2b39314a0c6904b985803025811f6a9094.jar" />
+    </item>
+    <item
+        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-b8d9e35b5f52266699e13512839652f47a130de1.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/libs/jsoup-1.8.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="580e4dd2a6125cc4037450b40623ac6a552c11df">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/jsoup-1.8.2-eb2e33bb704753334b28488d4e2ceab456637adc.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-511592fedbc51715bd1951de39017d82e74d242f.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.jude/swipebackhelper/2.1.3/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4236959d379ee7eb223c1d04a0975328d2a4d582">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-e088b5daed5194f4a38e48b73a1f707f886456fa.jar" />
+    </item>
+    <item
+        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.umeng.analytics/analytics/5.6.1/b2705cbb19f52bb4d242458163a98d9e889c1292/analytics-5.6.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b2705cbb19f52bb4d242458163a98d9e889c1292">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/analytics-5.6.1-465e7fc1312fcaccb1c525cefb3930323d7bdd1a.jar" />
+    </item>
+    <item
+        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.readystatesoftware.systembartint/systembartint/1.0.3/de4f7404e2f58d8f6e83cb1e85d0c2d6c2987287/systembartint-1.0.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="de4f7404e2f58d8f6e83cb1e85d0c2d6c2987287">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/systembartint-1.0.3-b14df549d768fee599c2d25d0158777dcd8e9028.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-4c746b503365cda88bcba020a6683a3dd168d051.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-85b4ca20a76c46fca1b4a2069b8e6e6c4bc89120.jar" />
+    </item>
+    <item
+        jar="/Users/moi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-f23a64c229c9f497a1f0a8127a17c2eaa74cd546.jar" />
+    </item>
+    <item
+        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.16/bdc5ca010675cd9385bdd3a28cf53ee88164424f/rxjava-1.0.16.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="bdc5ca010675cd9385bdd3a28cf53ee88164424f">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/rxjava-1.0.16-4306eb2c1841f57bf74711b19892836d8825c19a.jar" />
+    </item>
+    <item
+        jar="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/moi/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/classes-4b916159a6cf75a4d010d9730f85f39b963633e0.jar" />
     </item>
 
 </items>
