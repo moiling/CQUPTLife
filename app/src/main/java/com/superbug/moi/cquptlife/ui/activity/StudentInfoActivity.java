@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
@@ -157,11 +157,14 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                             .input("密钥", null, (materialDialog, charSequence) -> {
                                 String input = charSequence.toString();
                                 if (input.equals(API.KEY.CET_PIC_KEY)) {
-                                    Toast.makeText(StudentInfoActivity.this, "~", Toast.LENGTH_SHORT).show();
+                                    Snackbar.make(mToolbar, "~", Snackbar.LENGTH_LONG).show();
                                     SPUtils.put(StudentInfoActivity.this, "hasCET", true);
                                     showPic();
                                 } else {
-                                    Toast.makeText(StudentInfoActivity.this, "没有密钥的不要乱试！", Toast.LENGTH_SHORT).show();
+                                    Snackbar.make(mToolbar, "没有密钥的不要乱试", Snackbar.LENGTH_LONG)
+                                            .setAction("好吧", null)
+                                            .setActionTextColor(getResources().getColor(R.color.accent_color))
+                                            .show();
                                 }
                             })
                             .theme(Theme.LIGHT)
@@ -174,11 +177,14 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                             .input("密钥", null, (materialDialog, charSequence) -> {
                                 String input = charSequence.toString();
                                 if (input.equals(API.KEY.NORMAL_PIC_KEY)) {
-                                    Toast.makeText(StudentInfoActivity.this, "~", Toast.LENGTH_SHORT).show();
+                                    Snackbar.make(mToolbar, "~", Snackbar.LENGTH_LONG).show();
                                     SPUtils.put(StudentInfoActivity.this, "hasTEC", true);
                                     showPic();
                                 } else {
-                                    Toast.makeText(StudentInfoActivity.this, "没有密钥的不要乱试！" + input, Toast.LENGTH_SHORT).show();
+                                    Snackbar.make(mToolbar, "没有密钥的不要乱试", Snackbar.LENGTH_LONG)
+                                            .setAction("好吧", null)
+                                            .setActionTextColor(getResources().getColor(R.color.accent_color))
+                                            .show();
                                 }
                             })
                             .theme(Theme.LIGHT)
@@ -190,7 +196,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public boolean onLongClick(View v) {
-        Toast.makeText(this, "孩子，你是想下载么→_→", Toast.LENGTH_SHORT).show();
+        Snackbar.make(mToolbar, "孩子，你是想下载么→_→", Snackbar.LENGTH_LONG).show();
         return true;
     }
 
