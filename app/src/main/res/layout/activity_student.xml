@@ -1,27 +1,26 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include layout="@layout/layout_search_toolbar"/>
+    <include layout="@layout/layout_search_toolbar" />
 
     <FrameLayout
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
 
-        <include layout="@layout/layout_content"/>
+        <include layout="@layout/layout_content" />
 
         <!--toolbar下方阴影-->
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@drawable/shadow"/>
+            android:background="@drawable/shadow" />
     </FrameLayout>
 
 </RelativeLayout>

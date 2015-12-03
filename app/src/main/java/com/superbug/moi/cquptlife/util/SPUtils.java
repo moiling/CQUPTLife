@@ -102,6 +102,7 @@ public class SPUtils {
     /**
      * 创建一个解决SharedPreferencesCompat.apply方法的一个兼容类
      * 嗯！原作者在这里！
+     *
      * @author zhy
      */
     private static class SharedPreferencesCompat {

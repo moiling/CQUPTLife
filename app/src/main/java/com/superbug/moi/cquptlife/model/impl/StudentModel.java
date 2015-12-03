@@ -30,36 +30,52 @@ public class StudentModel implements IStudentModel {
     private OnStudentListener listener;
     private String studentInfo;
 
+    /**
+     * 为了去除html返回的烦人的 &nbsp;
+     */
+    private static String cutNbsp(String html) {
+        char[] cut;
+        String temp = "";
+        cut = html.toCharArray();
+        for (char aCut : cut) {
+            temp += aCut;
+            if (aCut == ';') {
+                temp = "";
+            }
+        }
+        return temp;
+    }
+
     @Override
     public void loadStudents(String studentInfo, OnStudentListener listener) {
         this.listener = listener;
         this.studentInfo = studentInfo;
 
         Observable.create(new Observable.OnSubscribe<String>() {
-                    @Override
-                    public void call(Subscriber<? super String> sub) {
-                        downloadStudents(sub);
-                        Utils.Log("被观察者召唤学生");
-                    }
-                }
+                              @Override
+                              public void call(Subscriber<? super String> sub) {
+                                  downloadStudents(sub);
+                                  Utils.Log("被观察者召唤学生");
+                              }
+                          }
         ).observeOn(AndroidSchedulers.mainThread()) // 天哪！之前居然忘了切回主线程！
-        .subscribe(new Subscriber<String>() {
-            @Override
-            public void onNext(String s) {
-                Utils.Log("观察者收到，准备开始解析");
-                analysisStudents(s);
-            }
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onNext(String s) {
+                        Utils.Log("观察者收到，准备开始解析");
+                        analysisStudents(s);
+                    }
 
-            @Override
-            public void onCompleted() {
-            }
+                    @Override
+                    public void onCompleted() {
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                listener.onError(APP.getContext().getResources().getString(R.string.network_error));
-                e.printStackTrace();
-            }
-        });
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.onError(APP.getContext().getResources().getString(R.string.network_error));
+                        e.printStackTrace();
+                    }
+                });
     }
 
     // 用于网络拉取学生数据
@@ -120,21 +136,5 @@ public class StudentModel implements IStudentModel {
         } else {
             listener.onError(APP.getContext().getString(R.string.not_fount_student));
         }
-    }
-
-    /**
-     * 为了去除html返回的烦人的 &nbsp;
-     */
-    private static String cutNbsp(String html) {
-        char[] cut;
-        String temp = "";
-        cut = html.toCharArray();
-        for (char aCut : cut) {
-            temp += aCut;
-            if (aCut == ';') {
-                temp = "";
-            }
-        }
-        return temp;
     }
 }

@@ -4,8 +4,8 @@
 
     <gradient
         android:centerColor="@color/divider_color"
-        android:startColor="@color/divider_color"
-        android:endColor="@color/divider_color"/>
-    <size android:height="1dp"/>
+        android:endColor="@color/divider_color"
+        android:startColor="@color/divider_color" />
+    <size android:height="1dp" />
 
 </shape>

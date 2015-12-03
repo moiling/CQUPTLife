@@ -16,10 +16,12 @@ import java.util.Properties;
 import java.util.Set;
 
 public class MIUIV6 {
+    private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
+
     /**
      * 只支持MIUI V6
      *
-     * @param type    0--只需要状态栏透明 1-状态栏透明且黑色字体 2-清除黑色字体
+     * @param type 0--只需要状态栏透明 1-状态栏透明且黑色字体 2-清除黑色字体
      */
     public static void setStatusBarTextColor(Activity context, int type) {
         if (!isMiUIV6()) {
@@ -48,8 +50,6 @@ public class MIUIV6 {
         }
     }
 
-    private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
-
     private static boolean isMiUIV6() {
         try {
             final BuildProperties prop = BuildProperties.newInstance();
@@ -70,6 +70,10 @@ public class MIUIV6 {
         private BuildProperties() throws IOException {
             properties = new Properties();
             properties.load(new FileInputStream(new File(Environment.getRootDirectory(), "build.prop")));
+        }
+
+        public static BuildProperties newInstance() throws IOException {
+            return new BuildProperties();
         }
 
         public boolean containsKey(final Object key) {
@@ -110,10 +114,6 @@ public class MIUIV6 {
 
         public Collection<Object> values() {
             return properties.values();
-        }
-
-        public static BuildProperties newInstance() throws IOException {
-            return new BuildProperties();
         }
 
     }

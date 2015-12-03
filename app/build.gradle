@@ -41,7 +41,7 @@ dependencies {
     compile files('libs/jsoup-1.8.2.jar')
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.balysv:material-ripple:1.0.2'
-    compile'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     // 友盟统计
     compile 'com.umeng.analytics:analytics:latest.integration'
     retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.6'

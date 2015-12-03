@@ -3,122 +3,123 @@
     android:fitsSystemWindows="true"
     android:clipToPadding="false"
     -->
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
-    android:background="@color/white"
     tools:context="com.superbug.moi.cquptlife.ui.activity.StudentInfoActivity">
 
     <include
         android:id="@id/toolbar"
-        layout="@layout/layout_toolbar"/>
+        layout="@layout/layout_toolbar" />
 
     <ScrollView
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:textIsSelectable="true"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
 
-        <ImageView
-            android:id="@+id/iv_pic"
-            android:layout_width="180dp"
-            android:layout_height="252dp"
-            android:scaleType="centerCrop"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@string/what_where_is_the_pic"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:textIsSelectable="true">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/iv_pic"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_name"
-                tools:text="哔啪"
-                android:textIsSelectable="true"
-                android:textSize="30sp"
-                android:textColor="@color/primary_text"
-                android:layout_gravity="center"
+            <ImageView
+                android:id="@+id/iv_pic"
+                android:layout_width="180dp"
+                android:layout_height="252dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="40dp"
+                android:contentDescription="@string/what_where_is_the_pic"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"/>
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/iv_pic"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_grade"
-                tools:text="2014"
-                android:textIsSelectable="true"
-                android:textSize="16sp"
-                android:textColor="@color/primary_text"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/primary_text"
+                    android:textIsSelectable="true"
+                    android:textSize="30sp"
+                    tools:text="哔啪" />
 
-            <TextView
-                android:id="@+id/tv_id"
-                tools:text="2014213000"
-                android:textIsSelectable="true"
-                android:textSize="16sp"
-                android:textColor="@color/primary_text"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/tv_grade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/primary_text"
+                    android:textIsSelectable="true"
+                    android:textSize="16sp"
+                    tools:text="2014" />
 
-            <TextView
-                android:id="@+id/tv_class"
-                tools:text="1301111"
-                android:textIsSelectable="true"
-                android:textSize="16sp"
-                android:textColor="@color/primary_text"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/primary_text"
+                    android:textIsSelectable="true"
+                    android:textSize="16sp"
+                    tools:text="2014213000" />
 
-            <TextView
-                android:id="@+id/tv_major"
-                tools:text="软件工程"
-                android:textIsSelectable="true"
-                android:textSize="16sp"
-                android:textColor="@color/primary_text"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/tv_class"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/primary_text"
+                    android:textIsSelectable="true"
+                    android:textSize="16sp"
+                    tools:text="1301111" />
 
-            <TextView
-                android:id="@+id/tv_faculty"
-                tools:text="软件工程"
-                android:textIsSelectable="true"
-                android:textSize="16sp"
-                android:textColor="@color/primary_text"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/tv_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/primary_text"
+                    android:textIsSelectable="true"
+                    android:textSize="16sp"
+                    tools:text="软件工程" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_faculty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/primary_text"
+                    android:textIsSelectable="true"
+                    android:textSize="16sp"
+                    tools:text="软件工程" />
 
-    </RelativeLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
     </ScrollView>
     <!--toolbar下方阴影-->
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/toolbar"
-        android:background="@drawable/shadow"/>
+        android:background="@drawable/shadow" />
 
 </RelativeLayout>

@@ -16,7 +16,8 @@ public class Student implements Serializable {
     private String studentFaculty;
     private Bitmap pic;
 
-    public Student() {}
+    public Student() {
+    }
 
     public Student(String studentId, String studentName, String studentClass, String studentGrade, String studentMajor, String studentSex, String studentFaculty) {
         this(studentId, studentName, studentClass, studentGrade, studentMajor, studentSex, studentFaculty, null);

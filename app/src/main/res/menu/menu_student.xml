@@ -14,5 +14,5 @@
         android:icon="@mipmap/ic_search"
         android:orderInCategory="80"
         android:title="@string/search"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 </menu>

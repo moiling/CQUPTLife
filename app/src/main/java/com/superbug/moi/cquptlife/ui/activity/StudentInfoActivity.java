@@ -26,6 +26,30 @@ import butterknife.ButterKnife;
 
 public class StudentInfoActivity extends BaseActivity implements View.OnClickListener, View.OnLongClickListener {
 
+    private final int CET = 0;
+    private final int TEC = 1;
+    @Bind(R.id.tv_name)
+    TextView tvName;
+    @Bind(R.id.tv_id)
+    TextView tvId;
+    @Bind(R.id.tv_grade)
+    TextView tvGrade;
+    @Bind(R.id.tv_faculty)
+    TextView tvFaculty;
+    @Bind(R.id.tv_major)
+    TextView tvMajor;
+    @Bind(R.id.tv_class)
+    TextView tvClass;
+    @Bind(R.id.iv_pic)
+    ImageView mImageView;
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+    private int type = CET;
+    private Student student;
+    private String id;
+    private boolean hasCET;
+    private boolean hasTEC;
+
     public static void actionStart(Context context, Student student) {
         Intent intent = new Intent(context, StudentInfoActivity.class);
         Bundle bundle = new Bundle();
@@ -34,23 +58,6 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         context.startActivity(intent);
     }
-
-    @Bind(R.id.tv_name) TextView tvName;
-    @Bind(R.id.tv_id) TextView tvId;
-    @Bind(R.id.tv_grade) TextView tvGrade;
-    @Bind(R.id.tv_faculty) TextView tvFaculty;
-    @Bind(R.id.tv_major) TextView tvMajor;
-    @Bind(R.id.tv_class) TextView tvClass;
-    @Bind(R.id.iv_pic) ImageView mImageView;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-
-    private final int CET = 0;
-    private final int TEC = 1;
-    private int type = CET;
-    private Student student;
-    private String id;
-    private boolean hasCET;
-    private boolean hasTEC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +86,8 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
             }
         }
         mToolbar.setBackgroundColor(getResources().getColor(color));
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) setBarTintColor(getResources().getColor(color));
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT)
+            setBarTintColor(getResources().getColor(color));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(color));
         }

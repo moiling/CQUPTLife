@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
-    android:id="@+id/content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -17,11 +17,11 @@
             android:id="@+id/lv_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             android:fadeScrollbars="true"
-            android:scrollbars="vertical"
             android:overScrollMode="always"
-            android:scrollbarStyle="outsideOverlay"/>
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            android:visibility="gone" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
@@ -29,10 +29,10 @@
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:text="@string/please_search_student"
         android:textColor="@color/secondary_text"
-        android:textSize="18sp"
-        android:gravity="center"/>
+        android:textSize="18sp" />
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -42,13 +42,13 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
-            app:borderWidth="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/codelab_fab_margin_right"
             android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/codelab_fab_margin_right"
             android:isScrollContainer="true"
-            android:src="@mipmap/ic_search"/>
+            android:src="@mipmap/ic_search"
+            app:borderWidth="0dp" />
 
     </android.support.design.widget.CoordinatorLayout>
 

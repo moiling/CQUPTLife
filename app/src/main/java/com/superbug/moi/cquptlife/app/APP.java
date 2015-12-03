@@ -18,7 +18,19 @@ public class APP extends Application {
     private static APP instance;
     private static Context context;
 
+    public APP() {
+        instance = this;
+    }
+
     public static APP getInstance() {
+        return instance;
+    }
+
+    public static Context getContext() {
+        return context;
+    }
+
+    public static Application getApplication() {
         return instance;
     }
 
@@ -32,18 +44,6 @@ public class APP extends Application {
         AnalyticsConfig.setAppkey(context, API.KEY.UMENG_KEY);
         // 友盟频道
         AnalyticsConfig.setChannel("非法途径");
-    }
-
-    public static Context getContext() {
-        return context;
-    }
-
-    public APP() {
-        instance = this;
-    }
-
-    public static Application getApplication() {
-        return instance;
     }
 
     public void addActivity(Activity activity) {

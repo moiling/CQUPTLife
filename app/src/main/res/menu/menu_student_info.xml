@@ -7,5 +7,5 @@
         android:icon="@mipmap/ic_switch"
         android:orderInCategory="80"
         android:title="@string/string_switch"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 </menu>

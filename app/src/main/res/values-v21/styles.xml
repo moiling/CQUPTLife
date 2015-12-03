@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="AppTheme" parent="AppTheme.Base">
         <!--Navigation bar color-->
         <!--<item name="android:navigationBarColor">@color/primary_color</item>-->

@@ -32,16 +32,24 @@ import butterknife.ButterKnife;
 
 public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentVu, SwipeRefreshLayout.OnRefreshListener {
 
-    @Bind(R.id.swipe_refresh_widget) SwipeRefreshLayout mSwipeRefreshWidget;
-    @Bind(R.id.fab) FloatingActionButton mFab;
-    @Bind(R.id.tv_content) TextView mEmptyView;
-    @Bind(R.id.ed_search) EditText search;
-    @Bind(R.id.iv_search_close) ImageView searchClose;
-    @Bind(R.id.rl_search) CardView searchLayout;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.lv_content) RecyclerView mRecyclerView;
-    private StudentsAdapter adapter;
     private static StudentPresenter presenter;
+    @Bind(R.id.swipe_refresh_widget)
+    SwipeRefreshLayout mSwipeRefreshWidget;
+    @Bind(R.id.fab)
+    FloatingActionButton mFab;
+    @Bind(R.id.tv_content)
+    TextView mEmptyView;
+    @Bind(R.id.ed_search)
+    EditText search;
+    @Bind(R.id.iv_search_close)
+    ImageView searchClose;
+    @Bind(R.id.rl_search)
+    CardView searchLayout;
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+    @Bind(R.id.lv_content)
+    RecyclerView mRecyclerView;
+    private StudentsAdapter adapter;
     private String searchInfo;
 
     @Override
@@ -194,27 +202,6 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    //toolbar右边按钮的点击事件
-    private class OnMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
-
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.action_search:
-                    if (searchLayout.getVisibility() == View.GONE) {
-                        openSearchLayout();
-                    } else {
-                        searchEvent();
-                    }
-                    break;
-                case R.id.action_color:
-                    changeColor();
-                    break;
-            }
-            return true;
-        }
-    }
-
     private void changeColor() {
         String color = (String) SPUtils.get(StudentActivity.this, "color", "ORANGE");
         if (color != null && color.equals("ORANGE")) {
@@ -245,6 +232,27 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
             getWindow().setStatusBarColor(getResources().getColor(color));
         }
         mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(color)));
+    }
+
+    //toolbar右边按钮的点击事件
+    private class OnMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            switch (menuItem.getItemId()) {
+                case R.id.action_search:
+                    if (searchLayout.getVisibility() == View.GONE) {
+                        openSearchLayout();
+                    } else {
+                        searchEvent();
+                    }
+                    break;
+                case R.id.action_color:
+                    changeColor();
+                    break;
+            }
+            return true;
+        }
     }
 
     //重写了搜索的回车键
