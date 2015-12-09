@@ -62,7 +62,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
         return presenter.getStudent().size();
     }
 
-    class StudentsViewHolder extends RecyclerView.ViewHolder {
+    static class StudentsViewHolder extends RecyclerView.ViewHolder {
 
         MaterialRippleLayout ripple;
         TextView name;

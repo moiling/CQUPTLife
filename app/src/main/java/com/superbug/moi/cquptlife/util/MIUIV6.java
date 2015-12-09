@@ -55,9 +55,6 @@ public class MIUIV6 {
             final BuildProperties prop = BuildProperties.newInstance();
             String name = prop.getProperty(KEY_MIUI_VERSION_NAME, "");
             return "V6".equals(name);
-            //            return prop.getProperty(KEY_MIUI_VERSION_CODE, null) != null
-            //                    || prop.getProperty(KEY_MIUI_VERSION_NAME, null) != null
-            //                    || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, null) != null;
         } catch (final IOException e) {
             return false;
         }

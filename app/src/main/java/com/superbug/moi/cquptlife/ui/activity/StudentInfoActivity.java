@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 public class StudentInfoActivity extends BaseActivity implements View.OnClickListener, View.OnLongClickListener {
 
     private final int CET = 0;
-    private final int TEC = 1;
+    private final int NORMAL = 1;
     @Bind(R.id.tv_name)
     TextView tvName;
     @Bind(R.id.tv_id)
@@ -48,7 +48,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     private Student student;
     private String id;
     private boolean hasCET;
-    private boolean hasTEC;
+    private boolean hasNORMAL;
 
     public static void actionStart(Context context, Student student) {
         Intent intent = new Intent(context, StudentInfoActivity.class);
@@ -94,8 +94,6 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     }
 
     void initStudentInfo() {
-        //Typeface face = Typeface.createFromAsset(this.getAssets(), "fonts/square_fonts.TTF");
-        //tvName.setTypeface(face);
 
         tvName.setText(student.getStudentName());
         tvId.setText(student.getStudentId());
@@ -113,7 +111,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
 
     private void showPic() {
         hasCET = (boolean) SPUtils.get(this, "hasCET", false);
-        hasTEC = (boolean) SPUtils.get(this, "hasTEC", false);
+        hasNORMAL = (boolean) SPUtils.get(this, "hasTEC", false);
         if (type == CET) {
             if (hasCET) {
                 Picasso.with(this)
@@ -125,7 +123,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                 Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
             }
         } else {
-            if (hasTEC) {
+            if (hasNORMAL) {
                 Picasso.with(this)
                         .load(API.URL.studentPic + id)
                         .placeholder(R.mipmap.loading)
@@ -138,8 +136,6 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void initToolbar() {
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-        //    mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
         mToolbar.setTitle(" " + getResources().getString(R.string.student_info));
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_back));
@@ -155,56 +151,45 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.iv_pic:
                 if (type == CET && !hasCET) {
-                    new MaterialDialog.Builder(this)
-                            .title("请输入密钥")
-                            .content("没有密钥的请贿赂管理员~")
-                            .input("密钥", null, (materialDialog, charSequence) -> {
-                                String input = charSequence.toString();
-                                if (input.equals(API.KEY.CET_PIC_KEY)) {
-                                    Snackbar.make(mToolbar, "~", Snackbar.LENGTH_LONG).show();
-                                    SPUtils.put(StudentInfoActivity.this, "hasCET", true);
-                                    showPic();
-                                } else {
-                                    Snackbar.make(mToolbar, "没有密钥的不要乱试", Snackbar.LENGTH_LONG)
-                                            .setAction("好吧", null)
-                                            .setActionTextColor(getResources().getColor(R.color.accent_color))
-                                            .show();
-                                }
-                            })
-                            .theme(Theme.LIGHT)
-                            .show();
-                }
-                if (type == TEC && !hasTEC) {
-                    new MaterialDialog.Builder(this)
-                            .title("请输入密钥")
-                            .content("没有密钥的请贿赂管理员~")
-                            .input("密钥", null, (materialDialog, charSequence) -> {
-                                String input = charSequence.toString();
-                                if (input.equals(API.KEY.NORMAL_PIC_KEY)) {
-                                    Snackbar.make(mToolbar, "~", Snackbar.LENGTH_LONG).show();
-                                    SPUtils.put(StudentInfoActivity.this, "hasTEC", true);
-                                    showPic();
-                                } else {
-                                    Snackbar.make(mToolbar, "没有密钥的不要乱试", Snackbar.LENGTH_LONG)
-                                            .setAction("好吧", null)
-                                            .setActionTextColor(getResources().getColor(R.color.accent_color))
-                                            .show();
-                                }
-                            })
-                            .theme(Theme.LIGHT)
-                            .show();
+                    showVerifyDialog(CET);
+                } else if (type == NORMAL && !hasNORMAL) {
+                    showVerifyDialog(NORMAL);
                 }
                 break;
         }
     }
 
+    // 显示验证dialog
+    private void showVerifyDialog(int type) {
+        String apiKey = type == CET ? API.KEY.CET_PIC_KEY : API.KEY.NORMAL_PIC_KEY;
+        String spKey = type == CET ? "hasCET" : "hasTEC";
+        new MaterialDialog.Builder(this)
+                .title("请输入密钥")
+                .content("没有密钥的请贿赂管理员~")
+                .input("密钥", null, (materialDialog, charSequence) -> {
+                    String input = charSequence.toString();
+                    if (input.equals(apiKey)) {
+                        Snackbar.make(mToolbar, "OK~", Snackbar.LENGTH_LONG).show();
+                        SPUtils.put(StudentInfoActivity.this, spKey, true);
+                        showPic();
+                    } else {
+                        Snackbar.make(mToolbar, "没有密钥的不要乱试", Snackbar.LENGTH_LONG)
+                                .setAction("好吧", null)
+                                .setActionTextColor(getResources().getColor(R.color.accent_color))
+                                .show();
+                    }
+                })
+                .theme(Theme.LIGHT)
+                .show();
+    }
+
     @Override
     public boolean onLongClick(View v) {
-        Snackbar.make(mToolbar, "孩子，你是想下载么→_→", Snackbar.LENGTH_LONG).show();
+        if ((type == CET && hasCET) || (type == NORMAL && hasNORMAL))
+            Snackbar.make(mToolbar, "孩子，你是想下载么→_→", Snackbar.LENGTH_LONG).show();
         return true;
     }
 
@@ -214,7 +199,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_switch:
-                    type = type == CET ? TEC : CET;
+                    type = type == CET ? NORMAL : CET;
                     showPic();
             }
             return true;

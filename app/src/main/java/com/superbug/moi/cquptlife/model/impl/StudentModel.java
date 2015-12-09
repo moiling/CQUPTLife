@@ -25,7 +25,9 @@ import rx.android.schedulers.AndroidSchedulers;
  */
 public class StudentModel implements IStudentModel {
 
+    // 回调
     private OnStudentListener listener;
+    // 查询学生的依据
     private String studentInfo;
 
     /**
@@ -49,9 +51,11 @@ public class StudentModel implements IStudentModel {
         this.listener = listener;
         this.studentInfo = studentInfo;
 
+        // 尝试用rx解决异步的问题
         Observable.create(new Observable.OnSubscribe<String>() {
                               @Override
                               public void call(Subscriber<? super String> sub) {
+                                  // 下载学生信息
                                   downloadStudents(sub);
                                   Utils.Log("被观察者召唤学生");
                               }
@@ -61,6 +65,7 @@ public class StudentModel implements IStudentModel {
                     @Override
                     public void onNext(String s) {
                         Utils.Log("观察者收到，准备开始解析");
+                        // 解析html
                         analysisStudents(s);
                     }
 
