@@ -1,5 +1,4 @@
 package com.superbug.moi.cquptlife.ui.activity;
-
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;

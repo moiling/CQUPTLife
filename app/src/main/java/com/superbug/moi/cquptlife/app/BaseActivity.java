@@ -14,7 +14,9 @@ import com.umeng.analytics.MobclickAgent;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    // 换status bar颜色的
     private SystemBarTintManager tintManager;
+    // 一个显示进度条的dialog
     private MaterialDialog dialog;
 
     @Override
@@ -34,6 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 当activity启动的时候，把他加到activity数组中
         APP.getInstance().addActivity(this);
 
         //状态栏透明
@@ -49,16 +52,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         tintManager = new SystemBarTintManager(this);
         // enable status bar tint
         tintManager.setStatusBarTintEnabled(true);
-        // enable navigation bar tint
-        //tintManager.setNavigationBarTintEnabled(true);
-        // set a custom tint color for all system bars
+        // status bar颜色
         setBarTintColor(getResources().getColor(R.color.primary_dark_color));
-        // set a custom navigation bar resource
-        //tintManager.setNavigationBarTintResource(R.drawable.my_tint);
-        // set a custom status bar drawable
-        //tintManager.setStatusBarTintDrawable(MyDrawable);
     }
 
+    /**
+     * 修改status bar color
+     * 为了让子类可以自己修改status bar color，把方法提出来……
+     * @param color status bar color
+     */
     protected void setBarTintColor(int color) {
         tintManager.setTintColor(color);
     }
@@ -66,9 +68,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // activity要关闭的时候把它从数组中移除
         APP.getInstance().removeActivity(this);
     }
 
+    /**
+     * 显示带进度条的dialog
+     * @param title 标题
+     */
     public void showProgress(String title) {
         dialog = new MaterialDialog.Builder(this)
                 .title(title)
@@ -82,6 +89,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .show();
     }
 
+    // 让进度条的dialog消失
     public void dismissProgress() {
         if (dialog.isShowing()) dialog.dismiss();
     }

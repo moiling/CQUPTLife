@@ -5,8 +5,6 @@ import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.IStudentModel;
 import com.superbug.moi.cquptlife.model.bean.Student;
-import com.superbug.moi.cquptlife.model.callback.OnHttpEndListener;
-import com.superbug.moi.cquptlife.model.callback.OnStudentListener;
 import com.superbug.moi.cquptlife.util.Utils;
 
 import org.jsoup.Jsoup;
@@ -92,7 +90,7 @@ public class StudentModel implements IStudentModel {
         final String finalSearched = studentInfo;
 
         new Thread(() -> {
-            Utils.sendHttpRequest(API.URL.studentId + finalSearched, new OnHttpEndListener() {
+            Utils.sendHttpRequest(API.URL.studentId + finalSearched, new Utils.OnHttpEndListener() {
                 @Override
                 public void onFinish(String response) {
                     Utils.Log("召唤成功，准备返回给观察者");

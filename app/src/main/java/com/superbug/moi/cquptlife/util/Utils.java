@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
 
-import com.superbug.moi.cquptlife.model.callback.OnHttpEndListener;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -146,5 +144,12 @@ public class Utils {
                 }
             }
         }).start();
+    }
+
+    public interface OnHttpEndListener {
+
+        void onFinish(String response);
+
+        void onError(Exception e);
     }
 }

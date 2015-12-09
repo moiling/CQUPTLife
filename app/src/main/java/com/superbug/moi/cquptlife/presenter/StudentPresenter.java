@@ -7,7 +7,6 @@ import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.IStudentModel;
 import com.superbug.moi.cquptlife.model.bean.Student;
-import com.superbug.moi.cquptlife.model.callback.OnStudentListener;
 import com.superbug.moi.cquptlife.model.impl.StudentModel;
 import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
 import com.superbug.moi.cquptlife.util.Utils;
@@ -43,7 +42,7 @@ public class StudentPresenter {
         MobclickAgent.onEvent((Context) mStudentView, API.UMENG_EVENT_ID.SEARCH_STUDENT, "查找内容为： " + studentInfo);
         mStudentView.showLoading();
         Utils.Log("PRESENTER发出命令，MODEL开始召唤学生");
-        mStudentModel.loadStudents(studentInfo, new OnStudentListener() {
+        mStudentModel.loadStudents(studentInfo, new IStudentModel.OnStudentListener() {
             @Override
             public void onSuccess(ArrayList<Student> students) {
                 studentList.clear();

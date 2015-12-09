@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 
-import com.superbug.moi.cquptlife.model.callback.OnAnimationEndListener;
-
 /**
  * 上面搜索框的动画
  * Created by moi on 2015/8/4.
@@ -51,5 +49,15 @@ public class SearchAnimation {
             default:
                 break;
         }
+    }
+
+    /**
+     * 动画结束的回调
+     * Created by moi on 2015/7/11.
+     */
+    public interface OnAnimationEndListener {
+
+        void onEnd();
+
     }
 }
