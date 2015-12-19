@@ -27,7 +27,7 @@
         <activity
             android:name=".ui.activity.StudentInfoActivity"
             android:label="@string/title_activity_student_info"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
     </application>
 

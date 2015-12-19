@@ -1,5 +1,6 @@
 package com.superbug.moi.cquptlife.app;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,9 @@ import com.afollestad.materialdialogs.Theme;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.superbug.moi.cquptlife.R;
 import com.umeng.analytics.MobclickAgent;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -38,7 +42,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // 当activity启动的时候，把他加到activity数组中
         APP.getInstance().addActivity(this);
-
         //状态栏透明
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
             //透明状态栏
@@ -46,14 +49,31 @@ public abstract class BaseActivity extends AppCompatActivity {
             //透明导航栏
             //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
-
-
         // create our manager instance after the content view is set
         tintManager = new SystemBarTintManager(this);
         // enable status bar tint
         tintManager.setStatusBarTintEnabled(true);
         // status bar颜色
         setBarTintColor(getResources().getColor(R.color.primary_dark_color));
+        // 字体
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/font_fangzheng_light.TTF")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // activity要关闭的时候把它从数组中移除
+        APP.getInstance().removeActivity(this);
+    }
+
+    // 字体
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     /**
@@ -63,13 +83,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void setBarTintColor(int color) {
         tintManager.setTintColor(color);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // activity要关闭的时候把它从数组中移除
-        APP.getInstance().removeActivity(this);
     }
 
     /**

@@ -1,8 +1,3 @@
-<!--因为状态栏透明之后添加头部高度和那个appbar的方法有些冲突
-    先就不透明吧，之后看看该怎么改
-    android:fitsSystemWindows="true"
-    android:clipToPadding="false"
-    -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"

@@ -36,15 +36,22 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile 'com.afollestad:material-dialogs:0.7.8.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile files('libs/jsoup-1.8.2.jar')
+    // butterKnife
     compile 'com.jakewharton:butterknife:7.0.1'
+    // picture
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    // HTML
+    compile files('libs/jsoup-1.8.2.jar')
+    // UI
+    compile 'com.afollestad:material-dialogs:0.7.8.1'
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    // 友盟统计
+    // 友盟
     compile 'com.umeng.analytics:analytics:latest.integration'
+    // lambda & rx
     retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.6'
     compile 'io.reactivex:rxjava:1.0.16'
     compile 'io.reactivex:rxandroid:1.0.1'
+    // fonts
+    compile 'uk.co.chrisjenx:calligraphy:2.1.0'
 }

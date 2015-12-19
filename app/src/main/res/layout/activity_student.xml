@@ -5,7 +5,8 @@
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.activity.StudentActivity"
+    tools:menu="menu_student">
 
     <include layout="@layout/layout_search_toolbar" />
 
@@ -16,7 +17,7 @@
 
         <include layout="@layout/layout_content" />
 
-        <!--toolbar下方阴影-->
+        <!-- toolbar下方阴影 -->
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
