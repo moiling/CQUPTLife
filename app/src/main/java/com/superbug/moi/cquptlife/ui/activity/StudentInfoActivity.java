@@ -2,6 +2,7 @@ package com.superbug.moi.cquptlife.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -9,12 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.Theme;
-import com.squareup.picasso.Picasso;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.drawable.ProgressBarDrawable;
+import com.facebook.drawee.generic.GenericDraweeHierarchy;
+import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.config.API;
@@ -41,7 +45,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     @Bind(R.id.tv_class)
     TextView tvClass;
     @Bind(R.id.iv_pic)
-    ImageView mImageView;
+    SimpleDraweeView mImageView;
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     private int type = CET;
@@ -62,6 +66,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         setContentView(R.layout.activity_student_info);
         ButterKnife.bind(this);
         initToolbar();
@@ -106,6 +111,18 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     private void initPic() {
         student = (Student) getIntent().getSerializableExtra("student");
         id = student.getStudentId();
+
+        GenericDraweeHierarchyBuilder builder =
+                new GenericDraweeHierarchyBuilder(getResources());
+        ProgressBarDrawable progressBarDrawable = new ProgressBarDrawable();
+        progressBarDrawable.setColor(getResources().getColor(R.color.blue_primary_color));
+        progressBarDrawable.setBarWidth(4);
+        progressBarDrawable.setPadding(0);
+        GenericDraweeHierarchy hierarchy = builder
+                .setFadeDuration(300)
+                .setProgressBarImage(progressBarDrawable)
+                .build();
+        mImageView.setHierarchy(hierarchy);
         showPic();
     }
 
@@ -114,23 +131,27 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         hasNORMAL = (boolean) SPUtils.get(this, "hasTEC", false);
         if (type == CET) {
             if (hasCET) {
-                Picasso.with(this)
-                        .load(API.URL.studentCETPic + id + API.URL.studentCETPicEnd)
-                        .placeholder(R.mipmap.loading)
-                        .error(R.mipmap.error)
-                        .into(mImageView);
+//                Picasso.with(this)
+//                        .load(API.URL.studentCETPic + id + API.URL.studentCETPicEnd)
+//                        .placeholder(R.mipmap.loading)
+//                        .error(R.mipmap.error)
+//                        .into(mImageView);
+                mImageView.setImageURI(Uri.parse(API.URL.studentCETPic + id + API.URL.studentCETPicEnd));
             } else {
-                Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
+//                Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
+                mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.mipmap.ic_pic_no_use));
             }
         } else {
             if (hasNORMAL) {
-                Picasso.with(this)
-                        .load(API.URL.studentPic + id)
-                        .placeholder(R.mipmap.loading)
-                        .error(R.mipmap.error)
-                        .into(mImageView);
+//                Picasso.with(this)
+//                        .load(API.URL.studentPic + id)
+//                        .placeholder(R.mipmap.loading)
+//                        .error(R.mipmap.error)
+//                        .into(mImageView);
+                mImageView.setImageURI(Uri.parse(API.URL.studentPic + id));
             } else {
-                Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
+//                Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
+                mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.mipmap.ic_pic_no_use));
             }
         }
     }

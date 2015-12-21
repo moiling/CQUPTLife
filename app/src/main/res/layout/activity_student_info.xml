@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
@@ -22,7 +23,7 @@
             android:orientation="vertical"
             android:textIsSelectable="true">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/iv_pic"
                 android:layout_width="180dp"
                 android:layout_height="252dp"
@@ -30,7 +31,11 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="40dp"
                 android:contentDescription="@string/what_where_is_the_pic"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                app:roundedCornerRadius="2dp"
+                app:failureImage="@mipmap/error"
+                app:placeholderImage="@mipmap/loading"
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
