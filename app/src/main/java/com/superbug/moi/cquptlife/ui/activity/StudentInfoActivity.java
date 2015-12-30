@@ -120,6 +120,8 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         progressBarDrawable.setPadding(0);
         GenericDraweeHierarchy hierarchy = builder
                 .setFadeDuration(300)
+                .setFailureImage(getResources().getDrawable(R.mipmap.error))
+                .setPlaceholderImage(getResources().getDrawable(R.mipmap.loading))
                 .setProgressBarImage(progressBarDrawable)
                 .build();
         mImageView.setHierarchy(hierarchy);

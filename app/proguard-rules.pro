@@ -1,5 +1,5 @@
 
-# 友盟三件套
+# 友盟
 -keepclassmembers class * {
     public <init>(org.json.JSONObject);
 }
@@ -41,28 +41,28 @@
 -dontwarn rx.**
 
 
-#指定代码的压缩级别
+# 指定代码的压缩级别
 -optimizationpasses 5
 
-#包明不混合大小写
+# 包明不混合大小写
 -dontusemixedcaseclassnames
 
-#不去忽略非公共的库类
+# 不去忽略非公共的库类
 -dontskipnonpubliclibraryclasses
 
- #优化  不优化输入的类文件
+# 优化  不优化输入的类文件
 -dontoptimize
 
- #预校验
+# 预校验
 -dontpreverify
 
- #混淆时是否记录日志
+# 混淆时是否记录日志
 -verbose
 
- # 混淆时所采用的算法
+# 混淆时所采用的算法
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
 
-#保护注解
+# 保护注解
 -keepattributes *Annotation*
 
 # 保持哪些类不被混淆
@@ -75,5 +75,5 @@
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
 -keep public class com.android.vending.licensing.ILicensingService
-#如果有引用v4包可以添加下面这行
+# 如果有引用v4包可以添加下面这行
 -keep public class * extends android.support.v4.app.Fragment

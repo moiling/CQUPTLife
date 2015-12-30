@@ -31,7 +31,7 @@ import butterknife.ButterKnife;
 
 public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentVu, SwipeRefreshLayout.OnRefreshListener {
 
-    private static StudentPresenter presenter;
+    private StudentPresenter presenter;
     @Bind(R.id.swipe_refresh_widget)
     SwipeRefreshLayout mSwipeRefreshWidget;
     @Bind(R.id.fab)
