@@ -7,22 +7,14 @@ import java.io.Serializable;
 
 public class Student implements Serializable {
 
-    // 学号
-    private String studentId;
-    // 姓名
-    private String studentName;
-    // 性别
-    private String studentSex;
-    // 班级
-    private String studentClass;
-    // 专业
-    private String studentMajor;
-    // 年级
-    private String studentGrade;
-    // 学院
-    private String studentFaculty;
-    // 照片
-    private Bitmap pic;
+    private String studentId;// 学号
+    private String studentName;// 姓名
+    private String studentSex;// 性别
+    private String studentClass;// 班级
+    private String studentMajor;// 专业
+    private String studentGrade;// 年级
+    private String studentFaculty;// 学院
+    private Bitmap pic;// 照片
 
     public Student() {
     }

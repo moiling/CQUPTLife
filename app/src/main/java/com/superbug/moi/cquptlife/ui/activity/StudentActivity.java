@@ -180,9 +180,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         dismissProgress();
     }
 
-    /**
-     * toolbar按钮
-     */
+    /* toolbar按钮 */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_student, menu);
@@ -233,7 +231,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(color)));
     }
 
-    //toolbar右边按钮的点击事件
+    /* toolbar右边按钮的点击事件 */
     private class OnMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
 
         @Override
@@ -254,7 +252,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    //重写了搜索的回车键
+    /* 重写了搜索的回车键 */
     private class OnSearchKey implements View.OnKeyListener {
 
         @Override

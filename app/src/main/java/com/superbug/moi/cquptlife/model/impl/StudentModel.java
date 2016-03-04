@@ -25,10 +25,8 @@ import rx.android.schedulers.AndroidSchedulers;
  */
 public class StudentModel implements IStudentModel {
 
-    // 回调
-    private OnStudentListener listener;
-    // 查询学生的依据
-    private String studentInfo;
+    private OnStudentListener listener;// 回调
+    private String studentInfo;// 查询学生的依据
 
     /**
      * 为了去除html返回的烦人的 &nbsp;
@@ -51,7 +49,7 @@ public class StudentModel implements IStudentModel {
         this.listener = listener;
         this.studentInfo = studentInfo;
 
-        // 尝试用rx解决异步的问题
+        /* 尝试用rx解决异步的问题 */
         Observable.create(new Observable.OnSubscribe<String>() {
                               @Override
                               public void call(Subscriber<? super String> sub) {
@@ -65,8 +63,7 @@ public class StudentModel implements IStudentModel {
                     @Override
                     public void onNext(String s) {
                         Utils.Log("观察者收到，准备开始解析");
-                        // 解析html
-                        analysisStudents(s);
+                        analysisStudents(s);// 解析html
                     }
 
                     @Override
@@ -81,7 +78,7 @@ public class StudentModel implements IStudentModel {
                 });
     }
 
-    // 用于网络拉取学生数据
+    /* 用于网络拉取学生数据 */
     private void downloadStudents(Subscriber<? super String> sub) {
         try {
             studentInfo = URLEncoder.encode(studentInfo, "GBK");
@@ -114,7 +111,7 @@ public class StudentModel implements IStudentModel {
     /**
      * 0：学号 1：姓名 2：性别 3：班级 4：专业 5：院系 6：年级
      */
-    // 解析拉取下来的html
+    /* 解析拉取下来的html */
     private void analysisStudents(String response) {
         Utils.Log("解析者准备就绪");
         ArrayList<Student> studentList = new ArrayList<>();

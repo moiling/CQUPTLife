@@ -14,12 +14,9 @@ import java.util.List;
 
 public class APP extends Application {
 
-    // 存放所有开启的activity
-    private static List<Activity> activityList = new ArrayList<>();
-    // Application的实例
-    private static APP instance;
-    // Application的上下文
-    private static Context context;
+    private static List<Activity> activityList = new ArrayList<>();// 存放所有开启的activity
+    private static APP instance;// Application的实例
+    private static Context context;// Application的上下文
 
     public APP() {
         instance = this;
@@ -44,15 +41,12 @@ public class APP extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // 初始化工具
+        /* 初始化工具 */
         Utils.initialize(this);
         Utils.setDebug(BuildConfig.DEBUG, "CQUPTLife");
-        // 为全局获取context制造条件
-        context = getApplicationContext();
-        // 友盟统计key
-        AnalyticsConfig.setAppkey(context, API.KEY.UMENG_KEY);
-        // 友盟频道
-        AnalyticsConfig.setChannel("非法途径");
+        context = getApplicationContext();// 为全局获取context制造条件
+        AnalyticsConfig.setAppkey(context, API.KEY.UMENG_KEY);// 友盟统计key
+        AnalyticsConfig.setChannel("非法途径");// 友盟频道
     }
 
     /**

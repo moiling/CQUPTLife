@@ -185,7 +185,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
-    // 显示验证dialog
+    /* 显示验证dialog */
     private void showVerifyDialog(int type) {
         String apiKey = type == CET ? API.KEY.CET_PIC_KEY : API.KEY.NORMAL_PIC_KEY;
         String spKey = type == CET ? "hasCET" : "hasTEC";

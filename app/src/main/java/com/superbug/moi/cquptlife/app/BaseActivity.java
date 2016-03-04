@@ -22,44 +22,34 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    // 换status bar颜色的
-    private SystemBarTintManager tintManager;
-    // 一个显示进度条的dialog
-    private MaterialDialog dialog;
+    private SystemBarTintManager tintManager;// 换status bar颜色的
+    private MaterialDialog dialog;// 一个显示进度条的dialog
 
     @Override
     protected void onResume() {
         super.onResume();
-        // 友盟的统计呀
-        MobclickAgent.onResume(this);
+        MobclickAgent.onResume(this);// 友盟的统计呀
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // 友盟的统计呀
-        MobclickAgent.onPause(this);
+        MobclickAgent.onPause(this);// 友盟的统计呀
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 当activity启动的时候，把他加到activity数组中
-        APP.getInstance().addActivity(this);
-        //状态栏透明
+        APP.getInstance().addActivity(this);// 当activity启动的时候，把他加到activity数组中
+        /* 状态栏透明 */
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            //透明状态栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //透明导航栏
-            //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//透明状态栏
+            //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);//透明导航栏
         }
-        // create our manager instance after the content view is set
-        tintManager = new SystemBarTintManager(this);
-        // enable status bar tint
-        tintManager.setStatusBarTintEnabled(true);
-        // status bar颜色
-        setBarTintColor(getResources().getColor(R.color.primary_dark_color));
-        // 字体
+        tintManager = new SystemBarTintManager(this);// create our manager instance after the content view is set
+        tintManager.setStatusBarTintEnabled(true);// enable status bar tint
+        setBarTintColor(getResources().getColor(R.color.primary_dark_color));// status bar颜色
+        /* 字体 */
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/font_fangzheng_light.TTF")
                 .setFontAttrId(R.attr.fontPath)
@@ -70,11 +60,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // activity要关闭的时候把它从数组中移除
-        APP.getInstance().removeActivity(this);
+        APP.getInstance().removeActivity(this);// activity要关闭的时候把它从数组中移除
     }
 
-    // 字体
+    /* 字体 */
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -106,7 +95,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .show();
     }
 
-    // 让进度条的dialog消失
+    /* 让进度条的dialog消失 */
     public void dismissProgress() {
         if (dialog.isShowing()) dialog.dismiss();
     }
