@@ -47,7 +47,7 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/codelab_fab_margin_right"
             android:isScrollContainer="true"
-            android:src="@mipmap/ic_search"
+            android:src="@drawable/ic_search"
             app:borderWidth="0dp" />
 
     </android.support.design.widget.CoordinatorLayout>

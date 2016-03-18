@@ -33,8 +33,8 @@
                 android:contentDescription="@string/what_where_is_the_pic"
                 android:scaleType="centerCrop"
                 app:roundedCornerRadius="2dp"
-                app:failureImage="@mipmap/error"
-                app:placeholderImage="@mipmap/loading"
+                app:failureImage="@drawable/error"
+                app:placeholderImage="@drawable/loading"
                 />
 
             <LinearLayout

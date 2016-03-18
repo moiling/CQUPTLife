@@ -4,7 +4,7 @@
     tools:context="com.superbug.moi.cquptlife.ui.activity.StudentInfoActivity">
     <item
         android:id="@+id/action_switch"
-        android:icon="@mipmap/ic_switch"
+        android:icon="@drawable/ic_switch"
         android:orderInCategory="80"
         android:title="@string/string_switch"
         app:showAsAction="ifRoom" />

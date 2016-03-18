@@ -120,8 +120,8 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         progressBarDrawable.setPadding(0);
         GenericDraweeHierarchy hierarchy = builder
                 .setFadeDuration(300)
-                .setFailureImage(getResources().getDrawable(R.mipmap.error))
-                .setPlaceholderImage(getResources().getDrawable(R.mipmap.loading))
+                .setFailureImage(getResources().getDrawable(R.drawable.error))
+                .setPlaceholderImage(getResources().getDrawable(R.drawable.loading))
                 .setProgressBarImage(progressBarDrawable)
                 .build();
         mImageView.setHierarchy(hierarchy);
@@ -141,7 +141,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                 mImageView.setImageURI(Uri.parse(API.URL.studentCETPic + id + API.URL.studentCETPicEnd));
             } else {
 //                Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
-                mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.mipmap.ic_pic_no_use));
+                mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.drawable.ic_pic_no_use));
             }
         } else {
             if (hasNORMAL) {
@@ -153,7 +153,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                 mImageView.setImageURI(Uri.parse(API.URL.studentPic + id));
             } else {
 //                Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
-                mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.mipmap.ic_pic_no_use));
+                mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.drawable.ic_pic_no_use));
             }
         }
     }
@@ -161,7 +161,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     private void initToolbar() {
         mToolbar.setTitle(" " + getResources().getString(R.string.student_info));
         setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_back));
+        mToolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
         mToolbar.setNavigationOnClickListener(v -> finish());
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
     }

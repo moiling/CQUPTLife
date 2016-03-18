@@ -44,7 +44,7 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/what_where_is_the_pic"
                 android:paddingRight="6dp"
-                android:src="@mipmap/ic_remove" />
+                android:src="@drawable/ic_remove" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
