@@ -1,4 +1,5 @@
 package com.superbug.moi.cquptlife.ui.activity;
+
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,23 +14,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.superbug.moi.cquptlife.R;
-import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.adapter.StudentsAdapter;
 import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
-import com.superbug.moi.cquptlife.util.SPUtils;
+import com.superbug.moi.cquptlife.util.ColorUtils;
+import com.superbug.moi.cquptlife.util.KeyboardUtil;
 import com.superbug.moi.cquptlife.util.Utils;
 
 import butterknife.Bind;
+import butterknife.BindString;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class StudentActivity extends BaseActivity implements View.OnClickListener, IStudentVu, SwipeRefreshLayout.OnRefreshListener {
+public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRefreshLayout.OnRefreshListener {
 
     private StudentPresenter presenter;
     @Bind(R.id.swipe_refresh_widget)
@@ -40,14 +42,15 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     TextView mEmptyView;
     @Bind(R.id.ed_search)
     EditText search;
-    @Bind(R.id.iv_search_close)
-    ImageView searchClose;
     @Bind(R.id.rl_search)
     CardView searchLayout;
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     @Bind(R.id.lv_content)
     RecyclerView mRecyclerView;
+    @BindString(R.string.loading)
+    String loading;
+
     private StudentsAdapter adapter;
     private String searchInfo;
 
@@ -56,9 +59,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         ButterKnife.bind(this);
-        if (presenter == null) {
-            presenter = new StudentPresenter(this);
-        }
+        if (presenter == null) presenter = new StudentPresenter(this);
         initToolbar();
         initContent();
         checkColor();
@@ -78,7 +79,6 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         adapter = new StudentsAdapter(this, presenter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
-        mFab.setOnClickListener(this);
         mSwipeRefreshWidget.setColorSchemeResources(R.color.blue_primary_color, R.color.primary_color);
         mSwipeRefreshWidget.setOnRefreshListener(this);
         mSwipeRefreshWidget.setVisibility(View.GONE);
@@ -91,21 +91,20 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         setSupportActionBar(mToolbar);
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
         search.setOnKeyListener(new OnSearchKey());
-        searchClose.setOnClickListener(this);
     }
 
     private void openSearchLayout() {
         searchLayout.setVisibility(View.VISIBLE);
         SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_OPEN, null);
         mToolbar.getMenu().getItem(0).setVisible(false);
-        Utils.editShowSoftInput(search);
+        KeyboardUtil.showInput(search);
     }
 
     private void closeSearchLayout() {
         search.setText("");
         SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_CLOSE, () -> searchLayout.setVisibility(View.GONE));
         mToolbar.getMenu().getItem(0).setVisible(true);
-        Utils.editHideSoftInput(search);
+        KeyboardUtil.hideInput(search);
     }
 
     private void searchEvent() {
@@ -117,19 +116,17 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.iv_search_close:
-                closeSearchLayout();
-                break;
-            case R.id.fab:
-                if (searchLayout.getVisibility() == View.GONE) {
-                    openSearchLayout();
-                } else {
-                    searchEvent();
-                }
-                break;
+    @OnClick(R.id.iv_search_close)
+    void onSearchClick() {
+        closeSearchLayout();
+    }
+
+    @OnClick(R.id.fab)
+    void onFabClick() {
+        if (searchLayout.getVisibility() == View.GONE) {
+            openSearchLayout();
+        } else {
+            searchEvent();
         }
     }
 
@@ -170,7 +167,7 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void showLoading() {
         if (!mSwipeRefreshWidget.isRefreshing())
-            showProgress(APP.getContext().getResources().getString(R.string.loading));
+            showProgress(loading);
     }
 
     @Override
@@ -199,36 +196,15 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    private void changeColor() {
-        String color = (String) SPUtils.get(StudentActivity.this, "color", "ORANGE");
-        if (color != null && color.equals("ORANGE")) {
-            SPUtils.put(StudentActivity.this, "color", "BLUE");
-        } else {
-            SPUtils.put(StudentActivity.this, "color", "ORANGE");
-        }
-        checkColor();
-    }
-
     private void checkColor() {
-        int color = R.color.primary_color;
-        String colorName = (String) SPUtils.get(StudentActivity.this, "color", "ORANGE");
-        if (colorName != null) {
-            switch (colorName) {
-                case "ORANGE":
-                    color = R.color.primary_color;
-                    break;
-                case "BLUE":
-                    color = R.color.blue_primary_color;
-                    break;
-            }
-        }
-        mToolbar.setBackgroundColor(getResources().getColor(color));
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT)
-            setBarTintColor(getResources().getColor(color));
+        int color = ColorUtils.checkColor(this);
+        mToolbar.setBackgroundColor(color);
+        /*if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT)
+            setBarTintColor(color);*/
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(color));
+            getWindow().setStatusBarColor(color);
         }
-        mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(color)));
+        mFab.setBackgroundTintList(ColorStateList.valueOf(color));
     }
 
     /* toolbar右边按钮的点击事件 */
@@ -245,7 +221,8 @@ public class StudentActivity extends BaseActivity implements View.OnClickListene
                     }
                     break;
                 case R.id.action_color:
-                    changeColor();
+                    ColorUtils.changeColor(StudentActivity.this);
+                    checkColor();
                     break;
             }
             return true;

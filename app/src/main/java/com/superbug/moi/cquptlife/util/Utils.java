@@ -7,9 +7,7 @@ import android.content.res.Resources;
 import android.util.Log;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.inputmethod.InputMethodManager;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -71,7 +69,7 @@ public class Utils {
     /**
      * 获取状态栏高度
      *
-     * @return
+     * @return 状态栏高度(px)
      */
     public static int getStatusBarHeight() {
         int result = 0;
@@ -96,21 +94,6 @@ public class Utils {
         boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
 
         return !hasMenuKey && !hasBackKey;
-    }
-
-    public static void editHideSoftInput(final View view) {
-        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm != null) {
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
-
-    public static void editShowSoftInput(final View view) {
-        view.requestFocus();
-        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm != null) {
-            imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
-        }
     }
 
     public static void sendHttpRequest(final String address, final OnHttpEndListener listener) {

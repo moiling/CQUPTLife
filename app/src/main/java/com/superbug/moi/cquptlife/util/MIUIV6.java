@@ -30,8 +30,8 @@ public class MIUIV6 {
         Window window = context.getWindow();
         Class clazz = window.getClass();
         try {
-            int tranceFlag = 0;
-            int darkModeFlag = 0;
+            int tranceFlag;
+            int darkModeFlag;
             Class layoutParams = Class.forName("android.view.MiuiWindowManager$LayoutParams");
             Field field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_TRANSPARENT");
             tranceFlag = field.getInt(layoutParams);

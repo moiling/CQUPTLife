@@ -6,10 +6,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -23,12 +23,15 @@ import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.bean.Student;
+import com.superbug.moi.cquptlife.util.ColorUtils;
 import com.superbug.moi.cquptlife.util.SPUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnLongClick;
 
-public class StudentInfoActivity extends BaseActivity implements View.OnClickListener, View.OnLongClickListener {
+public class StudentInfoActivity extends BaseActivity {
 
     private final int CET = 0;
     private final int NORMAL = 1;
@@ -56,10 +59,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
 
     public static void actionStart(Context context, Student student) {
         Intent intent = new Intent(context, StudentInfoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("student", student);
-        intent.putExtras(bundle);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        intent.putExtra("student", student);
         context.startActivity(intent);
     }
 
@@ -73,28 +73,15 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         initPic();
         initStudentInfo();
         checkColor();
-        mImageView.setOnClickListener(this);
-        mImageView.setOnLongClickListener(this);
     }
 
     private void checkColor() {
-        int color = R.color.primary_color;
-        String colorName = (String) SPUtils.get(StudentInfoActivity.this, "color", "ORANGE");
-        if (colorName != null) {
-            switch (colorName) {
-                case "ORANGE":
-                    color = R.color.primary_color;
-                    break;
-                case "BLUE":
-                    color = R.color.blue_primary_color;
-                    break;
-            }
-        }
-        mToolbar.setBackgroundColor(getResources().getColor(color));
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT)
-            setBarTintColor(getResources().getColor(color));
+        int color = ColorUtils.checkColor(this);
+        mToolbar.setBackgroundColor(color);
+        /*if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT)
+            setBarTintColor(color);*/
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(color));
+            getWindow().setStatusBarColor(color);
         }
     }
 
@@ -115,13 +102,13 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         GenericDraweeHierarchyBuilder builder =
                 new GenericDraweeHierarchyBuilder(getResources());
         ProgressBarDrawable progressBarDrawable = new ProgressBarDrawable();
-        progressBarDrawable.setColor(getResources().getColor(R.color.blue_primary_color));
+        progressBarDrawable.setColor(ContextCompat.getColor(this, R.color.blue_primary_color));
         progressBarDrawable.setBarWidth(4);
         progressBarDrawable.setPadding(0);
         GenericDraweeHierarchy hierarchy = builder
                 .setFadeDuration(300)
-                .setFailureImage(getResources().getDrawable(R.drawable.error))
-                .setPlaceholderImage(getResources().getDrawable(R.drawable.loading))
+                .setFailureImage(ContextCompat.getDrawable(this, R.drawable.error))
+                .setPlaceholderImage(ContextCompat.getDrawable(this, R.drawable.loading))
                 .setProgressBarImage(progressBarDrawable)
                 .build();
         mImageView.setHierarchy(hierarchy);
@@ -133,26 +120,14 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         hasNORMAL = (boolean) SPUtils.get(this, "hasTEC", false);
         if (type == CET) {
             if (hasCET) {
-//                Picasso.with(this)
-//                        .load(API.URL.studentCETPic + id + API.URL.studentCETPicEnd)
-//                        .placeholder(R.mipmap.loading)
-//                        .error(R.mipmap.error)
-//                        .into(mImageView);
                 mImageView.setImageURI(Uri.parse(API.URL.studentCETPic + id + API.URL.studentCETPicEnd));
             } else {
-//                Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
                 mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.drawable.ic_pic_no_use));
             }
         } else {
             if (hasNORMAL) {
-//                Picasso.with(this)
-//                        .load(API.URL.studentPic + id)
-//                        .placeholder(R.mipmap.loading)
-//                        .error(R.mipmap.error)
-//                        .into(mImageView);
                 mImageView.setImageURI(Uri.parse(API.URL.studentPic + id));
             } else {
-//                Picasso.with(this).load(R.mipmap.ic_pic_no_use).into(mImageView);
                 mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.drawable.ic_pic_no_use));
             }
         }
@@ -161,7 +136,7 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
     private void initToolbar() {
         mToolbar.setTitle(" " + getResources().getString(R.string.student_info));
         setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
+        mToolbar.setNavigationIcon(ContextCompat.getDrawable(this, R.drawable.ic_back));
         mToolbar.setNavigationOnClickListener(v -> finish());
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
     }
@@ -172,17 +147,20 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
         return true;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.iv_pic:
-                if (type == CET && !hasCET) {
-                    showVerifyDialog(CET);
-                } else if (type == NORMAL && !hasNORMAL) {
-                    showVerifyDialog(NORMAL);
-                }
-                break;
+    @OnClick(R.id.iv_pic)
+    void onPicClick() {
+        if (type == CET && !hasCET) {
+            showVerifyDialog(CET);
+        } else if (type == NORMAL && !hasNORMAL) {
+            showVerifyDialog(NORMAL);
         }
+    }
+
+    @OnLongClick(R.id.iv_pic)
+    boolean onPicLongClick() {
+        if ((type == CET && hasCET) || (type == NORMAL && hasNORMAL))
+            Snackbar.make(mToolbar, "孩子，你是想下载么→_→", Snackbar.LENGTH_LONG).show();
+        return true;
     }
 
     /* 显示验证dialog */
@@ -201,19 +179,12 @@ public class StudentInfoActivity extends BaseActivity implements View.OnClickLis
                     } else {
                         Snackbar.make(mToolbar, "没有密钥的不要乱试", Snackbar.LENGTH_LONG)
                                 .setAction("好吧", null)
-                                .setActionTextColor(getResources().getColor(R.color.accent_color))
+                                .setActionTextColor(ContextCompat.getColor(this, R.color.accent_color))
                                 .show();
                     }
                 })
                 .theme(Theme.LIGHT)
                 .show();
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        if ((type == CET && hasCET) || (type == NORMAL && hasNORMAL))
-            Snackbar.make(mToolbar, "孩子，你是想下载么→_→", Snackbar.LENGTH_LONG).show();
-        return true;
     }
 
     private class OnMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
