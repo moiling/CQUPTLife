@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.superbug.moi.cquptlife.R;
-import com.superbug.moi.cquptlife.model.bean.Student;
+import com.superbug.moi.cquptlife.model.bean.StudentWrapper;
 import com.superbug.moi.cquptlife.presenter.StudentPresenter;
 import com.superbug.moi.cquptlife.ui.activity.StudentInfoActivity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Adapter
@@ -36,12 +36,12 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
 
     @Override
     public void onBindViewHolder(StudentsViewHolder holder, int i) {
-        ArrayList<Student> students = presenter.getStudent();
-        final Student student = students.get(i);
-        final String studentName = student.getStudentName();
-        String studentSex = student.getStudentSex();
-        String studentMajor = student.getStudentMajor();
-        String studentGrade = student.getStudentGrade();
+        List<StudentWrapper.Student> students = presenter.getStudents();
+        final StudentWrapper.Student student = students.get(i);
+        final String studentName = student.getXm();
+        String studentSex = student.getXb();
+        String studentMajor = student.getZym();
+        String studentGrade = student.getNj();
 
         holder.name.setText(studentName);
         if (studentSex.equals("男")) {
@@ -59,7 +59,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.Studen
 
     @Override
     public int getItemCount() {
-        return presenter.getStudent().size();
+        return presenter.getStudents().size();
     }
 
     static class StudentsViewHolder extends RecyclerView.ViewHolder {

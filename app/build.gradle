@@ -9,16 +9,16 @@ android {
         applicationId "com.superbug.moi.cquptlife"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 3
+        versionCode 4
         versionName "1.2"
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -59,4 +59,8 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.0.1'
     // fonts
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
+    // retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
 }

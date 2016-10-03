@@ -6,13 +6,16 @@ import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.IStudentModel;
-import com.superbug.moi.cquptlife.model.bean.Student;
+import com.superbug.moi.cquptlife.model.RequestManager;
+import com.superbug.moi.cquptlife.model.bean.StudentWrapper;
 import com.superbug.moi.cquptlife.model.impl.StudentModel;
 import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
-import com.superbug.moi.cquptlife.util.Utils;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * StudentPresenter
@@ -22,7 +25,8 @@ public class StudentPresenter {
 
     private IStudentVu mStudentView;
     private IStudentModel mStudentModel;
-    private ArrayList<Student> studentList = new ArrayList<>();
+    //private ArrayList<Student> studentList = new ArrayList<>();
+    private List<StudentWrapper.Student> students = new ArrayList<>();
 
     public StudentPresenter(IStudentVu view) {
         mStudentView = view;
@@ -33,11 +37,49 @@ public class StudentPresenter {
         mStudentView = null;
     }
 
-    public ArrayList<Student> getStudent() {
-        return studentList;
+    //public ArrayList<Student> getStudent() {
+    //    return studentList;
+    //}
+
+    public List<StudentWrapper.Student> getStudents() {
+        return students;
     }
 
-    public void searchStudent(String studentInfo) {
+    public void searchStudents(String id, int page) {
+        // 友盟记录
+        MobclickAgent.onEvent((Context) mStudentView, API.UMENG_EVENT_ID.SEARCH_STUDENT, "查找内容为： " + id);
+        mStudentView.showLoading();
+        RequestManager.getInstance().searchStudents(new Subscriber<List<StudentWrapper.Student>>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                mStudentView.showEmptyView(e.getMessage());
+                mStudentView.hideList();
+                mStudentView.hideLoading();
+            }
+
+            @Override
+            public void onNext(List<StudentWrapper.Student> students) {
+                StudentPresenter.this.students.clear();
+                if (students.size() > 0) {
+                    mStudentView.showList();
+                    mStudentView.hideEmptyView();
+                    StudentPresenter.this.students.addAll(students);
+                    mStudentView.setStudents();
+                } else {
+                    mStudentView.showEmptyView(APP.getContext().getResources().getString(R.string.not_fount_student));
+                    mStudentView.hideList();
+                }
+                mStudentView.hideLoading();
+            }
+        }, id, page);
+    }
+
+    /*public void searchStudent(String studentInfo) {
         // 友盟记录
         MobclickAgent.onEvent((Context) mStudentView, API.UMENG_EVENT_ID.SEARCH_STUDENT, "查找内容为： " + studentInfo);
         mStudentView.showLoading();
@@ -68,5 +110,5 @@ public class StudentPresenter {
                 mStudentView.hideLoading();
             }
         });
-    }
+    }*/
 }

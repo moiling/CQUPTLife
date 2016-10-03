@@ -22,7 +22,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
 import com.superbug.moi.cquptlife.config.API;
-import com.superbug.moi.cquptlife.model.bean.Student;
+import com.superbug.moi.cquptlife.model.bean.StudentWrapper;
 import com.superbug.moi.cquptlife.util.ColorUtils;
 import com.superbug.moi.cquptlife.util.SPUtils;
 
@@ -52,12 +52,12 @@ public class StudentInfoActivity extends BaseActivity {
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     private int type = CET;
-    private Student student;
+    private StudentWrapper.Student student;
     private String id;
     private boolean hasCET;
     private boolean hasNORMAL;
 
-    public static void actionStart(Context context, Student student) {
+    public static void actionStart(Context context, StudentWrapper.Student student) {
         Intent intent = new Intent(context, StudentInfoActivity.class);
         intent.putExtra("student", student);
         context.startActivity(intent);
@@ -87,17 +87,17 @@ public class StudentInfoActivity extends BaseActivity {
 
     void initStudentInfo() {
 
-        tvName.setText(student.getStudentName());
-        tvId.setText(student.getStudentId());
-        tvClass.setText(student.getStudentClass());
-        tvGrade.setText(student.getStudentGrade());
-        tvFaculty.setText(student.getStudentFaculty());
-        tvMajor.setText(student.getStudentMajor());
+        tvName.setText(student.getXm());
+        tvId.setText(student.getXh());
+        tvClass.setText(student.getBy());
+        tvGrade.setText(student.getNj());
+        tvFaculty.setText(student.getYxm());
+        tvMajor.setText(student.getZym());
     }
 
     private void initPic() {
-        student = (Student) getIntent().getSerializableExtra("student");
-        id = student.getStudentId();
+        student = (StudentWrapper.Student) getIntent().getSerializableExtra("student");
+        id = student.getXh();
 
         GenericDraweeHierarchyBuilder builder =
                 new GenericDraweeHierarchyBuilder(getResources());

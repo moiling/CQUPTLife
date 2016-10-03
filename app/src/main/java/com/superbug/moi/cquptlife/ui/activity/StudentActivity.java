@@ -111,7 +111,7 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
         String student = getStudentInfo();
         student = student.replaceAll(" ", "");
         if (!student.isEmpty()) {
-            presenter.searchStudent(student);
+            presenter.searchStudents(student, 1);
             closeSearchLayout();
         }
     }
@@ -189,7 +189,7 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
         if (searchInfo != null) {
             searchInfo = searchInfo.replaceAll(" ", "");
             if (!searchInfo.isEmpty()) {
-                presenter.searchStudent(searchInfo);
+                presenter.searchStudents(searchInfo, 1);
             }
         } else {
             mSwipeRefreshWidget.setRefreshing(false);
