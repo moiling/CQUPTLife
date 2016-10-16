@@ -1,7 +1,5 @@
 package com.superbug.moi.cquptlife.ui.activity;
 
-import android.content.res.ColorStateList;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -9,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,22 +17,22 @@ import android.widget.TextView;
 
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
-import com.superbug.moi.cquptlife.presenter.StudentPresenter;
-import com.superbug.moi.cquptlife.ui.adapter.StudentsAdapter;
-import com.superbug.moi.cquptlife.ui.vu.IStudentVu;
+import com.superbug.moi.cquptlife.presenter.LifePresenter;
+import com.superbug.moi.cquptlife.ui.adapter.LifeAdapter;
+import com.superbug.moi.cquptlife.ui.vu.ILifeVu;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
-import com.superbug.moi.cquptlife.util.ColorUtils;
 import com.superbug.moi.cquptlife.util.KeyboardUtil;
 import com.superbug.moi.cquptlife.util.Utils;
 
 import butterknife.Bind;
-import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRefreshLayout.OnRefreshListener {
+public class LifeActivity extends BaseActivity implements ILifeVu, SwipeRefreshLayout.OnRefreshListener {
 
-    private StudentPresenter presenter;
+    @Bind(R.id.tv_type)
+    TextView mSearchType;
+    private LifePresenter presenter;
     @Bind(R.id.swipe_refresh_widget)
     SwipeRefreshLayout mSwipeRefreshWidget;
     @Bind(R.id.fab)
@@ -48,21 +47,25 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
     Toolbar mToolbar;
     @Bind(R.id.lv_content)
     RecyclerView mRecyclerView;
-    @BindString(R.string.loading)
-    String loading;
 
-    private StudentsAdapter adapter;
+    private LifeAdapter adapter;
     private String searchInfo;
+
+    private String[] type = new String[3];
+    private int currentType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student);
+        setContentView(R.layout.activity_life);
         ButterKnife.bind(this);
-        if (presenter == null) presenter = new StudentPresenter(this);
+        if (presenter == null) presenter = new LifePresenter(this);
+
+        type[0] = getResources().getString(R.string.all);
+        type[1] = getResources().getString(R.string.student);
+        type[2] = getResources().getString(R.string.teacher);
         initToolbar();
         initContent();
-        checkColor();
     }
 
     /**
@@ -76,7 +79,7 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
     }
 
     private void initContent() {
-        adapter = new StudentsAdapter(this, presenter);
+        adapter = new LifeAdapter(this, presenter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
         mSwipeRefreshWidget.setColorSchemeResources(R.color.blue_primary_color, R.color.primary_color);
@@ -85,8 +88,6 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
     }
 
     private void initToolbar() {
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-        //    mToolbar.setPadding(0, Utils.getStatusBarHeight(), 0, 0);
         mToolbar.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(mToolbar);
         mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener());
@@ -96,22 +97,20 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
     private void openSearchLayout() {
         searchLayout.setVisibility(View.VISIBLE);
         SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_OPEN, null);
-        mToolbar.getMenu().getItem(0).setVisible(false);
         KeyboardUtil.showInput(search);
     }
 
     private void closeSearchLayout() {
         search.setText("");
         SearchAnimation.start(searchLayout, SearchAnimation.SEARCH_CLOSE, () -> searchLayout.setVisibility(View.GONE));
-        mToolbar.getMenu().getItem(0).setVisible(true);
         KeyboardUtil.hideInput(search);
     }
 
     private void searchEvent() {
-        String student = getStudentInfo();
-        student = student.replaceAll(" ", "");
-        if (!student.isEmpty()) {
-            presenter.searchStudents(student, 1);
+        String info = getLifeInfo();
+        info = info.replaceAll(" ", "");
+        if (!info.isEmpty()) {
+            presenter.searchLives(info, 1, currentType);
             closeSearchLayout();
         }
     }
@@ -119,6 +118,13 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
     @OnClick(R.id.iv_search_close)
     void onSearchClick() {
         closeSearchLayout();
+    }
+
+    @OnClick(R.id.tv_type)
+    void onSearchTypeClick() {
+        currentType = ++currentType % 3;
+        Log.d("TAG", currentType + "");
+        mSearchType.setText(type[currentType]);
     }
 
     @OnClick(R.id.fab)
@@ -131,13 +137,13 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
     }
 
     @Override
-    public String getStudentInfo() {
+    public String getLifeInfo() {
         searchInfo = search.getText().toString();
         return searchInfo;
     }
 
     @Override
-    public void setStudents() {
+    public void setLives() {
         adapter.notifyDataSetChanged();
     }
 
@@ -167,7 +173,7 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
     @Override
     public void showLoading() {
         if (!mSwipeRefreshWidget.isRefreshing())
-            showProgress(loading);
+            showProgress(getResources().getString(R.string.loading));
     }
 
     @Override
@@ -180,7 +186,7 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
     /* toolbar按钮 */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_student, menu);
+        getMenuInflater().inflate(R.menu.menu_life, menu);
         return true;
     }
 
@@ -189,22 +195,11 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
         if (searchInfo != null) {
             searchInfo = searchInfo.replaceAll(" ", "");
             if (!searchInfo.isEmpty()) {
-                presenter.searchStudents(searchInfo, 1);
+                presenter.searchLives(searchInfo, 1, currentType);
             }
         } else {
             mSwipeRefreshWidget.setRefreshing(false);
         }
-    }
-
-    private void checkColor() {
-        int color = ColorUtils.checkColor(this);
-        mToolbar.setBackgroundColor(color);
-        /*if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT)
-            setBarTintColor(color);*/
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(color);
-        }
-        mFab.setBackgroundTintList(ColorStateList.valueOf(color));
     }
 
     /* toolbar右边按钮的点击事件 */
@@ -219,10 +214,6 @@ public class StudentActivity extends BaseActivity implements IStudentVu, SwipeRe
                     } else {
                         searchEvent();
                     }
-                    break;
-                case R.id.action_color:
-                    ColorUtils.changeColor(StudentActivity.this);
-                    checkColor();
                     break;
             }
             return true;

@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <item
-        android:id="@+id/action_color"
-        android:icon="@drawable/ic_color"
-        android:title="@string/color"
-        app:showAsAction="ifRoom" />
+    <!--<item-->
+        <!--android:id="@+id/action_color"-->
+        <!--android:icon="@drawable/ic_color"-->
+        <!--android:title="@string/color"-->
+        <!--app:showAsAction="ifRoom" />-->
 
     <item
         android:id="@+id/action_search"

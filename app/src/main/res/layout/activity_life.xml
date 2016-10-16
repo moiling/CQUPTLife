@@ -5,7 +5,7 @@
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".ui.activity.StudentActivity"
+    tools:context=".ui.activity.LifeActivity"
     tools:menu="menu_student">
 
     <include layout="@layout/layout_search_toolbar" />

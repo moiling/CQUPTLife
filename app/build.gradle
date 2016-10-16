@@ -9,7 +9,7 @@ android {
         applicationId "com.superbug.moi.cquptlife"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 4
+        versionCode 5
         versionName "1.2"
     }
     buildTypes {
@@ -31,7 +31,7 @@ android {
 repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
-
+    
 }
 
 dependencies {

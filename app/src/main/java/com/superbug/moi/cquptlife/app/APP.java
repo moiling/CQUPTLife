@@ -12,9 +12,9 @@ import java.util.List;
 
 public class APP extends Application {
 
-    private static List<Activity> activityList = new ArrayList<>();// 存放所有开启的activity
-    private static APP instance;// Application的实例
-    private static Context context;// Application的上下文
+    private static List<Activity> activityList = new ArrayList<>();
+    private static APP instance;
+    private static Context context;
 
     public APP() {
         instance = this;
@@ -42,7 +42,7 @@ public class APP extends Application {
         /* 初始化工具 */
         Utils.initialize(this);
         Utils.setDebug(BuildConfig.DEBUG, "CQUPTLife");
-        context = getApplicationContext();// 为全局获取context制造条件
+        context = getApplicationContext();
     }
 
     /**

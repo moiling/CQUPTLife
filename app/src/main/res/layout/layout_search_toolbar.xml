@@ -25,15 +25,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/blue_primary_color"
+                android:background="@color/light_white"
+                android:text="@string/all"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="2dp"
+                />
+
             <EditText
                 android:id="@+id/ed_search"
+                android:layout_toRightOf="@+id/tv_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:imeOptions="actionSearch"
                 android:padding="4dp"
-                android:singleLine="true"
+                android:maxLines="1"
                 android:textColor="@color/secondary_text" />
 
             <ImageView

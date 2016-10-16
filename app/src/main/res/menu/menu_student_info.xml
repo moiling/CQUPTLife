@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.superbug.moi.cquptlife.ui.activity.StudentInfoActivity">
+    tools:context="com.superbug.moi.cquptlife.ui.activity.LifeInfoActivity">
     <item
         android:id="@+id/action_switch"
         android:icon="@drawable/ic_switch"

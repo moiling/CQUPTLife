@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:clipToPadding="false"
     android:fitsSystemWindows="true"
-    tools:context="com.superbug.moi.cquptlife.ui.activity.StudentInfoActivity">
+    tools:context="com.superbug.moi.cquptlife.ui.activity.LifeInfoActivity">
 
     <include
         android:id="@id/toolbar"

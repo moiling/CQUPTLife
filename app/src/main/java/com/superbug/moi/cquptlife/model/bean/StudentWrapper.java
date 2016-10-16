@@ -25,7 +25,8 @@ import java.util.List;
     }
   ]
 }
- */
+*/
+
 public class StudentWrapper {
     private int total;
     private List<StudentWrapper.Student> rows;
@@ -42,14 +43,14 @@ public class StudentWrapper {
         private String bj;
         private int totalCount;
 
-        public String getBy() {
+        public String getBj() {
             bj = bj.replaceAll(" ", "");
             return bj;
         }
 
-        public void setBy(String by) {
-            by = by.replaceAll(" ", "");
-            this.bj = by;
+        public void setBj(String bj) {
+            bj = bj.replaceAll(" ", "");
+            this.bj = bj;
         }
 
         public String getNj() {
@@ -101,42 +102,38 @@ public class StudentWrapper {
         }
 
         public String getYxh() {
-            yxh = yxh.replaceAll(" ", "");
+            if (yxh != null) yxh = yxh.replaceAll(" ", "");
             return yxh;
         }
 
         public void setYxh(String yxh) {
-            yxh = yxh.replaceAll(" ", "");
             this.yxh = yxh;
         }
 
         public String getYxm() {
-            yxm = yxm.replaceAll(" ", "");
+            if (yxm != null) yxm = yxm.replaceAll(" ", "");
             return yxm;
         }
 
         public void setYxm(String yxm) {
-            yxm = yxm.replaceAll(" ", "");
             this.yxm = yxm;
         }
 
         public String getZyh() {
-            zyh = zyh.replaceAll(" ", "");
+            if (zyh != null) zyh = zyh.replaceAll(" ", "");
             return zyh;
         }
 
         public void setZyh(String zyh) {
-            zyh = zyh.replaceAll(" ", "");
             this.zyh = zyh;
         }
 
         public String getZym() {
-            zym = zym.replaceAll(" ", "");
+            if (zym != null) zym = zym.replaceAll(" ", "");
             return zym;
         }
 
         public void setZym(String zym) {
-            zym = zym.replaceAll(" ", "");
             this.zym = zym;
         }
     }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CQUPT LIFE</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">重邮生命</string>
     <string name="action_settings">Settings</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -22,4 +21,14 @@
     <string name="faculty">Faculty</string>
     <string name="major">Major  </string>
     <string name="please_search_student">Use name or ID to search students</string>
+    <string name="all">ALL</string>
+    <string name="student">STU</string>
+    <string name="teacher">TEA</string>
+    <string name="color">COLOR</string>
+    <string name="what_where_is_the_pic">No pic</string>
+    <string name="teacher_info">Teacher Info</string>
+    <string name="search_student">Search Student</string>
+    <string name="search_class_room">Search Class</string>
+    <string name="search_teacher">Search Teacher</string>
+    <string name="search_lesson">Search Lesson</string>
 </resources>
