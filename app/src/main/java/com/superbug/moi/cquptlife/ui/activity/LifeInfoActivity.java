@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -106,7 +108,7 @@ public class LifeInfoActivity extends BaseActivity {
 
     private void showPic(String id) {
         if (id.equals("2014213790") || id.equals("2015210408")) {
-            mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.drawable.error));
+            new Handler(Looper.getMainLooper()).postDelayed(() -> mImageView.setImageURI(Uri.parse("res://com.superbug.moi.cquptlife/" + R.drawable.error)), 700);
             return;
         }
 
