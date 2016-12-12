@@ -54,16 +54,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showProgress(String title) {
-        dialog = new MaterialDialog.Builder(this)
-                .title(title)
-                .titleColor(ContextCompat.getColor(this, R.color.primary_color))
-                .backgroundColor(ContextCompat.getColor(this, R.color.white))
-                .positiveColor(ContextCompat.getColor(this, R.color.primary_color))
-                .content(APP.getContext().getResources().getString(R.string.please_wait))
-                .theme(Theme.LIGHT)
-                .progress(true, 100)
-                .cancelable(false)
-                .show();
+        if (dialog == null) {
+            dialog = new MaterialDialog.Builder(this)
+                    .title(title)
+                    .titleColor(ContextCompat.getColor(this, R.color.primary_color))
+                    .backgroundColor(ContextCompat.getColor(this, R.color.white))
+                    .positiveColor(ContextCompat.getColor(this, R.color.primary_color))
+                    .content(APP.getContext().getResources().getString(R.string.please_wait))
+                    .theme(Theme.LIGHT)
+                    .progress(true, 100)
+                    .cancelable(false).build();
+        }
+        dialog.show();
     }
 
     public void dismissProgress() {
