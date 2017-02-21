@@ -25,7 +25,6 @@ public enum RequestManager {
     private ApiService mApiService;
 
     RequestManager() {
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API.URL.END)
                 .client(new OkHttpClient())
