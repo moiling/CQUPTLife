@@ -1,5 +1,7 @@
 package com.superbug.moi.cquptlife.model.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,12 +12,6 @@ import java.util.List;
 public class TeacherWrapper {
 
     /**
-     * total : 105
-     * rows : [{"teaId":"010237","teaName":"王永(通)","jys":"0105","jysm":"通信工程系","yxm":"通信与信息工程学院","zc":"讲师（高校）","totalCount":105}]
-     */
-
-    private int total;
-    /**
      * teaId : 010237
      * teaName : 王永(通)
      * jys : 0105
@@ -25,15 +21,8 @@ public class TeacherWrapper {
      * totalCount : 105
      */
 
+    @SerializedName("returnData")
     private List<Teacher> rows;
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
 
     public List<Teacher> getRows() {
         return rows;
@@ -50,7 +39,6 @@ public class TeacherWrapper {
         private String jysm;
         private String yxm;
         private String zc;
-        private int totalCount;
 
         public String getTeaId() {
             teaId = teaId.replaceAll(" ", "");
@@ -110,12 +98,5 @@ public class TeacherWrapper {
             this.zc = zc;
         }
 
-        public int getTotalCount() {
-            return totalCount;
-        }
-
-        public void setTotalCount(int totalCount) {
-            this.totalCount = totalCount;
-        }
     }
 }

@@ -5,8 +5,8 @@ public class API {
     public static class URL {
         // 内网外入后教务在线的查询学生信息接口
         public static final String END = "http://jwzx.cqupt.congm.in";
-        public static final String searchStudent = "/jwzxtmp/data/json_studentList.php?dirId=&rows=100";
-        public static final String searchTeacher = "/jwzxtmp/data/json_teacherList.php?dirId=&rows=100";
+        public static final String searchStudent = "/jwzxtmp/data/json_StudentSearch.php";
+        public static final String searchTeacher = "/jwzxtmp/data/json_teacherSearch.php";
         // 废弃
         public static final String studentId = "http://jwzx.cqupt.congm.in/pubBjStu.php?searchKey=";
         // 内网外入后教务在线的查询学生一卡通照片的接口

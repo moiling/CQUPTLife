@@ -2,283 +2,310 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.2.1/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/opt/android-sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.0/support-annotations-25.3.0.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
-        sha1="cb86970df0f0f25f766d320b279c7858c1ca0003">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.2.1_e2532ad350706b600acaf988d8d33450b707c974.jar" />
+        revision="25.0.2"
+        sha1="dd84903d2e1af25a6081ef9038ad863cb14ca3a0">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.0_4d8aeb956635c8ecb385a6f1c89ab03ae95cd5b5/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/e1394eeb9cd0b9454ff8914745afef625a36518f/output/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
-        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.2.1_6add9a75f1c31ba6c733231540c9a211a9b80368.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4_acde78795c59d87b54c26664b982e60358e808cb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/libs/internal_impl-23.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.1_466ac59649678f9fc8ae77828534561fa685adf0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/adapter-rxjava/2.0.2/a60c039ba54c73d1133b72178e1b04133c73d13d/adapter-rxjava-2.0.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="a60c039ba54c73d1133b72178e1b04133c73d13d">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/adapter-rxjava-2.0.2_8935328161954d3d68597891488a9ece2d4c1de0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.2.1_e5f836f1ffc265565ebcb462fe813fec09ecae5c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.0.2/43eeae0b9fb087bb3194ba59ab63a38a32fbf3e/retrofit-2.0.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="043eeae0b9fb087bb3194ba59ab63a38a32fbf3e">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/retrofit-2.0.2_0bd757e4a88fc97ca9fdbf2851090763147dac15.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/design/23.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.2.1_a3bf4415f66d5a08df12b1dcb507833b54d3cfe1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/uk.co.chrisjenx/calligraphy/2.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e653e15e62e8a59ddd76cc7f827bf8bce38ae7bb">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/uk.co.chrisjenx-calligraphy-2.1.0_ae60b483db11231425f088817ced50e5174735cc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/io.reactivex-rxandroid-1.0.1_cc4ce29d8cd6c1c580c27eceb7d162079072e7e2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.2/f8d87f15b94b8d74e7ccf61d7eedb558811cdb30/converter-gson-2.0.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="f8d87f15b94b8d74e7ccf61d7eedb558811cdb30">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/converter-gson-2.0.2_f7d1f41104f93e1f0a4031909fcbb3272777af57.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.2.0/f7873a2ebde246a45c2a8d6f3247108b4c88a879/okhttp-3.2.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/okhttp-3.2.0_ddb02de9a7b449656255dd7f6f4e043b012295a4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.1/b9d63507329a7178e026fc334f87587ee5070ac5/gson-2.6.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="b9d63507329a7178e026fc334f87587ee5070ac5">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/gson-2.6.1_5d104eea84001861cfbb54018588757525b54603.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.umeng.analytics/analytics/6.0.9/5259c1d58a8f2373c2bbb7cb0ff33aee0eef4503/analytics-6.0.9.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="5259c1d58a8f2373c2bbb7cb0ff33aee0eef4503">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/analytics-6.0.9_03347e7b48a7d8cd924355d300bd761b62081698.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.9.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
+        revision="25.0.2"
         sha1="57528b5deee77bfa2188fc279fd45066366f17f5">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-0.9.0_c25a5ffed8362208c7e54a8ff556868b30995a7c.jar" />
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_421db9640086ab8fdac08564c42fc3f797b801ce/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/2288cfb49521f33ddc5d93ad371913357c1f90be/output/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1_6a6ae983807ec83d41466e977f5192e3b75cbf8a.jar" />
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c9b71f535c84cc27338404edc468102947b43698/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.9.0/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/home/haruue/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
-        sha1="ca51025f4a58fc7fb6cfaa85e7d09b7ae47e6187">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-0.9.0_807292dd97b25a38db0ff7050a1fb286ba7059ab.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.2.1_83c0e13b31a0fab89fb164259c2232ad046f20e2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/library-2.4.0_a70653b53bd19a9b655bbf486700ede0cb5bb89c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.afollestad/material-dialogs/0.7.8.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="0b3bbe3dc415a3fe112e7c28de53fd194fe4416e">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.afollestad-material-dialogs-0.7.8.1_010240b1e50ced4347a90bc7fa32afd58f2fa0cc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/0.9.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="39bd9f893c75eac9e76559cc4e96af6e417afdc5">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-0.9.0_1d9a3e08cdf61bb4846b7ab60175817facfcb278.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="673d77a5bbddd766037f088e775df525c46407f0">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.1_436148cc4e8508ec76330c55d931889fbea507be.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.9.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="4ee95617ab850030c51486d02bc9d207b14419c6">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-0.9.0_3cf0cde46df36c43bd034feb391a4d2dd8d853d8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/libs/jsoup-1.8.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="580e4dd2a6125cc4037450b40623ac6a552c11df">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/jsoup-1.8.2_7299b0f0eeec4b6072e0e21408ef951cd0269fc6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.9.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="3158c15bb0ae97575debdb40cfcd8f0f9f244526">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-0.9.0_1646ec02aaec58f8d3c36174dca13d10a044ea71.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.1/support-annotations-23.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.1_fe5f21b128b5b5566640091f7a99ce1ce00623c3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.readystatesoftware.systembartint/systembartint/1.0.3/de4f7404e2f58d8f6e83cb1e85d0c2d6c2987287/systembartint-1.0.3.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="de4f7404e2f58d8f6e83cb1e85d0c2d6c2987287">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/systembartint-1.0.3_b14df549d768fee599c2d25d0158777dcd8e9028.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
+        revision="25.0.2"
         sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/okio-1.6.0_12a059bee4ae8bc906038b3354b0c9e5b8a22480.jar" />
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.6.0_127d37037b716eaa340cd900f0e37953e0d34d18/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.1/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/home/haruue/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.1/b9d63507329a7178e026fc334f87587ee5070ac5/gson-2.6.1.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
-        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.2.1_9d8e3ab573b8cf5662bda91b23cc3e69fd271594.jar" />
+        revision="25.0.2"
+        sha1="b9d63507329a7178e026fc334f87587ee5070ac5">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.6.1_edadc3a044f72823747a24a2659192814997aa65/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/exploded-aar/com.balysv/material-ripple/1.0.2/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/e39c6a02eb6a463734a5404ff50793cc1a40affa/output/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
+        revision="25.0.2"
+        sha1="3158c15bb0ae97575debdb40cfcd8f0f9f244526">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_45eae7f4cadd4e96968f81201698bf9d03e1cfb0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/9ba53e6ed85b200fea28527dd9a5a26a33a8b7d2/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6a04527c17597019dad82777c5094a3d60d1c33">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_bc3bd8053cbe58f2d58f820777c76e6ef92ec4fc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7cf7051856348974c4e735cf66bb5ea7cc76939e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/4a680305dffe2667ac203a49600e26dfef0f69a7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
         sha1="c733e9d1b065d940a08f2fca0ff920dfc08d94cc">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/com.balysv-material-ripple-1.0.2_27f2b994e467ebc7e66575c8a9caf0666e705ede.jar" />
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1dfb9d3e4a56c998c0bfa379008c6971e72fc057/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/moi/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.1/b494968f6050d494de55dc3ce005e59c7eb40012/rxjava-1.1.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
+        revision="25.0.2"
+        sha1="c91a0481bad18ed4ce80531a2236611c421f4280">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f66d255a83ba1d63334c30aba67d7982c747cd66/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.2.0/f7873a2ebde246a45c2a8d6f3247108b4c88a879/okhttp-3.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.2.0_fb53d6747ed38953a3e066dc2a92f598d6519c5d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.1/b494968f6050d494de55dc3ce005e59c7eb40012/rxjava-1.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
         sha1="b494968f6050d494de55dc3ce005e59c7eb40012">
-        <dex dex="/Users/moi/Documents/Code/AndroidStudioProjects/CQUPTLife/app/build/intermediates/pre-dexed/debug/rxjava-1.1.1_cac4e7ec60186c5dd769f836d5fce7f5ad6cb5c5.jar" />
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/rxjava-1.1.1_01612d8cc8091bb7cbd64a4a382095c2568bdd27/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/a568c1a734f138d476f7211dae76c3b7832d2166/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="425c7b17887e5c3f8cbdf67ba171bc246f29b42c">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fdb5a8caa60b583d711d3080eaf2925ab313a658/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/c0566c680dac20b60e1f5383632627b9cbda0c69/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9ab787a20aae245b5b3651ae0b9c38459eb37715">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_31268d92ccd27952d6aede08d4988b4516fe6115/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.0.2/43eeae0b9fb087bb3194ba59ab63a38a32fbf3e/retrofit-2.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="043eeae0b9fb087bb3194ba59ab63a38a32fbf3e">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.0.2_ae44d56073183d08dbeaf08767c97593a0b94f0b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/4e8aec137413618b21e02f393d4d0233cdf3f25c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c1199fcb0a34b980e6fff8350daff62e696ec2">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_48e115e217838c57d873da55aef4d861a7aec8fb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/99f1233ab60563c7d21f8cba0b113b76bf484617/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2af9413f2cd24c231f025438efa2ee98e4c638a4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/47f7f14ce568aaa9943a397f68bc12ba42336458/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="518768f3200963fbfec652f498da2c9d39245234">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8a7ee77fab24ff9d909cb2d05e3c8ce518bbaac5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/7e7a8832e2c67cffa0e7dacc063fb6e196a789ba/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="70f23cb87278f89aa51e6f57e8f0fd5266572d95">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b9eec2580b2fee5f34c16f84ca6284f48d5e695e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/64005db489d2de62a0b4984ed6c09eba90d0d478/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fbb206f7a119f66ce171d95aae1225a5b209a8b7">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_426308e66a5f673a5f6db5447d920a4d0e2985f3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/adapter-rxjava/2.0.2/a60c039ba54c73d1133b72178e1b04133c73d13d/adapter-rxjava-2.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a60c039ba54c73d1133b72178e1b04133c73d13d">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/adapter-rxjava-2.0.2_ac87d59039c95acc7fdf17282d93a26cbaebadb6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.2/f8d87f15b94b8d74e7ccf61d7eedb558811cdb30/converter-gson-2.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f8d87f15b94b8d74e7ccf61d7eedb558811cdb30">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.0.2_96967fe075f4d874c54a84933b45480e72ebb05b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/829fe293bd4dea67f7b7f3867dd69ca95a1602ff/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca51025f4a58fc7fb6cfaa85e7d09b7ae47e6187">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1fe56763dc4296676a54e38e59707dff4591f6bd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/3da1bdf65808d0523d60a8a41e1dafa254f31a48/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4ee95617ab850030c51486d02bc9d207b14419c6">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2fae13695e9906a4f2e5b08396bc28c256cb51e1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/7375fe155e6356c86d6659a01b10c9d5196b737c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="39bd9f893c75eac9e76559cc4e96af6e417afdc5">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8b1b57818580b6d8ecd35020afe3dac73b1eec2c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/902a9562654a50c23d27399c448f8fb11705b053/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c10d68ab5ea070f15782ae6d3a28d1f1d8f45e">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cca9771e97375ea73cfa5208b349f9ec88dac086/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/398b301bf1a82d153a879b9ca2f6457559099350/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c5d103b270b3f3b50d8e6b44aa8e068b0de33426">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_73f499c8d4eb81c4d5f36760a50ed0dde0ac8b5f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/36179db73cc9d9b3d70fbd001f38bd4dcd04a102/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b746ef0fd46acb5aaf3d9ab9a4cec22c28d3211">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5d2dd8aabdc09a31f93710a912365eae89880cb7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/8008714623cc3c7d1d6c019a64ab3df38f2288a7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5cc5ef8347a6bafa14556cbd35230aa9b3431bb0">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1f27053ea7f1177e6a8e6177558a55f2bbffc0c0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/7641e8fc234122b5d4257e9df23322cc2f5856ad/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a3e61044038fb54cddf6b8dc79f41d2b57f42caf">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_dab4645c532c1bc6c32edd56bae2f3c80c53daaf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/5728dcf676003cb121e70216afa1eb75c15f13a8/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e653e15e62e8a59ddd76cc7f827bf8bce38ae7bb">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d8dc9927371027e13e9210dcc4a2f9f74a6d47c7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-android-1.1.4_bdc2c0542bad2c81e322d42f8d658415c6799aea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/.android/build-cache/4d246501509f64c1b17c7037d676c167507eb68d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="20e6d443b368a3cbcfd9121e6f424708e772967e">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_98d3028abcb55a148c4c4134f8445f7b52771df2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/haruue/Coding/Android/Project/CQUPTLife/app/libs/jsoup-1.8.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="580e4dd2a6125cc4037450b40623ac6a552c11df">
+        <dex dex="/home/haruue/Coding/Android/Project/CQUPTLife/app/build/intermediates/transforms/dex/debug/folders/1000/2/jsoup-1.8.2_27866c08749d22431d465896faee013bc414832a/classes.dex" />
     </item>
 
 </items>
