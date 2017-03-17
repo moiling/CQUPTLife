@@ -1,5 +1,7 @@
 package com.superbug.moi.cquptlife.model.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,7 +30,8 @@ import java.util.List;
 */
 
 public class StudentWrapper {
-    private int total;
+
+    @SerializedName("returnData")
     private List<StudentWrapper.Student> rows;
 
     public class Student implements Serializable {
@@ -41,7 +44,6 @@ public class StudentWrapper {
         private String yxm;
         private String nj;
         private String bj;
-        private int totalCount;
 
         public String getBj() {
             bj = bj.replaceAll(" ", "");
@@ -61,14 +63,6 @@ public class StudentWrapper {
         public void setNj(String nj) {
             nj = nj.replaceAll(" ", "");
             this.nj = nj;
-        }
-
-        public int getTotalCount() {
-            return totalCount;
-        }
-
-        public void setTotalCount(int totalCount) {
-            this.totalCount = totalCount;
         }
 
         public String getXb() {
@@ -146,11 +140,4 @@ public class StudentWrapper {
         this.rows = rows;
     }
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
 }
