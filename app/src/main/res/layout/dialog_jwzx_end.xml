@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:textColor="#000000"
+        android:text="@string/where_is_jwzx"/>
+
+    <EditText
+        android:id="@+id/et_jwzx_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textNoSuggestions"
+        android:textColor="#000000"
+        android:textColorHint="#c2c2c2"
+        android:hint="http://jwzx.cqupt.edu.cn"/>
+
+</LinearLayout>

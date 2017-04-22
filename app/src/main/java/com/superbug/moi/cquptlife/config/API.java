@@ -4,7 +4,7 @@ public class API {
 
     public static class URL {
         // 内网外入后教务在线的查询学生信息接口
-        public static final String END = "http://jwzx.cqupt.congm.in";
+        public static final String END = "http://jwzx.host.congm.in:88";
         public static final String searchStudent = "/jwzxtmp/data/json_StudentSearch.php";
         public static final String searchTeacher = "/jwzxtmp/data/json_teacherSearch.php";
         // 废弃

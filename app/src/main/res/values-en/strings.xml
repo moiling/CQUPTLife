@@ -31,4 +31,9 @@
     <string name="search_class_room">Search Class</string>
     <string name="search_teacher">Search Teacher</string>
     <string name="search_lesson">Search Lesson</string>
+    <string name="cancel">Cancel</string>
+    <string name="go">Let\'s Go</string>
+    <string name="malformed_end">Malformed URL!</string>
+    <string name="reset_default">Reset</string>
+    <string name="where_is_jwzx">How can I go to jwzx?</string>
 </resources>
