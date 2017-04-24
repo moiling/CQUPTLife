@@ -1,32 +1,42 @@
 package com.superbug.moi.cquptlife.ui.activity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.superbug.moi.cquptlife.R;
 import com.superbug.moi.cquptlife.app.BaseActivity;
+import com.superbug.moi.cquptlife.config.API;
+import com.superbug.moi.cquptlife.model.RequestManager;
 import com.superbug.moi.cquptlife.presenter.LifePresenter;
 import com.superbug.moi.cquptlife.ui.adapter.LifeAdapter;
 import com.superbug.moi.cquptlife.ui.vu.ILifeVu;
 import com.superbug.moi.cquptlife.util.Animations.SearchAnimation;
 import com.superbug.moi.cquptlife.util.KeyboardUtil;
+import com.superbug.moi.cquptlife.util.SPUtils;
 import com.superbug.moi.cquptlife.util.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 public class LifeActivity extends BaseActivity implements ILifeVu, SwipeRefreshLayout.OnRefreshListener {
 
@@ -134,6 +144,42 @@ public class LifeActivity extends BaseActivity implements ILifeVu, SwipeRefreshL
         } else {
             searchEvent();
         }
+    }
+
+    @OnLongClick(R.id.fab)
+    boolean onFabLongClick() {
+        Context dialogThemeContext = new ContextThemeWrapper(this, R.style.AppTheme_Dialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(dialogThemeContext);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_jwzx_end, null);
+        EditText endEditText = (EditText) dialogView.findViewById(R.id.et_jwzx_end);
+        ProgressDialog progress = new ProgressDialog(dialogThemeContext);
+        progress.setMessage(getString(R.string.loading));
+        Thread rebuildRetrofit = new Thread(() -> {
+            RequestManager.getInstance().rebuildRetrofit();
+            progress.dismiss();
+        });
+        String origEnd = (String) SPUtils.get(this, "jwzxEnd", API.URL.END);
+        endEditText.setText(origEnd);
+        builder.setView(dialogView)
+                .setPositiveButton(R.string.go, (dialog, which) -> {
+                    progress.show();
+                    String end = endEditText.getText().toString();
+                    if (!end.matches("^https?://[.a-zA-Z0-9]+(:[0-9]+)?$")) {
+                        Toast.makeText(this, R.string.malformed_end, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    SPUtils.put(LifeActivity.this, "jwzxEnd", end);
+                    rebuildRetrofit.start();
+                })
+                .setNegativeButton(R.string.cancel, (dialog2, which) -> {})
+                .setNeutralButton(R.string.reset_default, (dialog3, which) -> {
+                    progress.show();
+                    SPUtils.put(LifeActivity.this, "jwzxEnd", API.URL.END);
+                    rebuildRetrofit.start();
+                })
+                .create().show();
+        return true;
     }
 
     @Override

@@ -30,4 +30,9 @@
     <string name="all">全部</string>
     <string name="student">学生</string>
     <string name="teacher">教师</string>
+    <string name="where_is_jwzx">教务在线怎么走？</string>
+    <string name="go">我们走</string>
+    <string name="cancel">算了</string>
+    <string name="malformed_end">这不是我想去的地方</string>
+    <string name="reset_default">恢复默认</string>
 </resources>

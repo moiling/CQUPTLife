@@ -1,9 +1,11 @@
 package com.superbug.moi.cquptlife.model;
 
+import com.superbug.moi.cquptlife.app.APP;
 import com.superbug.moi.cquptlife.config.API;
 import com.superbug.moi.cquptlife.model.bean.StudentWrapper;
 import com.superbug.moi.cquptlife.model.bean.TeacherWrapper;
 import com.superbug.moi.cquptlife.model.service.ApiService;
+import com.superbug.moi.cquptlife.util.SPUtils;
 
 import java.util.List;
 
@@ -25,14 +27,7 @@ public enum RequestManager {
     private ApiService mApiService;
 
     RequestManager() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(API.URL.END)
-                .client(new OkHttpClient())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-
-        mApiService = retrofit.create(ApiService.class);
+        buildRetrofit();
     }
 
     public static RequestManager getInstance() {
@@ -57,5 +52,20 @@ public enum RequestManager {
         Observable<List<TeacherWrapper.Teacher>> observable = mApiService.getTeachers(id, page)
                 .map(TeacherWrapper::getRows);
         return emitObservable(observable, subscriber);
+    }
+
+    private void buildRetrofit() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl((String) SPUtils.get(APP.getInstance(), "jwzxEnd", API.URL.END))
+                .client(new OkHttpClient())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
+        mApiService = retrofit.create(ApiService.class);
+    }
+
+    public void rebuildRetrofit() {
+        buildRetrofit();
     }
 }
